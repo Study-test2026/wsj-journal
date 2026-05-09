@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="The Journal">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>The Journal · Daily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #0a0a0f;
+  --paper: #f5f0e8;
+  --cream: #ede8dc;
+  --gold: #c9a84c;
+  --gold-light: #f0d98a;
+  --red: #c0392b;
+  --muted: #8a8070;
+  --line: rgba(10,10,15,0.12);
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ── LOADING ── */
+#loading {
+  position: fixed; inset: 0;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 100;
+  transition: opacity 0.6s ease;
+}
+#loading.hidden { opacity: 0; pointer-events: none; }
+.loading-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.loading-bar {
+  width: 120px; height: 1px;
+  background: rgba(201,168,76,0.2);
+  position: relative; overflow: hidden;
+}
+.loading-bar::after {
+  content: '';
+  position: absolute; left: -100%; top: 0;
+  width: 100%; height: 100%;
+  background: var(--gold);
+  animation: loadbar 1.4s ease infinite;
+}
+@keyframes loadbar { to { left: 100%; } }
+
+/* ── HEADER ── */
+header {
+  padding: calc(var(--safe-top) + 16px) 20px 16px;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  position: sticky; top: 0; z-index: 50;
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.header-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 20px;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none; border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.tab-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ── MAIN CONTENT ── */
+main { min-height: calc(100dvh - 120px); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── EPISODE HERO ── */
+.episode-hero {
+  padding: 28px 20px 20px;
+  background: linear-gradient(180deg, rgba(201,168,76,0.06) 0%, transparent 100%);
+  border-bottom: 1px solid var(--line);
+}
+.episode-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.episode-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--paper);
+  margin-bottom: 14px;
+}
+.episode-meta {
+  display: flex; gap: 16px; align-items: center;
+  font-size: 12px; color: var(--muted);
+}
+.meta-dot { color: rgba(255,255,255,0.2); }
+
+/* ── AUDIO PLAYER ── */
+.player-wrap {
+  margin: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 16px;
+  padding: 20px;
+}
+.player-controls {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 16px;
+}
+.play-btn {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s, background 0.15s;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+}
+.play-btn:active { transform: scale(0.94); }
+.play-icon { width: 20px; height: 20px; fill: var(--ink); }
+.player-info { flex: 1; min-width: 0; }
+.player-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--paper);
+  margin-bottom: 4px;
+}
+.player-speed {
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 1px;
+}
+.speed-btn {
+  background: rgba(255,255,255,0.08);
+  border: none; color: var(--paper);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; padding: 4px 10px;
+  border-radius: 20px; cursor: pointer;
+}
+
+.progress-wrap {
+  position: relative; cursor: pointer;
+}
+.progress-bg {
+  height: 3px; background: rgba(255,255,255,0.1);
+  border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: var(--gold);
+  border-radius: 2px; width: 0%;
+  transition: width 0.3s linear;
+}
+.progress-thumb {
+  position: absolute; top: 50%; right: auto;
+  width: 12px; height: 12px;
+  background: var(--gold); border-radius: 50%;
+  transform: translate(-50%, -50%);
+  left: 0%;
+  transition: left 0.3s linear;
+  box-shadow: 0 0 8px rgba(201,168,76,0.6);
+}
+
+/* ── SUBTITLE PANEL ── */
+.subtitle-container {
+  padding: 0 20px 20px;
+}
+.subtitle-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0 12px;
+}
+.subtitle-label {
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--muted);
+}
+.lang-toggle {
+  display: flex; gap: 4px;
+}
+.lang-btn {
+  padding: 4px 10px;
+  border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);
+  background: none; color: var(--muted);
+  font-size: 11px; cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.lang-btn.active {
+  background: var(--gold); border-color: var(--gold);
+  color: var(--ink); font-weight: 600;
+}
+
+.subtitle-list { display: flex; flex-direction: column; gap: 2px; }
+
+.subtitle-item {
+  padding: 14px 16px;
+  border-radius: 10px;
+  transition: background 0.2s;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+.subtitle-item.active-line {
+  background: rgba(201,168,76,0.1);
+  border-left-color: var(--gold);
+}
+.subtitle-item:not(.active-line):nth-child(even) {
+  background: rgba(255,255,255,0.02);
+}
+.sub-en {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 400;
+  line-height: 1.6; color: var(--paper);
+  margin-bottom: 5px;
+}
+.sub-ko {
+  font-size: 13px; line-height: 1.6;
+  color: rgba(245,240,232,0.55);
+  font-weight: 300;
+}
+.subtitle-item.ko-only .sub-en { display: none; }
+.subtitle-item.ko-only .sub-ko { color: var(--paper); font-size: 15px; }
+.subtitle-item.en-only .sub-ko { display: none; }
+
+/* ── SUMMARY PANEL ── */
+.summary-wrap { padding: 24px 20px; }
+.section-eyebrow {
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px;
+}
+.summary-text {
+  font-size: 15px; line-height: 1.8;
+  color: rgba(245,240,232,0.85);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.key-points {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 32px;
+}
+.key-point {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px; background: rgba(255,255,255,0.03);
+  border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);
+}
+.key-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--gold); opacity: 0.6;
+  line-height: 1; flex-shrink: 0; min-width: 20px;
+}
+.key-text { font-size: 14px; line-height: 1.6; color: var(--paper); }
+
+/* ── STOCKS PANEL ── */
+.stocks-wrap { padding: 24px 20px; }
+.stock-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.stock-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 16px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.stock-ticker {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; font-weight: 500;
+  padding: 6px 12px; border-radius: 8px;
+  flex-shrink: 0; letter-spacing: 1px;
+}
+.stock-info { flex: 1; min-width: 0; }
+.stock-name {
+  font-size: 14px; font-weight: 500;
+  color: var(--paper); margin-bottom: 4px;
+}
+.stock-reason { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.stock-sentiment {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px; flex-shrink: 0;
+}
+.sentiment-positive { color: #4ade80; }
+.sentiment-neutral { color: var(--muted); }
+.sentiment-negative { color: #f87171; }
+
+.market-outlook {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 14px; padding: 18px;
+}
+.outlook-label {
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 8px;
+}
+.outlook-text { font-size: 14px; line-height: 1.7; color: rgba(245,240,232,0.8); }
+
+/* ── ERROR / EMPTY STATE ── */
+.empty-state {
+  padding: 60px 24px; text-align: center;
+}
+.empty-icon { font-size: 40px; margin-bottom: 16px; }
+.empty-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: var(--paper); margin-bottom: 8px;
+}
+.empty-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  margin: 0 20px 40px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  font-size: 11px; color: var(--muted); line-height: 1.6;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── BOTTOM NAV SAFE AREA ── */
+.bottom-safe { height: calc(var(--safe-bottom) + 16px); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease both; }
+.fade-up-2 { animation: fadeUp 0.4s 0.08s ease both; }
+.fade-up-3 { animation: fadeUp 0.4s 0.16s ease both; }
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="loading-logo">The Journal</div>
+  <div class="loading-bar"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">The Journal</div>
+    <div class="header-date" id="headerDate">—</div>
+  </div>
+</header>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('listen')">🎧 듣기</button>
+  <button class="tab-btn" onclick="switchTab('summary')">📋 요약</button>
+  <button class="tab-btn" onclick="switchTab('stocks')">📈 관련주</button>
+</div>
+
+<main>
+  <!-- ── LISTEN TAB ── -->
+  <div class="tab-panel active" id="tab-listen">
+    <div class="episode-hero fade-up">
+      <div class="episode-date" id="epDate">Loading…</div>
+      <div class="episode-title" id="epTitle">에피소드 로딩 중…</div>
+      <div class="episode-meta">
+        <span id="epDuration">—</span>
+        <span class="meta-dot">·</span>
+        <span>WSJ The Journal</span>
+      </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div class="player-wrap fade-up-2">
+      <audio id="audioEl" preload="none"></audio>
+      <div class="player-controls">
+        <button class="play-btn" id="playBtn" onclick="togglePlay()">
+          <svg class="play-icon" id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="player-info">
+          <div class="player-time" id="timeDisplay">0:00 / 0:00</div>
+          <div class="player-speed">
+            <button class="speed-btn" id="speedBtn" onclick="cycleSpeed()">1.0×</button>
+          </div>
+        </div>
+      </div>
+      <div class="progress-wrap" id="progressWrap" onclick="seekAudio(event)">
+        <div class="progress-bg">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-thumb" id="progressThumb"></div>
+      </div>
+    </div>
+
+    <!-- Subtitles -->
+    <div class="subtitle-container fade-up-3">
+      <div class="subtitle-header">
+        <div class="subtitle-label">스크립트</div>
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btnBoth" onclick="setLang('both')">양방향</button>
+          <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="btnKo" onclick="setLang('ko')">KO</button>
+        </div>
+      </div>
+      <div class="subtitle-list" id="subtitleList">
+        <div class="empty-state">
+          <div class="empty-icon">📡</div>
+          <div class="empty-title">로딩 중</div>
+          <div class="empty-desc">오늘의 에피소드를 불러오고 있습니다</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SUMMARY TAB ── -->
+  <div class="tab-panel" id="tab-summary">
+    <div class="summary-wrap">
+      <div class="section-eyebrow fade-up">오늘의 에피소드 요약</div>
+      <div class="summary-text fade-up-2" id="summaryText">로딩 중…</div>
+      <div class="section-eyebrow fade-up-2" style="margin-bottom:12px;">핵심 포인트</div>
+      <div class="key-points fade-up-3" id="keyPoints"></div>
+    </div>
+  </div>
+
+  <!-- ── STOCKS TAB ── -->
+  <div class="tab-panel" id="tab-stocks">
+    <div class="stocks-wrap">
+      <div class="section-eyebrow fade-up">관련 주식</div>
+      <div class="stock-list fade-up-2" id="stockList"></div>
+      <div class="market-outlook fade-up-3" id="marketOutlook" style="display:none">
+        <div class="outlook-label">시장 전망</div>
+        <div class="outlook-text" id="outlookText"></div>
+      </div>
+      <div class="disclaimer fade-up-3">
+        ⚠️ 투자 정보는 참고용입니다. 모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="bottom-safe"></div>
+
+<script>
+// ── 데이터 로드 ──────────────────────────────────────
+const DATA_URL = 'today.json'; // GitHub Pages에서 서빙
+let episodeData = null;
+let langMode = 'both';
+let speeds = [0.75, 1.0, 1.25, 1.5, 2.0];
+let speedIdx = 1;
+
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('no data');
+    episodeData = await res.json();
+    renderAll();
+  } catch (e) {
+    // 데모 데이터로 폴백
+    episodeData = getDemoData();
+    renderAll();
+  } finally {
+    setTimeout(() => document.getElementById('loading').classList.add('hidden'), 600);
+  }
+}
+
+// ── 렌더링 ───────────────────────────────────────────
+function renderAll() {
+  const ep = episodeData;
+  // Header date
+  const d = new Date();
+  document.getElementById('headerDate').textContent =
+    `${d.getMonth()+1}/${d.getDate()}`;
+
+  // Episode hero
+  document.getElementById('epDate').textContent = ep.published || '';
+  document.getElementById('epTitle').textContent = ep.title || '';
+  document.getElementById('epDuration').textContent = ep.duration || '';
+
+  // Audio
+  if (ep.audio_url) {
+    document.getElementById('audioEl').src = ep.audio_url;
+  }
+
+  // Subtitles
+  renderSubtitles();
+
+  // Summary
+  document.getElementById('summaryText').textContent =
+    ep.analysis?.summary_ko || '요약 없음';
+  const kp = document.getElementById('keyPoints');
+  kp.innerHTML = (ep.analysis?.key_points || []).map((p, i) =>
+    `<div class="key-point fade-up">
+       <div class="key-num">${i+1}</div>
+       <div class="key-text">${p}</div>
+     </div>`
+  ).join('');
+
+  // Stocks
+  const sl = document.getElementById('stockList');
+  sl.innerHTML = (ep.analysis?.related_stocks || []).map(s => {
+    const sMap = {positive:'positive',neutral:'neutral',negative:'negative'};
+    const lMap = {positive:'▲ 긍정',neutral:'— 중립',negative:'▼ 부정'};
+    const cls = sMap[s.sentiment] || 'neutral';
+    return `<div class="stock-card fade-up">
+      <div class="stock-ticker">${s.ticker}</div>
+      <div class="stock-info">
+        <div class="stock-name">${s.name}</div>
+        <div class="stock-reason">${s.reason}</div>
+      </div>
+      <div class="stock-sentiment sentiment-${cls}">${lMap[s.sentiment]||'—'}</div>
+    </div>`;
+  }).join('');
+
+  if (ep.analysis?.market_outlook) {
+    document.getElementById('outlookText').textContent = ep.analysis.market_outlook;
+    document.getElementById('marketOutlook').style.display = 'block';
+  }
+}
+
+function renderSubtitles() {
+  const list = document.getElementById('subtitleList');
+  const subs = episodeData?.subtitles || [];
+  if (!subs.length) {
+    list.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">📝</div>
+      <div class="empty-title">자막 없음</div>
+      <div class="empty-desc">자막 데이터가 없습니다</div>
+    </div>`;
+    return;
+  }
+  list.innerHTML = subs.map((s, i) => {
+    let cls = 'subtitle-item';
+    if (langMode === 'ko') cls += ' ko-only';
+    if (langMode === 'en') cls += ' en-only';
+    return `<div class="${cls}" id="sub-${i}" onclick="seekToSub(${i})">
+      <div class="sub-en">${s.en || ''}</div>
+      <div class="sub-ko">${s.ko || ''}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── 오디오 플레이어 ──────────────────────────────────
+const audio = document.getElementById('audioEl');
+let isPlaying = false;
+
+audio.addEventListener('timeupdate', () => {
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressThumb').style.left = pct + '%';
+  document.getElementById('timeDisplay').textContent =
+    `${fmtTime(audio.currentTime)} / ${fmtTime(audio.duration)}`;
+  highlightActiveSub();
+});
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+    isPlaying = true;
+    document.getElementById('playIcon').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+  } else {
+    audio.pause();
+    isPlaying = false;
+    document.getElementById('playIcon').innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+}
+
+function seekAudio(e) {
+  const wrap = document.getElementById('progressWrap');
+  const rect = wrap.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  if (audio.duration) audio.currentTime = pct * audio.duration;
+}
+
+function cycleSpeed() {
+  speedIdx = (speedIdx + 1) % speeds.length;
+  audio.playbackRate = speeds[speedIdx];
+  document.getElementById('speedBtn').textContent = speeds[speedIdx] + '×';
+}
+
+function fmtTime(t) {
+  if (!t || isNaN(t)) return '0:00';
+  const m = Math.floor(t / 60);
+  const s = Math.floor(t % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+
+// ── 자막 하이라이트 (시간 기반 근사) ────────────────
+function highlightActiveSub() {
+  const subs = episodeData?.subtitles || [];
+  if (!subs.length || !audio.duration) return;
+  const pct = audio.currentTime / audio.duration;
+  const idx = Math.min(Math.floor(pct * subs.length), subs.length - 1);
+  document.querySelectorAll('.subtitle-item').forEach((el, i) => {
+    el.classList.toggle('active-line', i === idx);
+    if (i === idx) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+}
+
+function seekToSub(i) {
+  const subs = episodeData?.subtitles || [];
+  if (audio.duration && subs.length) {
+    audio.currentTime = (i / subs.length) * audio.duration;
+    if (audio.paused) togglePlay();
+  }
+}
+
+// ── 언어 토글 ────────────────────────────────────────
+function setLang(mode) {
+  langMode = mode;
+  ['both','en','ko'].forEach(m => {
+    document.getElementById('btn' + m.charAt(0).toUpperCase() + m.slice(1))
+      ?.classList.toggle('active', m === mode);
+  });
+  renderSubtitles();
+}
+
+// ── 탭 전환 ──────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── 데모 데이터 ──────────────────────────────────────
+function getDemoData() {
+  return {
+    title: "How the U.S.-China Trade War Is Reshaping Global Supply Chains",
+    published: "May 9, 2025",
+    duration: "24 min",
+    audio_url: "",
+    analysis: {
+      summary_ko: "미국과 중국 사이의 무역 전쟁이 심화되면서 글로벌 공급망이 근본적으로 재편되고 있습니다. 많은 기업들이 중국 의존도를 줄이고 베트남, 인도, 멕시코 등으로 생산 기지를 이전하는 '차이나 플러스 원' 전략을 채택하고 있습니다. 관세 인상과 수출 규제가 반도체, 전자제품, 소비재 등 다양한 산업에 영향을 미치고 있으며, 미국 소비자들은 이미 가격 상승을 체감하고 있습니다.",
+      key_points: [
+        "미중 관세가 양국 모두에 경제적 타격을 주고 있으며, 협상 재개 가능성이 불투명한 상황",
+        "애플, 나이키 등 주요 기업들이 공급망 다변화를 가속화 중",
+        "반도체 수출 규제로 중국 AI·첨단기술 산업 성장이 제한될 전망"
+      ],
+      related_stocks: [
+        { ticker: "AAPL", name: "Apple Inc.", reason: "중국 생산 비중이 높아 관세 영향을 직접적으로 받음. 인도 생산 확대 중.", sentiment: "negative" },
+        { ticker: "TSM", name: "TSMC", reason: "미국의 반도체 수출 규제 수혜로 미국·일본 공장 투자 확대 중.", sentiment: "positive" },
+        { ticker: "VN", name: "VanEck Vietnam ETF", reason: "미중 공급망 재편의 최대 수혜국으로 베트남 투자 급증.", sentiment: "positive" },
+        { ticker: "FDX", name: "FedEx Corp.", reason: "국제 물류 재편으로 운송 비용 및 복잡성 증가.", sentiment: "neutral" }
+      ],
+      market_outlook: "단기적으로 무역 불확실성이 지속되면서 시장 변동성이 높게 유지될 전망입니다. 공급망 다변화 수혜 기업과 미국 내수 중심 기업이 상대적으로 유리한 위치에 있습니다."
+    },
+    subtitles: [
+      { en: "The trade war between the U.S. and China is entering a new and more consequential phase.", ko: "미국과 중국 간의 무역 전쟁이 새롭고 더욱 중대한 국면으로 접어들고 있습니다." },
+      { en: "Tariffs on Chinese goods have now reached levels not seen since the early twentieth century.", ko: "중국산 제품에 대한 관세가 20세기 초 이후 볼 수 없었던 수준까지 치솟았습니다." },
+      { en: "American companies are scrambling to find alternatives to Chinese manufacturing.", ko: "미국 기업들은 중국 제조를 대체할 방법을 찾기 위해 분주히 움직이고 있습니다." },
+      { en: "Vietnam, India, and Mexico have emerged as the primary beneficiaries of this shift.", ko: "베트남, 인도, 멕시코가 이러한 변화의 주요 수혜국으로 부상했습니다." },
+      { en: "But the transition is proving more costly and complex than many executives had anticipated.", ko: "그러나 이 전환이 많은 경영진이 예상했던 것보다 훨씬 비용이 많이 들고 복잡한 것으로 나타나고 있습니다." },
+      { en: "For consumers, the result is already visible on store shelves in the form of higher prices.", ko: "소비자들에게 그 결과는 이미 매장 선반에서 높아진 가격의 형태로 나타나고 있습니다." },
+      { en: "The semiconductor industry sits at the center of this geopolitical storm.", ko: "반도체 산업이 이 지정학적 폭풍의 중심에 자리하고 있습니다." },
+      { en: "Export controls have restricted China's access to advanced chips needed for artificial intelligence.", ko: "수출 규제로 인해 중국의 인공지능에 필요한 첨단 칩에 대한 접근이 제한되었습니다." }
+    ]
+  };
+}
+
+// ── PWA Service Worker 등록 ───────────────────────────
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+// ── 시작 ─────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
