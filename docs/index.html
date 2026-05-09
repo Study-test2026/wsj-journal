@@ -8,395 +8,124 @@
 <meta name="apple-mobile-web-app-title" content="The Journal">
 <meta name="theme-color" content="#0a0a0f">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
 <title>The Journal · Daily</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
-:root {
-  --ink: #0a0a0f;
-  --paper: #f5f0e8;
-  --cream: #ede8dc;
-  --gold: #c9a84c;
-  --gold-light: #f0d98a;
-  --red: #c0392b;
-  --muted: #8a8070;
-  --line: rgba(10,10,15,0.12);
-  --safe-top: env(safe-area-inset-top);
-  --safe-bottom: env(safe-area-inset-bottom);
-}
+:root{--ink:#0a0a0f;--paper:#f5f0e8;--gold:#c9a84c;--muted:#8a8070;--safe-top:env(safe-area-inset-top);--safe-bottom:env(safe-area-inset-bottom)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--paper);overflow-x:hidden}
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+/* LOADING */
+#loading{position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;transition:opacity .6s}
+#loading.hidden{opacity:0;pointer-events:none}
+.loading-logo{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:32px}
+.loading-bar{width:120px;height:1px;background:rgba(201,168,76,.2);position:relative;overflow:hidden}
+.loading-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold);animation:lb 1.4s ease infinite}
+@keyframes lb{to{left:100%}}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--ink);
-  color: var(--paper);
-  min-height: 100dvh;
-  overflow-x: hidden;
-}
+/* HEADER */
+header{padding:calc(var(--safe-top) + 14px) 20px 14px;background:var(--ink);border-bottom:1px solid rgba(201,168,76,.2);position:sticky;top:0;z-index:50}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.header-logo{font-family:'Playfair Display',serif;font-size:11px;letter-spacing:5px;color:var(--gold);text-transform:uppercase}
+.header-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)}
 
-/* ── LOADING ── */
-#loading {
-  position: fixed; inset: 0;
-  background: var(--ink);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  z-index: 100;
-  transition: opacity 0.6s ease;
-}
-#loading.hidden { opacity: 0; pointer-events: none; }
-.loading-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 13px;
-  letter-spacing: 6px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 32px;
-}
-.loading-bar {
-  width: 120px; height: 1px;
-  background: rgba(201,168,76,0.2);
-  position: relative; overflow: hidden;
-}
-.loading-bar::after {
-  content: '';
-  position: absolute; left: -100%; top: 0;
-  width: 100%; height: 100%;
-  background: var(--gold);
-  animation: loadbar 1.4s ease infinite;
-}
-@keyframes loadbar { to { left: 100%; } }
+/* TABS */
+.tabs{display:flex;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.06);padding:0 20px;overflow-x:auto;scrollbar-width:none;position:sticky;top:48px;z-index:49}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:11px 16px;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:'DM Sans',sans-serif}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
 
-/* ── HEADER ── */
-header {
-  padding: calc(var(--safe-top) + 16px) 20px 16px;
-  background: var(--ink);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  position: sticky; top: 0; z-index: 50;
-}
-.header-inner {
-  display: flex; align-items: center; justify-content: space-between;
-}
-.header-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 11px;
-  letter-spacing: 5px;
-  color: var(--gold);
-  text-transform: uppercase;
-}
-.header-date {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 1px;
-}
+main{min-height:calc(100dvh - 96px)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 
-/* ── TABS ── */
-.tabs {
-  display: flex;
-  background: var(--ink);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 0 20px;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.tabs::-webkit-scrollbar { display: none; }
-.tab-btn {
-  flex-shrink: 0;
-  padding: 12px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--muted);
-  background: none; border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
-}
-.tab-btn.active {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
-}
+/* EPISODE HERO */
+.episode-hero{padding:24px 20px 18px;background:linear-gradient(180deg,rgba(201,168,76,.06) 0%,transparent 100%);border-bottom:1px solid rgba(255,255,255,.06)}
+.episode-date{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.episode-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;line-height:1.3;color:var(--paper);margin-bottom:12px}
+.episode-meta{display:flex;gap:14px;font-size:12px;color:var(--muted)}
 
-/* ── MAIN CONTENT ── */
-html, body { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-main { min-height: calc(100dvh - 120px); }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
+/* PLAYER */
+.player-wrap{margin:16px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);border-radius:16px;padding:18px}
+.player-controls{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.play-btn{width:50px;height:50px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 20px rgba(201,168,76,.3)}
+.play-btn:active{transform:scale(.94)}
+.play-icon{width:20px;height:20px;fill:var(--ink)}
+.player-info{flex:1;min-width:0}
+.player-time{font-family:'DM Mono',monospace;font-size:13px;color:var(--paper);margin-bottom:4px}
+.speed-btn{background:rgba(255,255,255,.08);border:none;color:var(--paper);font-family:'DM Mono',monospace;font-size:11px;padding:4px 10px;border-radius:20px;cursor:pointer}
+.progress-wrap{position:relative;cursor:pointer;padding:8px 0}
+.progress-bg{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);border-radius:2px;width:0%;transition:width .25s linear}
+.progress-thumb{position:absolute;top:50%;width:12px;height:12px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%);left:0%;transition:left .25s linear;box-shadow:0 0 8px rgba(201,168,76,.6)}
 
-/* ── EPISODE HERO ── */
-.episode-hero {
-  padding: 28px 20px 20px;
-  background: linear-gradient(180deg, rgba(201,168,76,0.06) 0%, transparent 100%);
-  border-bottom: 1px solid var(--line);
-}
-.episode-date {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.episode-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--paper);
-  margin-bottom: 14px;
-}
-.episode-meta {
-  display: flex; gap: 16px; align-items: center;
-  font-size: 12px; color: var(--muted);
-}
-.meta-dot { color: rgba(255,255,255,0.2); }
+/* SUBTITLES */
+.subtitle-container{padding:0 20px 24px}
+.subtitle-header{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px}
+.subtitle-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.lang-toggle{display:flex;gap:4px}
+.lang-btn{padding:4px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.15);background:none;color:var(--muted);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600}
+.subtitle-list{display:flex;flex-direction:column;gap:2px}
+.subtitle-item{padding:13px 15px;border-radius:10px;cursor:pointer;border-left:3px solid transparent;transition:background .15s}
+.subtitle-item.active-line{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.subtitle-item:not(.active-line):nth-child(even){background:rgba(255,255,255,.02)}
+.sub-en{font-size:15px;line-height:1.6;color:var(--paper);margin-bottom:5px}
+.sub-ko{font-size:13px;line-height:1.6;color:rgba(245,240,232,.55);font-weight:300}
+.subtitle-item.ko-only .sub-en{display:none}
+.subtitle-item.ko-only .sub-ko{color:var(--paper);font-size:15px}
+.subtitle-item.en-only .sub-ko{display:none}
 
-/* ── AUDIO PLAYER ── */
-.player-wrap {
-  margin: 20px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 16px;
-  padding: 20px;
-}
-.player-controls {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 16px;
-}
-.play-btn {
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.15s, background 0.15s;
-  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
-}
-.play-btn:active { transform: scale(0.94); }
-.play-icon { width: 20px; height: 20px; fill: var(--ink); }
-.player-info { flex: 1; min-width: 0; }
-.player-time {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--paper);
-  margin-bottom: 4px;
-}
-.player-speed {
-  font-size: 11px; color: var(--muted);
-  letter-spacing: 1px;
-}
-.speed-btn {
-  background: rgba(255,255,255,0.08);
-  border: none; color: var(--paper);
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; padding: 4px 10px;
-  border-radius: 20px; cursor: pointer;
-}
+/* SUMMARY */
+.summary-wrap{padding:24px 20px}
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.summary-text{font-size:15px;line-height:1.8;color:rgba(245,240,232,.85);font-weight:300;margin-bottom:24px}
+.key-points{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.key-point{display:flex;gap:12px;align-items:flex-start;padding:14px;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid rgba(255,255,255,.06)}
+.key-num{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);opacity:.6;line-height:1;flex-shrink:0;min-width:20px}
+.key-text{font-size:14px;line-height:1.6;color:var(--paper)}
 
-.progress-wrap {
-  position: relative; cursor: pointer;
-}
-.progress-bg {
-  height: 3px; background: rgba(255,255,255,0.1);
-  border-radius: 2px; overflow: hidden;
-}
-.progress-fill {
-  height: 100%; background: var(--gold);
-  border-radius: 2px; width: 0%;
-  transition: width 0.3s linear;
-}
-.progress-thumb {
-  position: absolute; top: 50%; right: auto;
-  width: 12px; height: 12px;
-  background: var(--gold); border-radius: 50%;
-  transform: translate(-50%, -50%);
-  left: 0%;
-  transition: left 0.3s linear;
-  box-shadow: 0 0 8px rgba(201,168,76,0.6);
-}
+/* STOCKS */
+.stocks-wrap{padding:24px 20px}
+.stocks-section-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.stocks-hint{font-size:10px;color:var(--muted);letter-spacing:1px}
+.stock-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.stock-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.stock-card:active{background:rgba(255,255,255,.05)}
+.stock-card-top{display:flex;align-items:flex-start;gap:12px;padding:14px}
+.stock-left{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0}
+.stock-ticker{background:var(--gold);color:var(--ink);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;padding:5px 10px;border-radius:7px;letter-spacing:1px;min-width:54px;text-align:center}
+.stock-type-badge{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px}
+.stock-info{flex:1;min-width:0}
+.stock-name{font-size:14px;font-weight:500;color:var(--paper);margin-bottom:3px}
+.stock-reason{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:7px}
+.stock-price-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.stock-price{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--paper)}
+.stock-change{font-size:12px;font-weight:600}
+.pos{color:#4ade80}.neg{color:#f87171}.neu{color:var(--muted)}
+.stock-sentiment{font-size:11px;font-weight:600;margin-left:4px}
+.sentiment-positive{color:#4ade80}.sentiment-neutral{color:var(--muted)}.sentiment-negative{color:#f87171}
+.chart-area{padding:0 14px 14px;display:none}
+.chart-area.open{display:block}
+.chart-canvas-wrap{position:relative;height:150px}
+.chart-loading{font-size:12px;color:var(--muted);text-align:center;padding:20px 0}
+.chart-hint-label{font-size:10px;color:var(--muted);text-align:right;margin-top:4px;letter-spacing:1px}
 
-/* ── SUBTITLE PANEL ── */
-.subtitle-container {
-  padding: 0 20px 20px;
-}
-.subtitle-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 0 12px;
-}
-.subtitle-label {
-  font-size: 10px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--muted);
-}
-.lang-toggle {
-  display: flex; gap: 4px;
-}
-.lang-btn {
-  padding: 4px 10px;
-  border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);
-  background: none; color: var(--muted);
-  font-size: 11px; cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
-}
-.lang-btn.active {
-  background: var(--gold); border-color: var(--gold);
-  color: var(--ink); font-weight: 600;
-}
-
-.subtitle-list { display: flex; flex-direction: column; gap: 2px; }
-
-.subtitle-item {
-  padding: 14px 16px;
-  border-radius: 10px;
-  transition: background 0.2s;
-  cursor: pointer;
-  border-left: 3px solid transparent;
-}
-.subtitle-item.active-line {
-  background: rgba(201,168,76,0.1);
-  border-left-color: var(--gold);
-}
-.subtitle-item:not(.active-line):nth-child(even) {
-  background: rgba(255,255,255,0.02);
-}
-.sub-en {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px; font-weight: 400;
-  line-height: 1.6; color: var(--paper);
-  margin-bottom: 5px;
-}
-.sub-ko {
-  font-size: 13px; line-height: 1.6;
-  color: rgba(245,240,232,0.55);
-  font-weight: 300;
-}
-.subtitle-item.ko-only .sub-en { display: none; }
-.subtitle-item.ko-only .sub-ko { color: var(--paper); font-size: 15px; }
-.subtitle-item.en-only .sub-ko { display: none; }
-
-/* ── SUMMARY PANEL ── */
-.summary-wrap { padding: 24px 20px; }
-.section-eyebrow {
-  font-size: 10px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 12px;
-}
-.summary-text {
-  font-size: 15px; line-height: 1.8;
-  color: rgba(245,240,232,0.85);
-  font-weight: 300;
-  margin-bottom: 24px;
-}
-.key-points {
-  display: flex; flex-direction: column; gap: 10px;
-  margin-bottom: 32px;
-}
-.key-point {
-  display: flex; gap: 12px; align-items: flex-start;
-  padding: 14px; background: rgba(255,255,255,0.03);
-  border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);
-}
-.key-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 700;
-  color: var(--gold); opacity: 0.6;
-  line-height: 1; flex-shrink: 0; min-width: 20px;
-}
-.key-text { font-size: 14px; line-height: 1.6; color: var(--paper); }
-
-/* ── STOCKS PANEL ── */
-.stocks-wrap { padding: 24px 20px; }
-.stock-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-.stock-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 16px;
-  display: flex; align-items: flex-start; gap: 14px;
-}
-.stock-ticker {
-  background: var(--gold);
-  color: var(--ink);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px; font-weight: 500;
-  padding: 6px 12px; border-radius: 8px;
-  flex-shrink: 0; letter-spacing: 1px;
-}
-.stock-info { flex: 1; min-width: 0; }
-.stock-name {
-  font-size: 14px; font-weight: 500;
-  color: var(--paper); margin-bottom: 4px;
-}
-.stock-reason { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.stock-sentiment {
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.5px; flex-shrink: 0;
-}
-.sentiment-positive { color: #4ade80; }
-.sentiment-neutral { color: var(--muted); }
-.sentiment-negative { color: #f87171; }
-
-.market-outlook {
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 14px; padding: 18px;
-}
-.outlook-label {
-  font-size: 10px; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 8px;
-}
-.outlook-text { font-size: 14px; line-height: 1.7; color: rgba(245,240,232,0.8); }
-
-/* ── ERROR / EMPTY STATE ── */
-.empty-state {
-  padding: 60px 24px; text-align: center;
-}
-.empty-icon { font-size: 40px; margin-bottom: 16px; }
-.empty-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; color: var(--paper); margin-bottom: 8px;
-}
-.empty-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
-/* ── DISCLAIMER ── */
-.disclaimer {
-  margin: 0 20px 40px;
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.02);
-  border-radius: 10px;
-  font-size: 11px; color: var(--muted); line-height: 1.6;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ── BOTTOM NAV SAFE AREA ── */
-.bottom-safe { height: calc(var(--safe-bottom) + 16px); }
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fadeUp 0.4s ease both; }
-.fade-up-2 { animation: fadeUp 0.4s 0.08s ease both; }
-.fade-up-3 { animation: fadeUp 0.4s 0.16s ease both; }
+.market-outlook{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:16px;margin-bottom:20px}
+.outlook-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.outlook-text{font-size:14px;line-height:1.7;color:rgba(245,240,232,.8)}
+.disclaimer{padding:14px 16px;background:rgba(255,255,255,.02);border-radius:10px;font-size:11px;color:var(--muted);line-height:1.6;border:1px solid rgba(255,255,255,.05);margin-bottom:40px}
+.bottom-safe{height:calc(var(--safe-bottom) + 24px)}
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loading">
   <div class="loading-logo">The Journal</div>
   <div class="loading-bar"></div>
 </div>
 
-<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="header-logo">The Journal</div>
@@ -404,52 +133,45 @@ main { min-height: calc(100dvh - 120px); }
   </div>
 </header>
 
-<!-- TABS -->
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('listen')">🎧 듣기</button>
-  <button class="tab-btn" onclick="switchTab('summary')">📋 요약</button>
-  <button class="tab-btn" onclick="switchTab('stocks')">📈 관련주</button>
+  <button class="tab-btn active" onclick="switchTab('listen',this)">🎧 듣기</button>
+  <button class="tab-btn" onclick="switchTab('summary',this)">📋 요약</button>
+  <button class="tab-btn" onclick="switchTab('stocks',this)">📈 관련주</button>
 </div>
 
 <main>
-  <!-- ── LISTEN TAB ── -->
+  <!-- LISTEN -->
   <div class="tab-panel active" id="tab-listen">
-    <div class="episode-hero fade-up">
+    <div class="episode-hero">
       <div class="episode-date" id="epDate">Loading…</div>
       <div class="episode-title" id="epTitle">에피소드 로딩 중…</div>
       <div class="episode-meta">
         <span id="epDuration">—</span>
-        <span class="meta-dot">·</span>
+        <span style="color:rgba(255,255,255,.2)">·</span>
         <span>WSJ The Journal</span>
       </div>
     </div>
 
-    <!-- Audio Player -->
-    <div class="player-wrap fade-up-2">
+    <div class="player-wrap">
       <audio id="audioEl" preload="none"></audio>
       <div class="player-controls">
-        <button class="play-btn" id="playBtn" onclick="togglePlay()">
+        <button class="play-btn" onclick="togglePlay()">
           <svg class="play-icon" id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </button>
         <div class="player-info">
           <div class="player-time" id="timeDisplay">0:00 / 0:00</div>
-          <div class="player-speed">
-            <button class="speed-btn" id="speedBtn" onclick="cycleSpeed()">1.0×</button>
-          </div>
+          <button class="speed-btn" id="speedBtn" onclick="cycleSpeed()">1.0×</button>
         </div>
       </div>
       <div class="progress-wrap" id="progressWrap" onclick="seekAudio(event)">
-        <div class="progress-bg">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
+        <div class="progress-bg"><div class="progress-fill" id="progressFill"></div></div>
         <div class="progress-thumb" id="progressThumb"></div>
       </div>
     </div>
 
-    <!-- Subtitles -->
-    <div class="subtitle-container fade-up-3">
+    <div class="subtitle-container">
       <div class="subtitle-header">
-        <div class="subtitle-label">스크립트</div>
+        <div class="subtitle-label">스크립트 <span id="adBadge" style="display:none;font-size:9px;background:rgba(248,113,113,.15);color:#f87171;padding:2px 6px;border-radius:4px;margin-left:6px;letter-spacing:1px">광고제거됨</span></div>
         <div class="lang-toggle">
           <button class="lang-btn active" id="btnBoth" onclick="setLang('both')">양방향</button>
           <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
@@ -457,163 +179,283 @@ main { min-height: calc(100dvh - 120px); }
         </div>
       </div>
       <div class="subtitle-list" id="subtitleList">
-        <div class="empty-state">
-          <div class="empty-icon">📡</div>
-          <div class="empty-title">로딩 중</div>
-          <div class="empty-desc">오늘의 에피소드를 불러오고 있습니다</div>
-        </div>
+        <div style="padding:40px;text-align:center;color:var(--muted);font-size:14px">로딩 중…</div>
       </div>
     </div>
   </div>
 
-  <!-- ── SUMMARY TAB ── -->
+  <!-- SUMMARY -->
   <div class="tab-panel" id="tab-summary">
     <div class="summary-wrap">
-      <div class="section-eyebrow fade-up">오늘의 에피소드 요약</div>
-      <div class="summary-text fade-up-2" id="summaryText">로딩 중…</div>
-      <div class="section-eyebrow fade-up-2" style="margin-bottom:12px;">핵심 포인트</div>
-      <div class="key-points fade-up-3" id="keyPoints"></div>
+      <div class="section-eyebrow">오늘의 에피소드 요약</div>
+      <div class="summary-text" id="summaryText">로딩 중…</div>
+      <div class="section-eyebrow" style="margin-bottom:12px">핵심 포인트</div>
+      <div class="key-points" id="keyPoints"></div>
     </div>
   </div>
 
-  <!-- ── STOCKS TAB ── -->
+  <!-- STOCKS -->
   <div class="tab-panel" id="tab-stocks">
     <div class="stocks-wrap">
-      <div class="section-eyebrow fade-up">관련 주식</div>
-      <div class="stock-list fade-up-2" id="stockList"></div>
-      <div class="market-outlook fade-up-3" id="marketOutlook" style="display:none">
+      <div class="stocks-section-title">
+        <div class="section-eyebrow" style="margin-bottom:0">관련 주식</div>
+        <div class="stocks-hint">탭하면 1년 차트</div>
+      </div>
+      <div class="stock-list" id="stockList"></div>
+
+      <div class="stocks-section-title" style="margin-top:8px">
+        <div class="section-eyebrow" style="margin-bottom:0">관련 ETF</div>
+        <div class="stocks-hint">탭하면 1년 차트</div>
+      </div>
+      <div class="stock-list" id="etfList"></div>
+
+      <div class="market-outlook" id="marketOutlook" style="display:none">
         <div class="outlook-label">시장 전망</div>
         <div class="outlook-text" id="outlookText"></div>
       </div>
-      <div class="disclaimer fade-up-3">
-        ⚠️ 투자 정보는 참고용입니다. 모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.
-      </div>
+      <div class="disclaimer">⚠️ 투자 정보는 참고용입니다. 모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</div>
     </div>
   </div>
 </main>
-
 <div class="bottom-safe"></div>
 
 <script>
-// ── 데이터 로드 ──────────────────────────────────────
-const DATA_URL = 'today.json'; // GitHub Pages에서 서빙
+const DATA_URL = 'today.json';
 let episodeData = null;
 let langMode = 'both';
-let speeds = [0.75, 1.0, 1.25, 1.5, 2.0];
+const speeds = [0.75,1.0,1.25,1.5,2.0];
 let speedIdx = 1;
+const chartInstances = {};
+const priceCache = {};
 
+// ── 데이터 로드 ──
 async function loadData() {
   try {
     const res = await fetch(DATA_URL + '?t=' + Date.now());
-    if (!res.ok) throw new Error('no data');
+    if (!res.ok) throw new Error();
     episodeData = await res.json();
-    renderAll();
-  } catch (e) {
-    // 데모 데이터로 폴백
+  } catch {
     episodeData = getDemoData();
-    renderAll();
-  } finally {
-    setTimeout(() => document.getElementById('loading').classList.add('hidden'), 600);
   }
+  renderAll();
+  setTimeout(() => document.getElementById('loading').classList.add('hidden'), 500);
 }
 
-// ── 렌더링 ───────────────────────────────────────────
 function renderAll() {
   const ep = episodeData;
-  // Header date
   const d = new Date();
-  document.getElementById('headerDate').textContent =
-    `${d.getMonth()+1}/${d.getDate()}`;
-
-  // Episode hero
+  document.getElementById('headerDate').textContent = `${d.getMonth()+1}/${d.getDate()}`;
   document.getElementById('epDate').textContent = ep.published || '';
   document.getElementById('epTitle').textContent = ep.title || '';
   document.getElementById('epDuration').textContent = ep.duration || '';
+  if (ep.audio_url) document.getElementById('audioEl').src = ep.audio_url;
 
-  // Audio
-  if (ep.audio_url) {
-    document.getElementById('audioEl').src = ep.audio_url;
+  // 광고 제거 배지
+  if (ep.ad_segments_removed > 0) {
+    const badge = document.getElementById('adBadge');
+    badge.style.display = 'inline';
+    badge.textContent = `광고 ${ep.ad_segments_removed}구간 제거됨`;
   }
 
-  // Subtitles
   renderSubtitles();
+  renderSummary();
+  renderStocks();
+}
 
-  // Summary
-  document.getElementById('summaryText').textContent =
-    ep.analysis?.summary_ko || '요약 없음';
-  const kp = document.getElementById('keyPoints');
-  kp.innerHTML = (ep.analysis?.key_points || []).map((p, i) =>
-    `<div class="key-point fade-up">
-       <div class="key-num">${i+1}</div>
-       <div class="key-text">${p}</div>
-     </div>`
-  ).join('');
-
-  // Stocks
-  const sl = document.getElementById('stockList');
-  sl.innerHTML = (ep.analysis?.related_stocks || []).map(s => {
-    const sMap = {positive:'positive',neutral:'neutral',negative:'negative'};
-    const lMap = {positive:'▲ 긍정',neutral:'— 중립',negative:'▼ 부정'};
-    const cls = sMap[s.sentiment] || 'neutral';
-    return `<div class="stock-card fade-up">
-      <div class="stock-ticker">${s.ticker}</div>
-      <div class="stock-info">
-        <div class="stock-name">${s.name}</div>
-        <div class="stock-reason">${s.reason}</div>
-      </div>
-      <div class="stock-sentiment sentiment-${cls}">${lMap[s.sentiment]||'—'}</div>
+// ── 자막 ──
+function renderSubtitles() {
+  const subs = episodeData?.subtitles || [];
+  const list = document.getElementById('subtitleList');
+  if (!subs.length) {
+    list.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">자막 없음</div>';
+    return;
+  }
+  list.innerHTML = subs.map((s,i) => {
+    let cls = 'subtitle-item';
+    if (langMode==='ko') cls+=' ko-only';
+    if (langMode==='en') cls+=' en-only';
+    return `<div class="${cls}" id="sub-${i}" onclick="seekToSub(${i})">
+      <div class="sub-en">${s.en||''}</div>
+      <div class="sub-ko">${s.ko||''}</div>
     </div>`;
   }).join('');
+}
 
-  if (ep.analysis?.market_outlook) {
-    document.getElementById('outlookText').textContent = ep.analysis.market_outlook;
+// ── 요약 ──
+function renderSummary() {
+  document.getElementById('summaryText').textContent = episodeData?.analysis?.summary_ko || '요약 없음';
+  document.getElementById('keyPoints').innerHTML = (episodeData?.analysis?.key_points||[]).map((p,i)=>
+    `<div class="key-point"><div class="key-num">${i+1}</div><div class="key-text">${p}</div></div>`
+  ).join('');
+}
+
+// ── 주식/ETF ──
+function renderStocks() {
+  const all = episodeData?.analysis?.related_stocks || [];
+  const stocks = all.filter(s => s.type !== 'etf');
+  const etfs   = all.filter(s => s.type === 'etf');
+
+  document.getElementById('stockList').innerHTML = stocks.map((s,i) => stockCardHTML(s, 'stk', i)).join('') || '<div style="color:var(--muted);font-size:13px;padding:10px">관련 주식 없음</div>';
+  document.getElementById('etfList').innerHTML   = etfs.map((s,i)   => stockCardHTML(s, 'etf', i)).join('') || '<div style="color:var(--muted);font-size:13px;padding:10px">관련 ETF 없음</div>';
+
+  const lMap = {positive:'▲ 긍정',neutral:'— 중립',negative:'▼ 부정'};
+  stocks.forEach((s,i) => fetchPrice(s.ticker, `stk-${i}`));
+  etfs.forEach((s,i)   => fetchPrice(s.ticker, `etf-${i}`));
+
+  if (episodeData?.analysis?.market_outlook) {
+    document.getElementById('outlookText').textContent = episodeData.analysis.market_outlook;
     document.getElementById('marketOutlook').style.display = 'block';
   }
 }
 
-function renderSubtitles() {
-  const list = document.getElementById('subtitleList');
-  const subs = episodeData?.subtitles || [];
-  if (!subs.length) {
-    list.innerHTML = `<div class="empty-state">
-      <div class="empty-icon">📝</div>
-      <div class="empty-title">자막 없음</div>
-      <div class="empty-desc">자막 데이터가 없습니다</div>
-    </div>`;
-    return;
-  }
-  list.innerHTML = subs.map((s, i) => {
-    let cls = 'subtitle-item';
-    if (langMode === 'ko') cls += ' ko-only';
-    if (langMode === 'en') cls += ' en-only';
-    return `<div class="${cls}" id="sub-${i}" onclick="seekToSub(${i})">
-      <div class="sub-en">${s.en || ''}</div>
-      <div class="sub-ko">${s.ko || ''}</div>
-    </div>`;
-  }).join('');
+function stockCardHTML(s, prefix, i) {
+  const id = `${prefix}-${i}`;
+  const lMap = {positive:'▲ 긍정',neutral:'— 중립',negative:'▼ 부정'};
+  const badge = s.type === 'etf' ? 'ETF' : '주식';
+  return `<div class="stock-card" onclick="toggleChart('${id}','${s.ticker}')">
+    <div class="stock-card-top">
+      <div class="stock-left">
+        <div class="stock-ticker">${s.ticker}</div>
+        <div class="stock-type-badge">${badge}</div>
+      </div>
+      <div class="stock-info">
+        <div class="stock-name">${s.name}</div>
+        <div class="stock-reason">${s.reason}</div>
+        <div class="stock-price-row">
+          <div class="stock-price" id="price-${id}">—</div>
+          <div class="stock-change" id="change-${id}"></div>
+          <div class="stock-sentiment sentiment-${s.sentiment||'neutral'}">${lMap[s.sentiment]||'—'}</div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-area" id="chart-area-${id}">
+      <div class="chart-loading" id="chart-loading-${id}">📊 차트 불러오는 중…</div>
+      <div class="chart-canvas-wrap" style="display:none" id="chart-canvas-wrap-${id}">
+        <canvas id="chart-${id}"></canvas>
+      </div>
+      <div class="chart-hint-label">1년 주가 추이</div>
+    </div>
+  </div>`;
 }
 
-// ── 오디오 플레이어 ──────────────────────────────────
+// ── 가격 조회 (Yahoo Finance via allorigins) ──
+async function fetchPrice(ticker, id) {
+  if (priceCache[ticker]) { applyPrice(id, priceCache[ticker]); return; }
+  try {
+    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`;
+    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const j = await r.json();
+    const meta = JSON.parse(j.contents).chart.result[0].meta;
+    const price = meta.regularMarketPrice;
+    const prev  = meta.previousClose || meta.chartPreviousClose;
+    const chg   = price - prev;
+    const pct   = chg / prev * 100;
+    const data  = {price, chg, pct};
+    priceCache[ticker] = data;
+    applyPrice(id, data);
+  } catch {
+    document.getElementById(`price-${id}`).textContent = '—';
+  }
+}
+
+function applyPrice(id, {price, chg, pct}) {
+  const isPos = chg >= 0;
+  document.getElementById(`price-${id}`).textContent = `$${price.toFixed(2)}`;
+  const chEl = document.getElementById(`change-${id}`);
+  chEl.textContent = `${isPos?'+':''}${chg.toFixed(2)} (${isPos?'+':''}${pct.toFixed(2)}%)`;
+  chEl.className = `stock-change ${isPos?'pos':'neg'}`;
+}
+
+// ── 차트 토글 ──
+async function toggleChart(id, ticker) {
+  const area = document.getElementById(`chart-area-${id}`);
+  const isOpen = area.classList.contains('open');
+  document.querySelectorAll('.chart-area.open').forEach(el => el.classList.remove('open'));
+  if (isOpen) return;
+  area.classList.add('open');
+  if (chartInstances[id]) return;
+
+  const loading = document.getElementById(`chart-loading-${id}`);
+  const wrap    = document.getElementById(`chart-canvas-wrap-${id}`);
+  const canvas  = document.getElementById(`chart-${id}`);
+
+  try {
+    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1wk&range=1y`;
+    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const j = await r.json();
+    const result = JSON.parse(j.contents).chart.result[0];
+
+    const labels = result.timestamp.map(t => {
+      const d = new Date(t*1000);
+      return `${d.getMonth()+1}/${d.getDate()}`;
+    });
+    const prices = result.indicators.quote[0].close.map(p => p ? +p.toFixed(2) : null);
+    const first  = prices.find(p => p !== null);
+    const last   = prices.filter(p=>p!==null).slice(-1)[0];
+    const isUp   = last >= first;
+    const lineClr= isUp ? '#4ade80' : '#f87171';
+
+    loading.style.display = 'none';
+    wrap.style.display = 'block';
+
+    chartInstances[id] = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          data: prices,
+          borderColor: lineClr,
+          borderWidth: 2,
+          pointRadius: 0,
+          tension: 0.3,
+          fill: true,
+          backgroundColor: ctx => {
+            const g = ctx.chart.ctx.createLinearGradient(0,0,0,150);
+            g.addColorStop(0, isUp ? 'rgba(74,222,128,.18)' : 'rgba(248,113,113,.18)');
+            g.addColorStop(1, 'rgba(0,0,0,0)');
+            return g;
+          }
+        }]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{
+          legend:{display:false},
+          tooltip:{
+            callbacks:{label:c=>`$${c.parsed.y}`},
+            backgroundColor:'rgba(10,10,15,.95)',
+            titleColor:'#c9a84c', bodyColor:'#f5f0e8',
+            borderColor:'rgba(201,168,76,.3)', borderWidth:1
+          }
+        },
+        scales:{
+          x:{ticks:{color:'#8a8070',font:{size:9},maxTicksLimit:6},grid:{color:'rgba(255,255,255,.04)'}},
+          y:{ticks:{color:'#8a8070',font:{size:9},callback:v=>`$${v}`},grid:{color:'rgba(255,255,255,.04)'}}
+        }
+      }
+    });
+  } catch {
+    loading.textContent = '차트 로드 실패';
+  }
+}
+
+// ── 오디오 플레이어 ──
 const audio = document.getElementById('audioEl');
-let isPlaying = false;
 
 audio.addEventListener('timeupdate', () => {
-  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressThumb').style.left = pct + '%';
-  document.getElementById('timeDisplay').textContent =
-    `${fmtTime(audio.currentTime)} / ${fmtTime(audio.duration)}`;
-  highlightActiveSub();
+  const pct = audio.duration ? (audio.currentTime/audio.duration)*100 : 0;
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressThumb').style.left = pct+'%';
+  document.getElementById('timeDisplay').textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+  syncSubtitle();
 });
 
 function togglePlay() {
   if (audio.paused) {
     audio.play();
-    isPlaying = true;
     document.getElementById('playIcon').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
   } else {
     audio.pause();
-    isPlaying = false;
     document.getElementById('playIcon').innerHTML = '<path d="M8 5v14l11-7z"/>';
   }
 }
@@ -621,116 +463,105 @@ function togglePlay() {
 function seekAudio(e) {
   const wrap = document.getElementById('progressWrap');
   const rect = wrap.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
+  const pct  = Math.max(0, Math.min(1,(e.clientX-rect.left)/rect.width));
   if (audio.duration) audio.currentTime = pct * audio.duration;
 }
 
 function cycleSpeed() {
-  speedIdx = (speedIdx + 1) % speeds.length;
+  speedIdx = (speedIdx+1) % speeds.length;
   audio.playbackRate = speeds[speedIdx];
-  document.getElementById('speedBtn').textContent = speeds[speedIdx] + '×';
+  document.getElementById('speedBtn').textContent = speeds[speedIdx]+'×';
 }
 
-function fmtTime(t) {
-  if (!t || isNaN(t)) return '0:00';
-  const m = Math.floor(t / 60);
-  const s = Math.floor(t % 60).toString().padStart(2, '0');
-  return `${m}:${s}`;
+function fmt(t) {
+  if (!t||isNaN(t)) return '0:00';
+  return `${Math.floor(t/60)}:${Math.floor(t%60).toString().padStart(2,'0')}`;
 }
 
-// ── 자막 하이라이트 (타임스탬프 우선, 없으면 비례 근사) ────
-function highlightActiveSub() {
+// ── 자막 싱크: 타임스탬프 기반 ──
+let lastSubIdx = -1;
+function syncSubtitle() {
   const subs = episodeData?.subtitles || [];
   if (!subs.length || !audio.duration) return;
+
   const t = audio.currentTime;
+  const hasTs = subs[0]?.start !== undefined;
 
   let idx = 0;
-  const hasTimestamps = subs[0]?.start !== undefined;
-
-  if (hasTimestamps) {
-    // 타임스탬프 기반: 현재 시간이 start~end 사이인 자막 찾기
-    for (let i = subs.length - 1; i >= 0; i--) {
-      if (t >= (subs[i].start || 0)) { idx = i; break; }
+  if (hasTs) {
+    // 현재 시간에 해당하는 세그먼트 이진 탐색
+    let lo = 0, hi = subs.length - 1;
+    while (lo <= hi) {
+      const mid = (lo+hi)>>1;
+      if (subs[mid].start <= t) { idx = mid; lo = mid+1; }
+      else hi = mid-1;
     }
+    // end 시간도 체크: 세그먼트가 끝났으면 다음으로
+    if (subs[idx].end && t > subs[idx].end && idx < subs.length-1) idx++;
   } else {
-    // 비례 근사
-    const pct = t / audio.duration;
-    idx = Math.min(Math.floor(pct * subs.length), subs.length - 1);
+    idx = Math.min(Math.floor((t/audio.duration)*subs.length), subs.length-1);
   }
 
-  document.querySelectorAll('.subtitle-item').forEach((el, i) => {
-    el.classList.toggle('active-line', i === idx);
-    if (i === idx) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (idx === lastSubIdx) return; // 변화 없으면 스킵
+  lastSubIdx = idx;
+
+  document.querySelectorAll('.subtitle-item').forEach((el,i) => {
+    el.classList.toggle('active-line', i===idx);
   });
+
+  // 현재 자막을 부드럽게 스크롤
+  const activeEl = document.getElementById(`sub-${idx}`);
+  if (activeEl) activeEl.scrollIntoView({behavior:'smooth', block:'center'});
 }
 
 function seekToSub(i) {
   const subs = episodeData?.subtitles || [];
   if (!audio.duration || !subs.length) return;
-  const hasTimestamps = subs[i]?.start !== undefined;
-  audio.currentTime = hasTimestamps ? subs[i].start : (i / subs.length) * audio.duration;
+  audio.currentTime = subs[i]?.start ?? (i/subs.length)*audio.duration;
   if (audio.paused) togglePlay();
 }
 
-// ── 언어 토글 ────────────────────────────────────────
 function setLang(mode) {
   langMode = mode;
-  ['both','en','ko'].forEach(m => {
-    document.getElementById('btn' + m.charAt(0).toUpperCase() + m.slice(1))
-      ?.classList.toggle('active', m === mode);
-  });
+  document.getElementById('btnBoth').classList.toggle('active', mode==='both');
+  document.getElementById('btnEn').classList.toggle('active',   mode==='en');
+  document.getElementById('btnKo').classList.toggle('active',   mode==='ko');
   renderSubtitles();
 }
 
-// ── 탭 전환 ──────────────────────────────────────────
-function switchTab(name) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  event.currentTarget.classList.add('active');
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
 }
 
-// ── 데모 데이터 ──────────────────────────────────────
 function getDemoData() {
   return {
-    title: "How the U.S.-China Trade War Is Reshaping Global Supply Chains",
-    published: "May 9, 2025",
-    duration: "24 min",
-    audio_url: "",
-    analysis: {
-      summary_ko: "미국과 중국 사이의 무역 전쟁이 심화되면서 글로벌 공급망이 근본적으로 재편되고 있습니다. 많은 기업들이 중국 의존도를 줄이고 베트남, 인도, 멕시코 등으로 생산 기지를 이전하는 '차이나 플러스 원' 전략을 채택하고 있습니다. 관세 인상과 수출 규제가 반도체, 전자제품, 소비재 등 다양한 산업에 영향을 미치고 있으며, 미국 소비자들은 이미 가격 상승을 체감하고 있습니다.",
-      key_points: [
-        "미중 관세가 양국 모두에 경제적 타격을 주고 있으며, 협상 재개 가능성이 불투명한 상황",
-        "애플, 나이키 등 주요 기업들이 공급망 다변화를 가속화 중",
-        "반도체 수출 규제로 중국 AI·첨단기술 산업 성장이 제한될 전망"
+    title:"Can GameStop Really Buy eBay?",
+    published:"Fri, 08 May 2026",
+    duration:"22 min",audio_url:"",
+    ad_segments_removed: 3,
+    analysis:{
+      summary_ko:"GameStop이 eBay 인수를 검토 중이라는 보도가 나왔습니다. 한때 밈 주식의 상징이었던 GameStop이 라이언 코헨 CEO 주도로 새로운 전략적 방향을 모색하고 있습니다. 월가에서는 이 딜의 실현 가능성에 대해 의구심을 표하고 있지만, 양사 주가 모두 변동성이 확대되었습니다.",
+      key_points:["GameStop이 eBay 인수 입찰을 검토 중","라이언 코헨 CEO의 공격적 M&A 전략","시장 반응은 엇갈린 상황, 딜 가능성 불투명"],
+      related_stocks:[
+        {ticker:"GME",name:"GameStop Corp.",reason:"인수 추진 주체로 주가 변동성 확대",sentiment:"neutral",type:"stock"},
+        {ticker:"EBAY",name:"eBay Inc.",reason:"인수 대상으로 프리미엄 기대감 상승",sentiment:"positive",type:"stock"},
+        {ticker:"XRT",name:"SPDR S&P Retail ETF",reason:"소매업종 M&A 이슈 반영",sentiment:"neutral",type:"etf"},
+        {ticker:"IJH",name:"iShares Core S&P Mid-Cap ETF",reason:"중형주 지수 편입 종목들 영향",sentiment:"neutral",type:"etf"}
       ],
-      related_stocks: [
-        { ticker: "AAPL", name: "Apple Inc.", reason: "중국 생산 비중이 높아 관세 영향을 직접적으로 받음. 인도 생산 확대 중.", sentiment: "negative" },
-        { ticker: "TSM", name: "TSMC", reason: "미국의 반도체 수출 규제 수혜로 미국·일본 공장 투자 확대 중.", sentiment: "positive" },
-        { ticker: "VN", name: "VanEck Vietnam ETF", reason: "미중 공급망 재편의 최대 수혜국으로 베트남 투자 급증.", sentiment: "positive" },
-        { ticker: "FDX", name: "FedEx Corp.", reason: "국제 물류 재편으로 운송 비용 및 복잡성 증가.", sentiment: "neutral" }
-      ],
-      market_outlook: "단기적으로 무역 불확실성이 지속되면서 시장 변동성이 높게 유지될 전망입니다. 공급망 다변화 수혜 기업과 미국 내수 중심 기업이 상대적으로 유리한 위치에 있습니다."
+      market_outlook:"단기적으로 GME와 EBAY 모두 높은 변동성이 예상됩니다. 딜 성사 여부가 불확실한 만큼 추격 매수보다는 관망이 적절합니다."
     },
-    subtitles: [
-      { en: "The trade war between the U.S. and China is entering a new and more consequential phase.", ko: "미국과 중국 간의 무역 전쟁이 새롭고 더욱 중대한 국면으로 접어들고 있습니다." },
-      { en: "Tariffs on Chinese goods have now reached levels not seen since the early twentieth century.", ko: "중국산 제품에 대한 관세가 20세기 초 이후 볼 수 없었던 수준까지 치솟았습니다." },
-      { en: "American companies are scrambling to find alternatives to Chinese manufacturing.", ko: "미국 기업들은 중국 제조를 대체할 방법을 찾기 위해 분주히 움직이고 있습니다." },
-      { en: "Vietnam, India, and Mexico have emerged as the primary beneficiaries of this shift.", ko: "베트남, 인도, 멕시코가 이러한 변화의 주요 수혜국으로 부상했습니다." },
-      { en: "But the transition is proving more costly and complex than many executives had anticipated.", ko: "그러나 이 전환이 많은 경영진이 예상했던 것보다 훨씬 비용이 많이 들고 복잡한 것으로 나타나고 있습니다." },
-      { en: "For consumers, the result is already visible on store shelves in the form of higher prices.", ko: "소비자들에게 그 결과는 이미 매장 선반에서 높아진 가격의 형태로 나타나고 있습니다." },
-      { en: "The semiconductor industry sits at the center of this geopolitical storm.", ko: "반도체 산업이 이 지정학적 폭풍의 중심에 자리하고 있습니다." },
-      { en: "Export controls have restricted China's access to advanced chips needed for artificial intelligence.", ko: "수출 규제로 인해 중국의 인공지능에 필요한 첨단 칩에 대한 접근이 제한되었습니다." }
+    subtitles:[
+      {en:"GameStop is considering a bid for eBay, according to people familiar with the matter.",ko:"사안에 정통한 관계자들에 따르면, GameStop이 eBay 인수 입찰을 검토 중입니다.",start:0,end:6},
+      {en:"The move would mark a dramatic shift for the struggling video game retailer.",ko:"이는 어려움을 겪고 있는 비디오게임 소매업체에게 극적인 전환점이 될 것입니다.",start:6,end:11},
+      {en:"Ryan Cohen, the company's CEO, has been pushing for bold strategic moves.",ko:"회사의 라이언 코헨 CEO는 대담한 전략적 행보를 추진해 왔습니다.",start:11,end:16}
     ]
   };
 }
 
-// ── PWA Service Worker 등록 ───────────────────────────
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
-
-// ── 시작 ─────────────────────────────────────────────
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 loadData();
 </script>
 </body>
