@@ -73,7 +73,7 @@ def download_audio(url):
 def transcribe(path):
     print("🎙️  Whisper 음성 인식 중...")
     import whisper
-    model = whisper.load_model("base")
+    model = whisper.load_model("small")
     result = model.transcribe(path, language="en")
     segments = [
         {"text": s["text"].strip(), "start": round(s["start"], 2), "end": round(s["end"], 2)}
