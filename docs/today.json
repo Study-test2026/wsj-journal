@@ -7,275 +7,396 @@
   "link": "",
   "subtitles": [
     {
-      "en": "My name is Lauren Thomas and I am a deals and activism reporter here at the Wall Street Journal.",
-      "ko": "제 이름은 로렌 토마스이고 월스트리트 저널에서 인수합병 및 행동주의 투자 담당 기자로 일하고 있습니다."
+      "en": "My name is Lauren Thomas and I am a deals and activism reporter here at the Wall Street",
+      "ko": "제 이름은 로렌 토마스이고, 월스트리트 저널에서 인수합병 및 주주행동주의 전문 기자로 일하고 있습니다.",
+      "start": 0.0,
+      "end": 11.84
     },
     {
-      "en": "And Lauren, we're talking to you because there was a proposed merger and acquisition, proposed deal that caught a lot of people's eyes recently.",
-      "ko": "로렌, 최근 많은 사람들의 관심을 끈 인수합병 제안이 있어서 당신과 이야기를 나누고 있습니다."
+      "en": "Journal.",
+      "ko": "로렌, 최근 많은 사람들의 이목을 끈 인수합병 제안이 있어서 당신과 이야기를 나누고 있습니다.",
+      "start": 11.84,
+      "end": 13.0
+    },
+    {
+      "en": "And Lauren, we're talking to you because there was a proposed merger and acquisition, proposed",
+      "ko": "그게 무엇인지 말씀해 주시겠어요?",
+      "start": 13.0,
+      "end": 19.04
+    },
+    {
+      "en": "deal that caught a lot of people's eyes recently.",
+      "ko": "네.",
+      "start": 19.04,
+      "end": 21.76
     },
     {
       "en": "Can you tell us what that is?",
-      "ko": "그게 무엇인지 말씀해 주시겠습니까?"
+      "ko": "확실히 헤드라인을 장식할 만한 금액인데요, 게임스톱이 공식적으로 이베이를 인수하기 위한 560억 달러 규모의 제안서를 제출했습니다.",
+      "start": 21.76,
+      "end": 23.2
     },
     {
       "en": "Yes.",
-      "ko": "네."
+      "ko": "약 110억 달러의 가치를 가진 게임스톱이 자신의 네 배 규모인 전자상거래 거대 기업 이베이를 인수하겠다고 제안한 것입니다.",
+      "start": 23.2,
+      "end": 24.2
     },
     {
-      "en": "A headline number for sure, GameStop officially submitted a proposal, a $56 billion proposal to acquire eBay.",
-      "ko": "확실히 헤드라인을 장식할 만한 숫자인데요, 게임스톱이 이베이를 인수하기 위한 560억 달러 규모의 제안을 공식적으로 제출했습니다."
+      "en": "A headline number for sure, GameStop officially submitted a proposal, a $56 billion proposal",
+      "ko": "그 소식을 들었을 때 어떤 생각이 드셨나요?",
+      "start": 24.2,
+      "end": 31.04
     },
     {
-      "en": "GameStop, which is worth about $11 billion, was offered to buy a company four times that size, eBay, the commerce giant.",
-      "ko": "약 110억 달러 가치의 게임스톱이 그 4배 규모인 전자상거래 거대 기업 이베이를 인수하겠다고 제안한 것입니다."
+      "en": "to acquire eBay.",
+      "ko": "네, 아마 다른 모든 사람들처럼 저도 좀 의아했습니다.",
+      "start": 31.04,
+      "end": 34.24
+    },
+    {
+      "en": "GameStop, which is worth about $11 billion, was offered to buy a company four times that",
+      "ko": "작은 기업이 나서서 훨씬 큰 기업을 인수하려는 시도는 흔히 볼 수 있는 일이 아니기 때문에, 그 자체로 충격적인 면이 있다고 생각합니다.",
+      "start": 34.24,
+      "end": 39.92
+    },
+    {
+      "en": "size, eBay, the commerce giant.",
+      "ko": "그래서 로렌은 이 대담한 계획의 주인공인 게임스톱의 CEO 라이언 코헨에게 전화를 걸었습니다.",
+      "start": 39.92,
+      "end": 43.08
     },
     {
       "en": "Why did you think when you heard that?",
-      "ko": "그 소식을 들었을 때 어떻게 생각하셨나요?"
+      "ko": "최종적으로 이베이를 선택하게 된 이유를 설명해 주시겠어요?",
+      "start": 43.08,
+      "end": 44.4
     },
     {
       "en": "Yeah, I mean, probably like everyone else was scratching my head a little bit.",
-      "ko": "네, 아마 다른 모든 사람들처럼 저도 약간 당황스러웠습니다."
+      "ko": "제 생각에는 제가 운영하는 이베이는, 결국 큰 일을 할 수 있는 규모로 귀결됩니다.",
+      "start": 44.4,
+      "end": 48.36
     },
     {
-      "en": "You don't often see these smaller companies coming out and trying to buy much larger businesses so that in and of itself, I think, provides some shock value.",
-      "ko": "이렇게 작은 기업이 나서서 훨씬 큰 기업을 인수하려는 시도는 흔히 볼 수 없는 일이라서, 그 자체로 충격적이라고 생각합니다."
+      "en": "You don't often see these smaller companies coming out and trying to buy much larger businesses",
+      "ko": "그렇습니다.",
+      "start": 48.36,
+      "end": 53.56
+    },
+    {
+      "en": "so that in and of itself, I think, provides some shock value.",
+      "ko": "그리고 이베이를 운영하는 데 있어서 제 경험을 바탕으로 볼 때 저보다 더 적임자는 없다고 생각합니다.",
+      "start": 53.56,
+      "end": 57.48
     },
     {
       "en": "So Lauren called the man behind the Sardatius plan, Ryan Cohen, the CEO of GameStop.",
-      "ko": "그래서 로렌은 이 대담한 계획의 배후 인물인 게임스톱의 CEO 라이언 코헨에게 전화를 걸었습니다."
+      "ko": "저는 그 사업을 현재 이베이의 가치보다 훨씬 더 가치 있는 것으로 만들 수 있습니다.",
+      "start": 57.48,
+      "end": 64.6
     },
     {
       "en": "Walks through like what ultimately led you to eBay?",
-      "ko": "궁극적으로 이베이를 선택하게 된 계기를 설명해 주시겠습니까?"
+      "ko": "네.",
+      "start": 64.6,
+      "end": 68.4
     },
     {
-      "en": "I think that eBay under my watch, it really comes down to scale being able to do something big.",
-      "ko": "제 생각에 제가 경영하는 이베이는 결국 규모를 키워 큰 일을 할 수 있다는 것으로 귀결됩니다."
+      "en": "I think that eBay under my watch, it really comes down to scale being able to do something",
+      "ko": "그리고 매우 짧은 시간 내에 그것을 성장시키고 훨씬 더 많은 돈을 벌 수 있습니다.",
+      "start": 68.4,
+      "end": 76.16
+    },
+    {
+      "en": "big.",
+      "ko": "그리고 그 분야에서 진정한 경쟁자가 될 수 있을 것입니다.",
+      "start": 76.16,
+      "end": 77.16
     },
     {
       "en": "Right.",
-      "ko": "맞습니다."
+      "ko": "로렌에게 이 거래는 큰 의문을 제기합니다.",
+      "start": 77.16,
+      "end": 78.16
     },
     {
-      "en": "And I think eBay, there's nobody who is more qualified based on my experience to run the eBay business.",
-      "ko": "그리고 제 경험을 바탕으로 볼 때 이베이 사업을 운영하는 데 저보다 더 적합한 사람은 없다고 생각합니다."
+      "en": "And I think eBay, there's nobody who is more qualified based on my experience to run the",
+      "ko": "인수합병 기자로서, 거래를 볼 때마다 저는 항상 스스로에게 묻습니다. '이들이 어떻게 이걸 해낼 것인가, 특히 자금 조달 측면에서?'",
+      "start": 78.16,
+      "end": 87.24
+    },
+    {
+      "en": "eBay business.",
+      "ko": "어떻게 비용을 지불할 것인가?",
+      "start": 87.24,
+      "end": 88.6
     },
     {
       "en": "I could turn that business into something worth significantly more than what eBay is today.",
-      "ko": "저는 그 사업을 현재의 이베이보다 훨씬 더 가치 있는 것으로 만들 수 있습니다."
+      "ko": "저널에 오신 것을 환영합니다. 돈, 비즈니스, 그리고 권력에 관한 우리의 쇼입니다.",
+      "start": 88.6,
+      "end": 98.2
     },
     {
       "en": "Yeah.",
-      "ko": "네."
+      "ko": "저는 제시카 멘도사입니다.",
+      "start": 98.2,
+      "end": 99.2
     },
     {
       "en": "And I can grow it and I can make it a lot more money in a very short period of time.",
-      "ko": "그리고 매우 짧은 시간 안에 그것을 성장시키고 훨씬 더 많은 돈을 벌 수 있습니다."
+      "ko": "5월 8일 금요일입니다.",
+      "start": 99.2,
+      "end": 104.28
     },
     {
       "en": "And it could be like a legit competitor down the zone.",
-      "ko": "그리고 그 분야에서 진정한 경쟁자가 될 수 있습니다."
+      "ko": "쇼에서 이어질 내용은, 게임스톱이 이베이를 노리다입니다.",
+      "start": 104.28,
+      "end": 109.84
     },
     {
       "en": "For Lauren, the deal raises a big question.",
-      "ko": "로렌에게 이 거래는 큰 의문을 불러일으킵니다."
+      "ko": "아마존 헬스 AI가 선보이는 고통스러운 생각들.",
+      "start": 109.84,
+      "end": 113.36
     },
     {
-      "en": "As an M&A reporter, anytime you see a deal, I'm always asking myself, well, how are they going to pull this off, particularly in terms of financing?",
-      "ko": "인수합병 기자로서 거래를 볼 때마다 저는 항상 스스로에게 묻습니다. 특히 자금 조달 측면에서 이들이 어떻게 이것을 성사시킬 것인가?"
+      "en": "As an M&A reporter, anytime you see a deal, I'm always asking myself, well, how are they",
+      "ko": "왜 나는 구순포진 문제의 답을 찾기 위해 인터넷을 검색했을까?",
+      "start": 113.36,
+      "end": 118.0
+    },
+    {
+      "en": "going to pull this off, particularly in terms of financing?",
+      "ko": "이제 나는 다양한 단계의 진물이 나오는 충격적으로 생생한 이미지들로 가득한 토끼굴에 빠져버렸다.",
+      "start": 118.0,
+      "end": 121.36
     },
     {
       "en": "How are they going to pay for it?",
-      "ko": "어떻게 대금을 지불할 것인가?"
+      "ko": "검색 기록은 지울 수 있지만, 본 것은 절대 잊을 수 없다.",
+      "start": 121.36,
+      "end": 125.88
     },
     {
       "en": "Welcome to the journal, our show about money, business, and power.",
-      "ko": "더 저널에 오신 것을 환영합니다. 돈, 비즈니스, 그리고 권력에 관한 우리의 쇼입니다."
+      "ko": "토끼굴로 빠지지 마세요.",
+      "start": 125.88,
+      "end": 129.68
     },
     {
       "en": "I'm Jessica Mendoza.",
-      "ko": "저는 제시카 멘도자입니다."
+      "ko": "아마존 헬스 AI는 빠르게 올바른 치료를 받게 해줍니다.",
+      "start": 129.68,
+      "end": 131.28
     },
     {
       "en": "It's Friday, May 8th.",
-      "ko": "5월 8일 금요일입니다."
+      "ko": "의료가 이제 덜 고통스러워졌습니다.",
+      "start": 131.28,
+      "end": 132.44
     },
     {
       "en": "Coming up on the show, GameStop makes a play for eBay.",
-      "ko": "이어지는 내용은 게임스톱이 이베이 인수에 나서다입니다."
+      "ko": "AI는 기업 전반에 걸쳐 빠르게 확산되고 있습니다.",
+      "start": 134.28,
+      "end": 144.92
     },
     {
       "en": "Amazon Health AI presents Painful Thoughts.",
-      "ko": "아마존 헬스 AI가 고통스러운 생각들을 소개합니다."
+      "ko": "하지만 가시성이 없으면 그저 혼란일 뿐입니다.",
+      "start": 144.92,
+      "end": 156.32
     },
     {
       "en": "Why did I search the internet for answers to my cold sore problem?",
-      "ko": "왜 나는 구순포진 문제의 해답을 찾기 위해 인터넷을 검색했을까?"
+      "ko": "다른 도구들, 다른 모델들.",
+      "start": 156.32,
+      "end": 160.2
     },
     {
-      "en": "Now I'm stuck down a rabbit hole filled with images of alarmingly graphic source in various stages of ooze.",
-      "ko": "이제 나는 다양한 진물 단계의 충격적으로 적나라한 이미지들로 가득한 토끼굴에 빠져버렸다."
+      "en": "Now I'm stuck down a rabbit hole filled with images of alarmingly graphic source in",
+      "ko": "완전히 다른 방식으로 AI를 사용하는 서로 다른 팀들.",
+      "start": 160.2,
+      "end": 165.28
+    },
+    {
+      "en": "various stages of ooze.",
+      "ko": "ServiceNow는 그 혼란을 통제로 바꿉니다.",
+      "start": 165.28,
+      "end": 168.52
     },
     {
       "en": "I can clear my search history, but I can never unsee that.",
-      "ko": "검색 기록은 지울 수 있지만, 본 것은 결코 잊을 수 없다."
+      "ko": "AI 컨트롤 타워를 통해 비즈니스 전반의 모든 AI를 한 곳에서 볼 수 있습니다.",
+      "start": 168.52,
+      "end": 174.04
     },
     {
       "en": "Don't go down the rabbit hole.",
-      "ko": "토끼굴에 빠지지 마세요."
+      "ko": "무엇을 하고 있는지, 무엇을 했는지, 그리고 무엇을 하려고 하는지.",
+      "start": 174.04,
+      "end": 175.64
     },
     {
       "en": "Amazon Health AI gets you the right care fast.",
-      "ko": "아마존 헬스 AI가 빠르게 올바른 치료를 받게 해드립니다."
+      "ko": "그래서 당신이 통제권을 유지할 수 있습니다.",
+      "start": 175.64,
+      "end": 179.12
     },
     {
       "en": "Health care just got less painful.",
-      "ko": "건강 관리가 이제 덜 고통스러워졌습니다."
+      "ko": "사람들을 위해 AI를 작동시키려면 serviceNow.com을 방문하세요.",
+      "start": 179.12,
+      "end": 181.04
     },
     {
       "en": "AI is moving fast across the enterprise.",
-      "ko": "AI는 기업 전반에 걸쳐 빠르게 확산되고 있습니다."
+      "ko": "라이언 코헨은 2011년에 공동 창업하고 펫스마트에 매각한 온라인 반려동물 용품 스토어 츄이(Chewy)로 시작했습니다.",
+      "start": 181.04,
+      "end": 184.08
     },
     {
       "en": "But without visibility, it's just chaos.",
-      "ko": "하지만 가시성이 없다면 그것은 그저 혼란일 뿐입니다."
+      "ko": "그 이후로 그는 투자자로서 온라인 팔로워를 구축해왔습니다.",
+      "start": 184.08,
+      "end": 187.56
     },
     {
       "en": "Different tools, different models.",
-      "ko": "다른 도구, 다른 모델."
+      "ko": "그렇다면 라이언 코헨의 매력은 무엇인가요?",
+      "start": 187.56,
+      "end": 189.56
     },
     {
       "en": "Different teams using AI in completely different ways.",
-      "ko": "다른 팀들이 완전히 다른 방식으로 AI를 사용합니다."
+      "ko": "제 말은, 그는 정확히 널리 알려진 이름은 아니지만, 일종의 컬트적 인물입니다.",
+      "start": 189.56,
+      "end": 193.24
     },
     {
       "en": "ServiceNow turns that chaos into control.",
-      "ko": "서비스나우는 그 혼란을 통제로 바꿉니다."
+      "ko": "완전히 그렇습니다.",
+      "start": 193.24,
+      "end": 196.32
     },
     {
       "en": "With the AI Control Tower, you see all your AI across the business in one place.",
-      "ko": "AI 컨트롤 타워를 통해 비즈니스 전반의 모든 AI를 한 곳에서 볼 수 있습니다."
+      "ko": "많은 사람들이 궁극적으로 라이언에게 연결되고 끌리게 된 이유는 그가 여러 면에서 일상적인 평범한 개인 트레이더나 투자자를 대표한다는 점이라고 생각합니다.",
+      "start": 196.32,
+      "end": 201.56
     },
     {
       "en": "What it's doing, what it's done, and what it's about to do.",
-      "ko": "무엇을 하고 있는지, 무엇을 했는지, 그리고 무엇을 하려고 하는지."
+      "ko": "그는 그냥 반 월스트리트적인 인물이고, 그것이 확실히 많은 사람들의 공감을 얻었습니다.",
+      "start": 201.56,
+      "end": 204.76
     },
     {
       "en": "So you stay in control.",
-      "ko": "그래서 당신이 통제력을 유지할 수 있습니다."
+      "ko": "(번역 실패)",
+      "start": 204.76,
+      "end": 206.64
     },
     {
       "en": "To put AI to work for people, visit serviceNow.com.",
-      "ko": "사람들을 위해 AI를 활용하려면 serviceNow.com을 방문하세요."
+      "ko": "(번역 실패)",
+      "start": 206.64,
+      "end": 217.84
     },
     {
-      "en": "Ryan Cohen got a start with the online pet supply store Chouee, a company he co-founded in 2011 and sold to PetSmart.",
-      "ko": "라이언 코헨은 2011년에 공동 창업하고 펫스마트에 매각한 온라인 애완동물 용품점 츄이로 시작했습니다."
+      "en": "Ryan Cohen got a start with the online pet supply store Chouee, a company he co-founded",
+      "ko": "(번역 실패)",
+      "start": 217.84,
+      "end": 222.84
+    },
+    {
+      "en": "in 2011 and sold to PetSmart.",
+      "ko": "(번역 실패)",
+      "start": 222.84,
+      "end": 225.52
     },
     {
       "en": "Since then, he's built an online following as an investor.",
-      "ko": "그 이후로 그는 투자자로서 온라인 팔로워를 구축했습니다."
+      "ko": "(번역 실패)",
+      "start": 225.52,
+      "end": 229.48
     },
     {
       "en": "And what is the allure around Ryan Cohen?",
-      "ko": "라이언 코헨의 매력은 무엇인가요?"
+      "ko": "(번역 실패)",
+      "start": 229.48,
+      "end": 231.84
     },
     {
       "en": "I mean, he's not exactly a household name, but he is kind of a cult figure.",
-      "ko": "그는 정확히 유명 인사는 아니지만 일종의 컬트적인 인물입니다."
+      "ko": "(번역 실패)",
+      "start": 231.84,
+      "end": 236.08
     },
     {
       "en": "Totally.",
-      "ko": "정말 그렇습니다."
+      "ko": "(번역 실패)",
+      "start": 236.08,
+      "end": 237.08
     },
     {
-      "en": "I think what so many people ultimately have found themselves connecting to Ryan and being drawn toward Ryan is he does in a lot of ways kind of represent the everyday average Joe kind of trader investor.",
-      "ko": "많은 사람들이 궁극적으로 라이언에게 공감하고 끌리는 이유는 그가 여러 면에서 일상적인 평범한 개인 투자자를 대표하기 때문이라고 생각합니다."
+      "en": "I think what so many people ultimately have found themselves connecting to Ryan and being",
+      "ko": "(번역 실패)",
+      "start": 237.08,
+      "end": 241.56
     },
     {
-      "en": "He's just kind of your anti Wall Street guy that's definitely struck a court with a lot of people, particularly younger people coming up in this world and trying to find ways to make money on their own.",
-      "ko": "그는 일종의 반월스트리트 인물로서 많은 사람들, 특히 이 세상에서 자신만의 방식으로 돈을 벌려고 하는 젊은 사람들의 마음을 확실히 사로잡았습니다."
+      "en": "drawn toward Ryan is he does in a lot of ways kind of represent the everyday average Joe",
+      "ko": "(번역 실패)",
+      "start": 241.56,
+      "end": 249.0
     },
     {
-      "en": "Cohen built that reputation in 2020.",
-      "ko": "코헨은 2020년에 그런 명성을 쌓았습니다."
+      "en": "kind of trader investor.",
+      "ko": "(번역 실패)",
+      "start": 249.0,
+      "end": 252.04
     },
     {
-      "en": "When he took an interest in the company that would come to define his career, GameStop.",
-      "ko": "그의 경력을 정의하게 될 회사인 게임스톱에 관심을 가지게 되었을 때입니다."
-    },
-    {
-      "en": "Ryan Cohen had been building a stake in this company.",
-      "ko": "라이언 코헨은 이 회사의 지분을 축적하고 있었습니다."
-    },
-    {
-      "en": "By then built a pretty significant stake making him one of the biggest shareholders in GameStop.",
-      "ko": "그때까지 상당한 지분을 구축하여 게임스톱의 최대 주주 중 한 명이 되었습니다."
-    },
-    {
-      "en": "And he basically showed up and started pushing for changes.",
-      "ko": "그리고 그는 기본적으로 나타나서 변화를 추진하기 시작했습니다."
-    },
-    {
-      "en": "He wanted new management.",
-      "ko": "그는 새로운 경영진을 원했습니다."
-    },
-    {
-      "en": "He wanted GameStop to rethink things strategically.",
-      "ko": "그는 게임스톱이 전략적으로 재고하기를 원했습니다."
-    },
-    {
-      "en": "And it was really an activist play in large part.",
-      "ko": "그리고 이것은 상당 부분 행동주의 투자였습니다."
-    },
-    {
-      "en": "He was there.",
-      "ko": "그는 그곳에 있었습니다."
-    },
-    {
-      "en": "He was trying to get inside the company himself in some sort of leadership position.",
-      "ko": "그는 어떤 형태로든 리더십 직위로 회사 내부에 들어가려고 했습니다."
-    },
-    {
-      "en": "In January 2021, GameStop offered Cohen a seat on the board.",
-      "ko": "2021년 1월, 게임스톱은 코헨에게 이사회 자리를 제안했습니다."
-    },
-    {
-      "en": "And around that time, the company's share price exploded.",
-      "ko": "그리고 그 무렵, 회사의 주가가 폭등했습니다."
+      "en": "He's just kind of your anti Wall Street guy that's definitely struck a court with a lot",
+      "ko": "(번역 실패)",
+      "start": 252.04,
+      "end": 257.56
     }
   ],
   "analysis": {
-    "summary_ko": "GameStop의 CEO 라이언 코헨이 자사보다 4배 큰 규모의 eBay를 560억 달러에 인수하겠다는 제안을 했습니다. 시가총액 110억 달러의 GameStop이 560억 달러 규모의 eBay 인수를 제안한 것은 매우 이례적인 일입니다. 코헨은 자신의 경험을 바탕으로 eBay를 운영하면 비용 절감과 수익 개선을 통해 현재보다 훨씬 더 가치있는 회사로 만들 수 있다고 주장합니다. 그는 eBay를 Amazon의 정당한 경쟁자로 키울 수 있다고 자신하고 있습니다. 가장 큰 의문은 작은 회사가 어떻게 이 거대한 인수 자금을 조달할 것인가 하는 점입니다.",
+    "summary_ko": "GameStop의 CEO 라이언 코헨이 약 560억 달러 규모의 eBay 인수 제안을 발표했습니다. 시가총액 110억 달러의 GameStop이 자신보다 4배 큰 eBay를 인수하려는 이 제안은 업계에 큰 충격을 주었습니다. 코헨은 두 회사의 결합으로 비용 절감과 수익 개선 기회를 창출할 수 있다고 주장했습니다. 온라인 애완용품 업체 Chewy를 공동 창업하고 PetSmart에 매각한 경험이 있는 코헨은 투자자들 사이에서 컬트적 인기를 누리고 있습니다. 그러나 WSJ 기자는 작은 회사가 훨씬 큰 기업을 인수하려는 이 계획의 자금조달 방식에 대해 의문을 제기했습니다.",
     "key_points": [
-      "GameStop이 자사 시가총액의 5배에 달하는 560억 달러 규모의 eBay 인수 제안",
-      "라이언 코헨 CEO는 규모의 경제와 자신의 경험을 바탕으로 eBay 가치를 크게 높일 수 있다고 주장",
-      "소규모 회사의 대규모 인수 제안이라는 이례적 상황으로 인수 자금 조달 방식이 핵심 관심사",
-      "코헨은 Chewy 창업자로 PetSmart에 회사를 매각한 경험이 있으며 투자자로서 컬트적 인기 보유"
+      "GameStop(시가총액 110억 달러)이 eBay(시가총액 560억 달러)에 인수 제안을 제출",
+      "CEO 라이언 코헨은 규모의 경제와 비용 절감을 통해 eBay의 가치를 크게 높일 수 있다고 주장",
+      "Chewy 창업 및 매각 경험을 가진 코헨은 투자자들 사이에서 컬트적 인기 보유",
+      "작은 회사가 4배 큰 기업을 인수하려는 이례적인 시도로 업계에 충격",
+      "자금조달 방식에 대한 실질적인 의문이 제기됨"
     ],
     "related_stocks": [
       {
         "ticker": "GME",
         "name": "GameStop Corp.",
-        "reason": "eBay 인수 제안의 주체로 공격적인 M&A 전략 추진",
-        "sentiment": "positive"
+        "reason": "eBay 인수를 제안한 주체 기업으로 대형 M&A 시도",
+        "sentiment": "neutral"
       },
       {
         "ticker": "EBAY",
         "name": "eBay Inc.",
-        "reason": "GameStop으로부터 560억 달러 인수 제안을 받았으며 현재 검토 중",
+        "reason": "GameStop의 560억 달러 인수 제안 대상 기업",
         "sentiment": "neutral"
       },
       {
         "ticker": "AMZN",
         "name": "Amazon.com Inc.",
-        "reason": "합병 후 GameStop-eBay가 경쟁 대상으로 지목한 이커머스 시장 선두주자",
+        "reason": "코헨이 언급한 향후 경쟁 대상으로 이커머스 시장 경쟁 구도 변화 가능성",
         "sentiment": "neutral"
       }
     ],
-    "market_outlook": "소규모 기업의 대규모 인수 제안은 자금 조달 가능성에 대한 시장의 회의적 시각을 불러일으킬 가능성이 높습니다. 다만 라이언 코헨의 과거 성공 경험과 밈스톡 투자자들의 강력한 지지 기반은 변수가 될 수 있습니다. 실제 인수 성사 가능성보다는 GameStop의 전략적 방향 전환과 이커머스 시장 재편 가능성에 시장의 관심이 집중될 것으로 보입니다."
+    "market_outlook": "GameStop의 eBay 인수 제안은 자금조달 측면에서 실현 가능성에 대한 회의적 시각이 우세합니다. 그러나 이 제안은 이커머스 시장의 통합 가능성과 중소형 기업의 공격적 M&A 전략이라는 새로운 트렌드를 시사합니다. 실제 인수 성사 여부와 관계없이 양사의 주가 변동성은 단기적으로 확대될 전망입니다."
   },
-  "generated_at": "2026-05-09T14:42:14.570264"
+  "generated_at": "2026-05-09T15:01:10.095769"
 }
