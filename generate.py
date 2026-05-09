@@ -1,6 +1,5 @@
 """
 매일 실행: WSJ 에피소드 → Whisper 전사 → Claude 번역/분석 → docs/today.json 저장
-GitHub Actions에서 실행되어 GitHub Pages의 today.json을 업데이트합니다.
 """
 
 import os, re, json, tempfile, requests, feedparser, anthropic
@@ -49,54 +48,51 @@ def transcribe(path):
     import whisper
     model = whisper.load_model("base")
     result = model.transcribe(path, language="en")
-    print(f"✅ {len(result['text'])}자 전사 완료")
-    return result["text"]
+    segments = [
+        {"text": s["text"].strip(), "start": round(s["start"], 2), "end": round(s["end"], 2)}
+        for s in result.get("segments", [])
+    ]
+    print(f"✅ {len(result['text'])}자 / {len(segments)}개 세그먼트")
+    return result["text"], segments
 
 
-def analyze(episode, transcript):
+def analyze(episode, transcript, segments):
     print("🤖 Claude 분석 중...")
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-    # 문장 분리 (최대 60문장)
-    sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', transcript) if s.strip()][:60]
+    segs = segments[:60]
+    seg_texts = [s["text"] for s in segs]
 
-    # 번역
     tr_res = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=4000,
         messages=[{"role":"user","content":f"""아래 영어 문장들을 자연스러운 한국어로 번역하세요.
 반드시 순수 JSON 배열만 출력하세요. 마크다운 없이.
-
 형식: [{{"en":"...","ko":"..."}}]
-
 문장들:
-{chr(10).join(sentences)}"""}]
+{chr(10).join(seg_texts)}"""}]
     )
     raw = re.sub(r"```json|```","",tr_res.content[0].text).strip()
     try:
-        subtitles = json.loads(raw)
+        translations = json.loads(raw)
     except:
-        subtitles = [{"en":s,"ko":"(번역 실패)"} for s in sentences]
+        translations = [{"en":s,"ko":"(번역 실패)"} for s in seg_texts]
 
-    # 요약 + 관련주
+    subtitles = []
+    for i, seg in enumerate(segs):
+        ko = translations[i]["ko"] if i < len(translations) else "(번역 실패)"
+        subtitles.append({"en": seg["text"], "ko": ko, "start": seg["start"], "end": seg["end"]})
+
     an_res = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=2000,
         messages=[{"role":"user","content":f"""WSJ The Journal 팟캐스트 분석:
-
 제목: {episode['title']}
 설명: {episode['description']}
 스크립트: {transcript[:3000]}
 
 순수 JSON만 출력하세요:
-{{
-  "summary_ko": "5-7문장 한국어 요약",
-  "key_points": ["포인트1","포인트2","포인트3"],
-  "related_stocks": [
-    {{"ticker":"AAPL","name":"Apple Inc.","reason":"이유","sentiment":"positive/neutral/negative"}}
-  ],
-  "market_outlook": "2-3문장 시장 전망 (한국어)"
-}}"""}]
+{{"summary_ko":"5-7문장 한국어 요약","key_points":["포인트1","포인트2","포인트3"],"related_stocks":[{{"ticker":"AAPL","name":"Apple Inc.","reason":"이유","sentiment":"positive/neutral/negative"}}],"market_outlook":"2-3문장 시장 전망 (한국어)"}}"""}]
     )
     raw2 = re.sub(r"```json|```","",an_res.content[0].text).strip()
     try:
@@ -116,14 +112,12 @@ def main():
     audio_path = download_audio(ep["audio_url"])
 
     try:
-        transcript = transcribe(audio_path)
-        subtitles, analysis = analyze(ep, transcript)
-
+        transcript, segments = transcribe(audio_path)
+        subtitles, analysis = analyze(ep, transcript, segments)
         out = {**ep, "subtitles": subtitles, "analysis": analysis,
                "generated_at": datetime.now().isoformat()}
         OUTPUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2))
         print(f"\n✅ 저장 완료: {OUTPUT_PATH}")
-
     finally:
         Path(audio_path).unlink(missing_ok=True)
 
