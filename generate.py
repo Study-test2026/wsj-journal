@@ -7,7 +7,7 @@ import os, re, json, tempfile, requests, feedparser, anthropic
 from pathlib import Path
 from datetime import datetime
 
-WSJ_RSS = "https://feeds.megaphone.fm/WSJ7922749417"
+WSJ_RSS = "https://video-api.wsj.com/podcast/rss/wsj/the-journal"
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 OUTPUT_PATH = Path("docs/today.json")
 OUTPUT_PATH.parent.mkdir(exist_ok=True)
