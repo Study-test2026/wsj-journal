@@ -1,0 +1,41 @@
+name: WSJ Daily Data Generator
+
+on:
+  schedule:
+    # 한국시간 06:20 = UTC 21:20 (전날)
+    - cron: "20 21 * * 0-4"  # 일~목 (월~금 KST 기준)
+  workflow_dispatch:
+
+permissions:
+  contents: write  # today.json 커밋을 위해 필요
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: ffmpeg 설치 (Whisper 필수)
+        run: sudo apt-get install -y ffmpeg
+
+      - name: Python 패키지 설치
+        run: pip install openai-whisper anthropic feedparser requests
+
+      - name: today.json 생성
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python generate.py
+
+      - name: GitHub Pages에 배포 (커밋)
+        run: |
+          git config user.name "wsj-bot"
+          git config user.email "bot@github.com"
+          git add docs/today.json
+          git diff --staged --quiet || git commit -m "📰 Daily update: $(date +'%Y-%m-%d')"
+          git push
