@@ -2,8 +2,8 @@ name: WSJ Daily Data Generator
 
 on:
   schedule:
-    # 한국시간 06:20 = UTC 21:20 (전날)
-    - cron: "20 21 * * 0-4"  # 일~목 (월~금 KST 기준)
+    # 뉴욕 섬머타임(EDT) 06:20 = UTC 10:20
+    - cron: "20 10 * * 1-5"  # 월~금
   workflow_dispatch:
 
 permissions:
@@ -16,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          node-version: '24'
 
       - uses: actions/setup-python@v5
         with:
