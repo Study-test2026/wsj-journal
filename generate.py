@@ -174,7 +174,9 @@ def main():
 
     try:
         transcript, segments = transcribe(audio_path)
-        clean_segs, removed  = remove_ads(segments)
+        # 광고 제거 비활성화 - 오디오 싱크 유지를 위해 전체 세그먼트 사용
+        clean_segs = segments
+        removed = []
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
         segs_to_translate = clean_segs  # 전체 세그먼트 번역 (제한 없음)
