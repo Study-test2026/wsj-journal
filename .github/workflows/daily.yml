@@ -5,9 +5,15 @@ on:
     # 뉴욕 섬머타임(EDT) 06:20 = UTC 10:20
     - cron: "20 10 * * 1-5"  # 월~금
   workflow_dispatch:
+    inputs:
+      target_date:
+        description: '처리할 날짜 (YYYY-MM-DD). 비워두면 오늘 날짜로 실행'
+        required: false
+        default: ''
+        type: string
 
 permissions:
-  contents: write  # today.json 커밋을 위해 필요
+  contents: write
 
 jobs:
   generate:
@@ -16,14 +22,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          node-version: '24'
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: ffmpeg 설치 (Whisper 필수)
+      - name: ffmpeg 설치
         run: sudo apt-get install -y ffmpeg
 
       - name: Python 패키지 설치
@@ -32,12 +36,13 @@ jobs:
       - name: today.json 생성
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python generate.py
+          TARGET_DATE: ${{ github.event.inputs.target_date }}
+        run: python generate.py ${{ github.event.inputs.target_date }}
 
-      - name: GitHub Pages에 배포 (커밋)
+      - name: GitHub Pages에 배포
         run: |
           git config user.name "wsj-bot"
           git config user.email "bot@github.com"
-          git add docs/today.json
-          git diff --staged --quiet || git commit -m "📰 Daily update: $(date +'%Y-%m-%d')"
+          git add docs/
+          git diff --staged --quiet || git commit -m "📰 Episode update: ${{ github.event.inputs.target_date || 'today' }}"
           git push
