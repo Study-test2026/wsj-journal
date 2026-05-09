@@ -35,8 +35,8 @@ body {
   color: var(--paper);
   min-height: 100dvh;
   overflow-x: hidden;
-  overflow-y: auto;
 }
+
 /* ── LOADING ── */
 #loading {
   position: fixed; inset: 0;
@@ -124,7 +124,8 @@ header {
 }
 
 /* ── MAIN CONTENT ── */
-main { min-height: calc(100dvh - 120px); overflow-y: auto; }
+html, body { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+main { min-height: calc(100dvh - 120px); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
@@ -637,12 +638,26 @@ function fmtTime(t) {
   return `${m}:${s}`;
 }
 
-// ── 자막 하이라이트 (시간 기반 근사) ────────────────
+// ── 자막 하이라이트 (타임스탬프 우선, 없으면 비례 근사) ────
 function highlightActiveSub() {
   const subs = episodeData?.subtitles || [];
   if (!subs.length || !audio.duration) return;
-  const pct = audio.currentTime / audio.duration;
-  const idx = Math.min(Math.floor(pct * subs.length), subs.length - 1);
+  const t = audio.currentTime;
+
+  let idx = 0;
+  const hasTimestamps = subs[0]?.start !== undefined;
+
+  if (hasTimestamps) {
+    // 타임스탬프 기반: 현재 시간이 start~end 사이인 자막 찾기
+    for (let i = subs.length - 1; i >= 0; i--) {
+      if (t >= (subs[i].start || 0)) { idx = i; break; }
+    }
+  } else {
+    // 비례 근사
+    const pct = t / audio.duration;
+    idx = Math.min(Math.floor(pct * subs.length), subs.length - 1);
+  }
+
   document.querySelectorAll('.subtitle-item').forEach((el, i) => {
     el.classList.toggle('active-line', i === idx);
     if (i === idx) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -651,10 +666,10 @@ function highlightActiveSub() {
 
 function seekToSub(i) {
   const subs = episodeData?.subtitles || [];
-  if (audio.duration && subs.length) {
-    audio.currentTime = (i / subs.length) * audio.duration;
-    if (audio.paused) togglePlay();
-  }
+  if (!audio.duration || !subs.length) return;
+  const hasTimestamps = subs[i]?.start !== undefined;
+  audio.currentTime = hasTimestamps ? subs[i].start : (i / subs.length) * audio.duration;
+  if (audio.paused) togglePlay();
 }
 
 // ── 언어 토글 ────────────────────────────────────────
