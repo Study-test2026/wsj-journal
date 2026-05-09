@@ -3,11 +3,11 @@ name: WSJ Daily Data Generator
 on:
   schedule:
     # 뉴욕 섬머타임(EDT) 06:20 = UTC 10:20
-    - cron: "20 10 * * 1-5"  # 월~금
+    - cron: "20 10 * * 1-5"
   workflow_dispatch:
     inputs:
       target_date:
-        description: '처리할 날짜 (YYYY-MM-DD). 비워두면 오늘 날짜로 실행'
+        description: '처리할 날짜 (YYYY-MM-DD). 비워두면 오늘'
         required: false
         default: ''
         type: string
@@ -33,16 +33,16 @@ jobs:
       - name: Python 패키지 설치
         run: pip install openai-whisper anthropic feedparser requests
 
-      - name: today.json 생성
+      - name: 에피소드 생성
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TARGET_DATE: ${{ github.event.inputs.target_date }}
         run: python generate.py ${{ github.event.inputs.target_date }}
 
-      - name: GitHub Pages에 배포
+      - name: GitHub Pages 배포
         run: |
           git config user.name "wsj-bot"
           git config user.email "bot@github.com"
           git add docs/
-          git diff --staged --quiet || git commit -m "📰 Episode update: ${{ github.event.inputs.target_date || 'today' }}"
+          git diff --staged --quiet || git commit -m "📰 Episode: ${{ github.event.inputs.target_date || 'today' }}"
           git push
