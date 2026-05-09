@@ -138,6 +138,13 @@ main{min-height:calc(100dvh - 90px)}
 .disclaimer{padding:13px 15px;background:rgba(255,255,255,.02);border-radius:10px;font-size:11px;color:var(--muted);line-height:1.6;border:1px solid rgba(255,255,255,.05);margin-bottom:16px}
 .donate-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#FFDD00;color:#000;font-size:14px;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;margin-bottom:40px;letter-spacing:.3px}
 .donate-btn:active{opacity:.85}
+.referral-btn{display:block;background:linear-gradient(135deg,#00C805,#007A00);border-radius:12px;text-decoration:none;margin-bottom:12px;overflow:hidden}
+.referral-btn:active{opacity:.85}
+.referral-inner{display:flex;align-items:center;gap:14px;padding:16px}
+.referral-icon{font-size:28px;flex-shrink:0}
+.referral-text{flex:1}
+.referral-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.referral-desc{font-size:12px;color:rgba(255,255,255,.8)}
 .bottom-safe{height:calc(var(--safe-bottom)+24px)}
 
 /*
@@ -251,6 +258,15 @@ main{min-height:calc(100dvh - 90px)}
         <div class="outlook-text" id="outlookText"></div>
       </div>
       <div class="disclaimer">⚠️ 투자 정보는 참고용입니다. 모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</div>
+      <a href="https://join.robinhood.com/jiaek-60876545" target="_blank" class="referral-btn">
+        <div class="referral-inner">
+          <div class="referral-icon">📈</div>
+          <div class="referral-text">
+            <div class="referral-title">Robinhood로 미국 주식 시작하기</div>
+            <div class="referral-desc">가입하면 무료 주식 1주 받기 →</div>
+          </div>
+        </div>
+      </a>
       <a href="https://buymeacoffee.com/ykstudy2020?amount=1" target="_blank" class="donate-btn">☕ $1로 응원하기</a>
     </div>
   </div>
