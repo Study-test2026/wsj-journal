@@ -1,6 +1,6 @@
 // WSJ Journal PWA Service Worker
-const CACHE = 'wsj-journal-v1';
-const STATIC = ['/', '/index.html', '/manifest.json'];
+const CACHE = 'wsj-journal-v3';
+const STATIC = ['/wsj-journal/', '/wsj-journal/index.html', '/wsj-journal/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(
