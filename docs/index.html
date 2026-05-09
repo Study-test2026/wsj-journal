@@ -35,8 +35,8 @@ body {
   color: var(--paper);
   min-height: 100dvh;
   overflow-x: hidden;
+  overflow-y: auto;
 }
-
 /* ── LOADING ── */
 #loading {
   position: fixed; inset: 0;
@@ -124,7 +124,7 @@ header {
 }
 
 /* ── MAIN CONTENT ── */
-main { min-height: calc(100dvh - 120px); }
+main { min-height: calc(100dvh - 120px); overflow-y: auto; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
