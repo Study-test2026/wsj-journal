@@ -62,7 +62,7 @@ def analyze(episode, transcript):
 
     # 번역
     tr_res = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-5",
         max_tokens=4000,
         messages=[{"role":"user","content":f"""아래 영어 문장들을 자연스러운 한국어로 번역하세요.
 반드시 순수 JSON 배열만 출력하세요. 마크다운 없이.
@@ -80,7 +80,7 @@ def analyze(episode, transcript):
 
     # 요약 + 관련주
     an_res = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-5",
         max_tokens=2000,
         messages=[{"role":"user","content":f"""WSJ The Journal 팟캐스트 분석:
 
