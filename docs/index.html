@@ -439,69 +439,109 @@ function stockHTML(s,prefix,i) {
   </div>`;
 }
 
-// ── 가격 ──
-async function fetchPrice(ticker,id) {
-  if (priceCache[ticker]) { applyPrice(id,priceCache[ticker]); return; }
-  try {
-    const url=`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`;
-    const r=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-    const j=await r.json();
-    const meta=JSON.parse(j.contents).chart.result[0].meta;
-    const price=meta.regularMarketPrice;
-    const prev=meta.previousClose||meta.chartPreviousClose;
-    const chg=price-prev, pct=chg/prev*100;
-    priceCache[ticker]={price,chg,pct};
-    applyPrice(id,priceCache[ticker]);
-  } catch { document.getElementById(`price-${id}`).textContent='—'; }
-}
-function applyPrice(id,{price,chg,pct}) {
-  const isPos=chg>=0;
-  document.getElementById(`price-${id}`).textContent=`$${price.toFixed(2)}`;
-  const el=document.getElementById(`change-${id}`);
-  el.textContent=`${isPos?'+':''}${chg.toFixed(2)} (${isPos?'+':''}${pct.toFixed(2)}%)`;
-  el.className=`stock-change ${isPos?'pos':'neg'}`;
+// ── 가격/차트 fetch (프록시 폴백 체인) ──
+const PROXIES = [
+  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+  url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+  url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+];
+
+async function yahooFetch(yahooUrl) {
+  for (const proxy of PROXIES) {
+    try {
+      const r = await fetch(proxy(yahooUrl), { signal: AbortSignal.timeout(6000) });
+      if (!r.ok) continue;
+      const j = await r.json();
+      // allorigins는 j.contents 에 문자열로 감싸서 옴
+      const raw = typeof j === 'string' ? j : (j.contents ?? JSON.stringify(j));
+      return JSON.parse(raw);
+    } catch { continue; }
+  }
+  throw new Error('모든 프록시 실패');
 }
 
-// ── 차트 ──
-async function toggleChart(id,ticker) {
-  const area=document.getElementById(`chart-area-${id}`);
-  const isOpen=area.classList.contains('open');
-  document.querySelectorAll('.chart-area.open').forEach(el=>el.classList.remove('open'));
-  if(isOpen) return;
-  area.classList.add('open');
-  if(chartInstances[id]) return;
-  const loading=document.getElementById(`chart-loading-${id}`);
-  const wrap=document.getElementById(`chart-canvas-wrap-${id}`);
-  const canvas=document.getElementById(`chart-${id}`);
+async function fetchPrice(ticker, id) {
+  if (priceCache[ticker]) { applyPrice(id, priceCache[ticker]); return; }
   try {
-    const url=`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1wk&range=1y`;
-    const r=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-    const j=await r.json();
-    const result=JSON.parse(j.contents).chart.result[0];
-    const labels=result.timestamp.map(t=>{const d=new Date(t*1000);return`${d.getMonth()+1}/${d.getDate()}`});
-    const prices=result.indicators.quote[0].close.map(p=>p?+p.toFixed(2):null);
-    const first=prices.find(p=>p!==null);
-    const last=prices.filter(p=>p!==null).slice(-1)[0];
-    const isUp=last>=first;
-    const lc=isUp?'#4ade80':'#f87171';
-    loading.style.display='none';
-    wrap.style.display='block';
-    chartInstances[id]=new Chart(canvas,{
-      type:'line',
-      data:{labels,datasets:[{data:prices,borderColor:lc,borderWidth:2,pointRadius:0,tension:.3,fill:true,
-        backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,150);
-          g.addColorStop(0,isUp?'rgba(74,222,128,.18)':'rgba(248,113,113,.18)');
-          g.addColorStop(1,'rgba(0,0,0,0)');return g;}}]},
-      options:{responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`$${c.parsed.y}`},
-          backgroundColor:'rgba(10,10,15,.95)',titleColor:'#c9a84c',bodyColor:'#f5f0e8',
-          borderColor:'rgba(201,168,76,.3)',borderWidth:1}},
-        scales:{
-          x:{ticks:{color:'#8a8070',font:{size:9},maxTicksLimit:6},grid:{color:'rgba(255,255,255,.04)'}},
-          y:{ticks:{color:'#8a8070',font:{size:9},callback:v=>`$${v}`},grid:{color:'rgba(255,255,255,.04)'}}
-        }}
+    const data = await yahooFetch(
+      `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`
+    );
+    const meta  = data.chart.result[0].meta;
+    const price = meta.regularMarketPrice;
+    const prev  = meta.previousClose || meta.chartPreviousClose;
+    const chg   = price - prev;
+    const pct   = chg / prev * 100;
+    priceCache[ticker] = { price, chg, pct };
+    applyPrice(id, priceCache[ticker]);
+  } catch {
+    document.getElementById(`price-${id}`).textContent = '—';
+  }
+}
+
+function applyPrice(id, { price, chg, pct }) {
+  const isPos = chg >= 0;
+  document.getElementById(`price-${id}`).textContent = `$${price.toFixed(2)}`;
+  const el = document.getElementById(`change-${id}`);
+  el.textContent = `${isPos?'+':''}${chg.toFixed(2)} (${isPos?'+':''}${pct.toFixed(2)}%)`;
+  el.className = `stock-change ${isPos ? 'pos' : 'neg'}`;
+}
+
+async function toggleChart(id, ticker) {
+  const area = document.getElementById(`chart-area-${id}`);
+  const isOpen = area.classList.contains('open');
+  document.querySelectorAll('.chart-area.open').forEach(el => el.classList.remove('open'));
+  if (isOpen) return;
+  area.classList.add('open');
+  if (chartInstances[id]) return;
+
+  const loading = document.getElementById(`chart-loading-${id}`);
+  const wrap    = document.getElementById(`chart-canvas-wrap-${id}`);
+  const canvas  = document.getElementById(`chart-${id}`);
+
+  try {
+    const data   = await yahooFetch(
+      `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1wk&range=1y`
+    );
+    const result = data.chart.result[0];
+    const labels = result.timestamp.map(t => {
+      const d = new Date(t * 1000);
+      return `${d.getMonth()+1}/${d.getDate()}`;
     });
-  } catch { loading.textContent='차트 로드 실패'; }
+    const prices = result.indicators.quote[0].close.map(p => p ? +p.toFixed(2) : null);
+    const first  = prices.find(p => p !== null);
+    const last   = prices.filter(p => p !== null).slice(-1)[0];
+    const isUp   = last >= first;
+    const lc     = isUp ? '#4ade80' : '#f87171';
+
+    loading.style.display = 'none';
+    wrap.style.display = 'block';
+
+    chartInstances[id] = new Chart(canvas, {
+      type: 'line',
+      data: { labels, datasets: [{ data: prices, borderColor: lc, borderWidth: 2,
+        pointRadius: 0, tension: 0.3, fill: true,
+        backgroundColor: ctx => {
+          const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, 150);
+          g.addColorStop(0, isUp ? 'rgba(74,222,128,.18)' : 'rgba(248,113,113,.18)');
+          g.addColorStop(1, 'rgba(0,0,0,0)'); return g;
+        }
+      }]},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: {
+          callbacks: { label: c => `$${c.parsed.y}` },
+          backgroundColor: 'rgba(10,10,15,.95)', titleColor: '#c9a84c',
+          bodyColor: '#f5f0e8', borderColor: 'rgba(201,168,76,.3)', borderWidth: 1
+        }},
+        scales: {
+          x: { ticks: { color:'#8a8070', font:{size:9}, maxTicksLimit:6 }, grid: { color:'rgba(255,255,255,.04)' }},
+          y: { ticks: { color:'#8a8070', font:{size:9}, callback: v=>`$${v}` }, grid: { color:'rgba(255,255,255,.04)' }}
+        }
+      }
+    });
+  } catch {
+    loading.textContent = '차트 로드 실패 — 잠시 후 다시 탭해보세요';
+  }
 }
 
 // ── 오디오 ──
