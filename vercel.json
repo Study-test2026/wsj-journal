@@ -1,0 +1,7 @@
+{
+  "functions": { "api/analyze.py": { "runtime": "@vercel/python@4" } },
+  "routes": [
+    { "src": "/api/analyze", "dest": "/api/analyze.py" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ]
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ko"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /&gt;</p>
+<p class="p1">&lt;title&gt;WSJ The Journal · 한글 동시자막&lt;/title&gt;</p>
+<p class="p1">&lt;link rel="stylesheet" href="./style.css" /&gt;</p>
+<p class="p1">&lt;!-- 차트: lightweight-charts --&gt;</p>
+<p class="p1">&lt;script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;header class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="brand"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="logo"&gt;📻&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;The Journal · WSJ&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p id="ep-title"&gt;로딩 중…&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="support"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a class="btn coffee" href="https://buymeacoffee.com/ykstudy2020" target="_blank" rel="noopener"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>☕ Buy me a coffee · $1</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a class="btn robinhood" href="https://join.robinhood.com/jiaek-60876545" target="_blank" rel="noopener"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>🪶 Robinhood 친구 추천</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 좌측: 플레이어 + 자막 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="player-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;audio id="audio" controls preload="metadata"&gt;&lt;/audio&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="player-controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label class="toggle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input type="checkbox" id="skip-ads" checked /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span&gt;광고 자동 스킵&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label class="toggle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input type="checkbox" id="show-en" checked /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span&gt;영문 표시&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;select id="speed"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="0.8"&gt;0.8×&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="1" selected&gt;1.0×&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="1.25"&gt;1.25×&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="1.5"&gt;1.5×&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="2"&gt;2.0×&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span id="ad-notice" class="ad-notice"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="tab active" data-tab="transcript"&gt;📝 자막&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="tab" data-tab="summary"&gt;📌 요약&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="tab" data-tab="episodes"&gt;🎙 최근 10화&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab-panel" id="tab-transcript"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="transcript-list"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab-panel hidden" id="tab-summary"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;article id="summary-content"&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab-panel hidden" id="tab-episodes"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="episode-list"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 우측: 차트 + AI 의견 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;aside class="right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stock-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stock-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 id="stock-symbol"&gt;—&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p id="stock-name"&gt;자막의 종목 태그를 클릭하세요&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stock-price"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="stock-last"&gt;—&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="stock-chg" class="chg"&gt;—&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="chart" class="chart"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ai-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ai-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="ai-badge"&gt;Claude · AI 분석&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="ai-rating" class="rating neutral"&gt;—&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="ai-opinion"&gt;자막에서 종목을 클릭하면 1년 차트와 함께 AI의 매수/매도/중립 의견이 표시됩니다.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="disclaimer"&gt;⚠ 본 의견은 정보 제공용이며 투자 권유가 아닙니다.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/aside&gt;</p>
+<p class="p1">&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;footer class="footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;이 프로젝트가 도움 됐다면 ☕ &lt;a href="https://buymeacoffee.com/ykstudy2020" target="_blank"&gt;$1 후원&lt;/a&gt; 또는</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a href="https://join.robinhood.com/jiaek-60876545" target="_blank"&gt;Robinhood 가입&lt;/a&gt;으로 응원해 주세요.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="legal"&gt;© WSJ The Journal · 비공식 한글 학습용 · 오디오 저작권 © Dow Jones&lt;/p&gt;</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script src="./player.js" type="module"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
