@@ -1,5 +1,5 @@
 {
-  "functions": { "api/analyze.py": { "runtime": "@vercel/python@0.0.0" } },
+  "functions": { "api/analyze.py": { "maxDuration": 60 } },
   "routes": [
     { "src": "/api/analyze", "dest": "/api/analyze.py" },
     { "src": "/(.*)", "dest": "/public/$1" }
