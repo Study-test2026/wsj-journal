@@ -1,13 +1,13 @@
 """
 WSJ Journal PWA - 매일 데이터 생성
-- 날짜 파라미터 지원: python generate.py 2026-05-01
-- ffmpeg으로 광고 구간 실제 삭제 → 오디오/자막 완벽 싱크
+- 미국 동부시간(ET) 기준으로 날짜 처리
+- ffmpeg으로 광고 구간 실제 삭제 (보수적 감지)
 - GitHub Pages에 오디오 파일도 저장
 """
 
 import os, re, json, sys, tempfile, subprocess, requests, feedparser, anthropic
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 WSJ_RSS = "https://video-api.wsj.com/podcast/rss/wsj/the-journal"
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
@@ -18,19 +18,34 @@ AUDIO_DIR.mkdir(parents=True, exist_ok=True)
 INDEX_PATH = Path("docs/index_list.json")
 TODAY_PATH = Path("docs/today.json")
 
-AD_KEYWORDS = [
-    "brought to you by","sponsor","promo code","discount",
-    "advertisement","this episode is sponsored","use code",
-    "free trial","click the link","download the app","percent off",
-    "limited time","exclusive offer","audible","squarespace","betterhelp",
-    "netsuite","indeed","shopify","wix","hubspot","masterclass",
-    "dot com slash","coupon","promocode","visit us at",
-    "after the break","we'll be right back","we will be right back",
-    "stay with us","don't go anywhere","back in a moment",
+# ── 광고 판별 키워드 (보수적으로 - 명확한 광고 표현만) ──
+# 강한 신호: 1개만 있어도 광고
+STRONG_AD_KEYWORDS = [
+    "this episode is brought to you by",
+    "this podcast is brought to you by",
+    "this episode is sponsored by",
+    "promo code",
+    "use the code",
+    "use code",
+    "sign up at",
+    "go to ",
+    "visit ",
+    "for a free trial",
+    "free trial at",
+    "percent off your",
+    "% off your",
+    "limited time offer",
+]
+# 약한 신호: 2개 이상 함께 있어야 광고
+WEAK_AD_KEYWORDS = [
+    "audible","squarespace","betterhelp","netsuite","indeed",
+    "shopify","wix","hubspot","masterclass","stamps.com",
+    "linkedin learning","peloton","mint mobile","zip recruiter",
+    "discount","coupon","subscription",
 ]
 
 def fetch_episode(target_date):
-    print(f"📡 RSS 피드 가져오는 중... (목표: {target_date:%Y-%m-%d})")
+    print(f"📡 RSS 피드 가져오는 중... (목표 ET 날짜: {target_date:%Y-%m-%d})")
     feed = feedparser.parse(WSJ_RSS)
     best, best_diff = None, None
     for e in feed.entries:
@@ -48,7 +63,8 @@ def fetch_episode(target_date):
             audio_url = link["href"]; break
     if not audio_url and e.get("enclosures"):
         audio_url = e["enclosures"][0].get("url")
-    print(f"✅ {e.title}")
+    print(f"✅ 매칭된 에피소드: {e.title}")
+    print(f"   발행일: {e.get('published','')}")
     return {"title":e.title,"description":e.get("summary",""),
             "published":e.get("published",""),"audio_url":audio_url,
             "duration":e.get("itunes_duration",""),"link":e.get("link","")}
@@ -63,7 +79,7 @@ def download_audio(url):
     return tmp.name
 
 def transcribe_with_timestamps(path):
-    print("🎙️  Whisper 음성 인식 중...")
+    print("🎙️  Whisper 음성 인식 중 (small 모델)...")
     import whisper
     model = whisper.load_model("small")
     result = model.transcribe(path, language="en")
@@ -75,58 +91,70 @@ def transcribe_with_timestamps(path):
     return result["text"], segments
 
 def is_ad(text):
+    """광고 판별: 강한 키워드 1개 또는 약한 키워드 2개 이상"""
     t = text.lower()
-    return sum(1 for kw in AD_KEYWORDS if kw in t) >= 1
+    strong = sum(1 for kw in STRONG_AD_KEYWORDS if kw in t)
+    if strong >= 1:
+        return True
+    weak = sum(1 for kw in WEAK_AD_KEYWORDS if kw in t)
+    return weak >= 2
 
 def detect_ad_blocks(segments):
-    """광고 블록 감지 → [(start, end), ...] 반환"""
+    """광고 블록 감지 - 보수적으로 (확실한 광고만)"""
     n = len(segments)
     ad_flags = [is_ad(s["text"]) for s in segments]
 
-    # 연속 광고 구간 확장 (전후 1개씩 포함)
+    # 광고 신호 주변 ±2개 세그먼트만 포함 (좁게)
     expanded = [False] * n
     for i in range(n):
         if ad_flags[i]:
-            for j in range(max(0,i-1), min(n,i+3)):
-                if ad_flags[j]: expanded[j] = True
+            for j in range(max(0,i-2), min(n,i+3)):
+                expanded[j] = True
 
     # 연속된 광고 블록 묶기
     blocks = []
     i = 0
     while i < n:
         if expanded[i]:
-            start = segments[i]["start"]
+            start_idx = i
             while i < n and expanded[i]: i += 1
-            end = segments[i-1]["end"]
-            # 최소 15초 이상인 블록만 광고로 처리
-            if end - start >= 15:
-                blocks.append((start, end))
-                print(f"🚫 광고 감지: {start:.1f}s ~ {end:.1f}s ({end-start:.1f}초)")
+            end_idx = i - 1
+            block_start = segments[start_idx]["start"]
+            block_end   = segments[end_idx]["end"]
+            duration    = block_end - block_start
+
+            # 30초 이상 + 강한 광고 신호 1개 이상이어야 광고로 인정
+            has_strong = any(
+                any(kw in segments[k]["text"].lower() for kw in STRONG_AD_KEYWORDS)
+                for k in range(start_idx, end_idx+1)
+            )
+            if duration >= 30 and has_strong:
+                blocks.append((block_start, block_end))
+                print(f"🚫 광고 감지: {block_start:.1f}s ~ {block_end:.1f}s ({duration:.1f}초)")
+            else:
+                print(f"⏭️  광고 의심 구간 무시: {block_start:.1f}s ({duration:.1f}초, 강한신호={has_strong})")
         else:
             i += 1
     return blocks
 
 def remove_ad_audio(input_path, ad_blocks, date_str):
-    """ffmpeg으로 광고 구간 제거 → 새 오디오 파일 반환"""
+    """ffmpeg으로 광고 구간 제거"""
+    output_path = str(AUDIO_DIR / f"{date_str}.mp3")
     if not ad_blocks:
-        print("광고 없음 - 원본 오디오 사용")
-        output_path = str(AUDIO_DIR / f"{date_str}.mp3")
+        print("광고 없음 - 원본 오디오 그대로 사용")
         import shutil
         shutil.copy(input_path, output_path)
         return output_path
 
     print(f"✂️  ffmpeg으로 광고 {len(ad_blocks)}개 구간 제거 중...")
 
-    # 유지할 구간 계산
-    import subprocess
     duration_result = subprocess.run(
-        ["ffprobe", "-v","error","-show_entries","format=duration",
+        ["ffprobe","-v","error","-show_entries","format=duration",
          "-of","default=noprint_wrappers=1:nokey=1", input_path],
         capture_output=True, text=True
     )
     total_duration = float(duration_result.stdout.strip())
 
-    # 유지할 구간 목록
     keep_segments = []
     prev_end = 0.0
     for (ad_start, ad_end) in sorted(ad_blocks):
@@ -136,32 +164,27 @@ def remove_ad_audio(input_path, ad_blocks, date_str):
     if prev_end < total_duration:
         keep_segments.append((prev_end, total_duration))
 
-    # ffmpeg filter_complex로 구간 이어붙이기
     filter_parts = []
     for i, (s, e) in enumerate(keep_segments):
         filter_parts.append(f"[0:a]atrim=start={s}:end={e},asetpts=PTS-STARTPTS[a{i}]")
-
     concat_inputs = "".join(f"[a{i}]" for i in range(len(keep_segments)))
     filter_parts.append(f"{concat_inputs}concat=n={len(keep_segments)}:v=0:a=1[out]")
     filter_complex = ";".join(filter_parts)
 
-    output_path = str(AUDIO_DIR / f"{date_str}.mp3")
-    cmd = [
-        "ffmpeg", "-y", "-i", input_path,
-        "-filter_complex", filter_complex,
-        "-map", "[out]",
-        "-codec:a", "libmp3lame", "-q:a", "3",
-        output_path
-    ]
+    cmd = ["ffmpeg","-y","-i",input_path,
+           "-filter_complex",filter_complex,
+           "-map","[out]",
+           "-codec:a","libmp3lame","-q:a","3",
+           output_path]
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         print(f"⚠️  ffmpeg 오류: {result.stderr[-300:]}")
         import shutil
         shutil.copy(input_path, output_path)
-        return output_path, keep_segments
+        return output_path
 
-    print(f"✅ 오디오 편집 완료: {output_path}")
-    return output_path, keep_segments
+    print(f"✅ 오디오 편집 완료")
+    return output_path
 
 def adjust_timestamps(segments, ad_blocks):
     """광고 제거 후 자막 타임스탬프 재조정"""
@@ -170,18 +193,16 @@ def adjust_timestamps(segments, ad_blocks):
 
     adjusted = []
     for seg in segments:
-        # 이 세그먼트가 광고 구간에 속하면 제외
-        in_ad = False
-        for (ad_start, ad_end) in ad_blocks:
-            if seg["start"] >= ad_start and seg["end"] <= ad_end:
-                in_ad = True; break
+        # 광고 구간에 속하는 세그먼트는 제외 (중심점 기준)
+        center = (seg["start"] + seg["end"]) / 2
+        in_ad = any(ad_s <= center <= ad_e for (ad_s, ad_e) in ad_blocks)
         if in_ad: continue
 
-        # 광고 제거로 인한 시간 오프셋 계산
-        offset = 0.0
-        for (ad_start, ad_end) in sorted(ad_blocks):
-            if ad_start < seg["start"]:
-                offset += (ad_end - ad_start)
+        # 이 세그먼트 시작 이전의 광고 길이 합산
+        offset = sum(
+            (ad_e - ad_s) for (ad_s, ad_e) in sorted(ad_blocks)
+            if ad_e <= seg["start"]
+        )
 
         adjusted.append({
             "text": seg["text"],
@@ -238,7 +259,7 @@ def analyze(episode, transcript, client):
     except:
         return {"summary_ko":"분석 실패","key_points":[],"related_stocks":[],"market_outlook":""}
 
-def update_index(date_str, episode, audio_filename):
+def update_index(date_str, episode):
     try:
         index = json.loads(INDEX_PATH.read_text()) if INDEX_PATH.exists() else []
     except:
@@ -253,22 +274,37 @@ def update_index(date_str, episode, audio_filename):
     })
     if len(index) > 5:
         for old in index[5:]:
-            Path("docs") / old["file"] and (Path("docs") / old["file"]).unlink(missing_ok=True)
-            print(f"🗑️  삭제: {old['file']}")
+            old_json = Path("docs") / old["file"]
+            old_audio = Path("docs/audio") / f"{old['date']}.mp3"
+            old_json.unlink(missing_ok=True)
+            old_audio.unlink(missing_ok=True)
+            print(f"🗑️  삭제: {old['file']} + audio")
     index = index[:5]
     index.sort(key=lambda x: x["date"], reverse=True)
     INDEX_PATH.write_text(json.dumps(index, ensure_ascii=False, indent=2))
     print(f"📋 index_list.json: {len(index)}개")
 
-def main():
-    # 날짜 파라미터
+def get_target_date_string():
+    """ET(뉴욕) 시간 기준 오늘 날짜 반환"""
     if len(sys.argv) > 1 and sys.argv[1]:
-        date_str = sys.argv[1]
-    elif os.environ.get("TARGET_DATE"):
-        date_str = os.environ["TARGET_DATE"]
-    else:
-        date_str = datetime.now().strftime("%Y-%m-%d")
-    print(f"📅 처리 날짜: {date_str}")
+        return sys.argv[1]
+    if os.environ.get("TARGET_DATE"):
+        return os.environ["TARGET_DATE"]
+
+    # ET 기준 현재 시간 (UTC-4 EDT 가정, 겨울에는 UTC-5)
+    # 더 정확하게는 zoneinfo 사용
+    try:
+        from zoneinfo import ZoneInfo
+        et_now = datetime.now(ZoneInfo("America/New_York"))
+    except ImportError:
+        # 폴백: UTC-4 (EDT) 사용
+        et_now = datetime.now(timezone.utc) - timedelta(hours=4)
+
+    return et_now.strftime("%Y-%m-%d")
+
+def main():
+    date_str = get_target_date_string()
+    print(f"📅 처리 날짜 (ET 기준): {date_str}")
 
     try:
         target_date = datetime.strptime(date_str, "%Y-%m-%d")
@@ -292,25 +328,20 @@ def main():
         # 1. Whisper 전사
         transcript, segments = transcribe_with_timestamps(raw_audio)
 
-        # 2. 광고 블록 감지
+        # 2. 광고 블록 감지 (보수적)
         ad_blocks = detect_ad_blocks(segments)
-        print(f"총 {len(ad_blocks)}개 광고 블록 감지")
+        print(f"총 {len(ad_blocks)}개 광고 블록 확정")
 
-        # 3. 오디오에서 광고 제거 (ffmpeg)
-        if ad_blocks:
-            clean_audio, keep_segs = remove_ad_audio(raw_audio, ad_blocks, date_str)
-            # 4. 자막 타임스탬프 재조정
-            clean_segments = adjust_timestamps(segments, ad_blocks)
-        else:
-            import shutil
-            clean_audio = str(AUDIO_DIR / f"{date_str}.mp3")
-            shutil.copy(raw_audio, clean_audio)
-            clean_segments = segments
+        # 3. 오디오에서 광고 제거
+        clean_audio = remove_ad_audio(raw_audio, ad_blocks, date_str)
 
-        # 5. GitHub Pages URL로 오디오 경로 설정
-        github_user = "Study-test2026"  # ← 본인 GitHub 사용자명
+        # 4. 자막 타임스탬프 재조정
+        clean_segments = adjust_timestamps(segments, ad_blocks)
+
+        # 5. GitHub Pages URL
+        github_user = "study-test2026"
         repo_name = "wsj-journal"
-        audio_url = f"https://{github_user.lower()}.github.io/{repo_name}/audio/{date_str}.mp3"
+        audio_url = f"https://{github_user}.github.io/{repo_name}/audio/{date_str}.mp3"
 
         # 6. Claude 번역
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
@@ -330,8 +361,8 @@ def main():
         out = {
             **ep,
             "date": date_str,
-            "audio_url": audio_url,  # 편집된 오디오 URL
-            "original_audio_url": ep["audio_url"],  # 원본 URL 백업
+            "audio_url": audio_url,
+            "original_audio_url": ep["audio_url"],
             "subtitles": subtitles,
             "analysis": analysis,
             "ad_blocks_removed": len(ad_blocks),
@@ -339,7 +370,7 @@ def main():
         }
         out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2))
 
-        # today.json 업데이트
+        # today.json
         try:
             index = json.loads(INDEX_PATH.read_text()) if INDEX_PATH.exists() else []
         except:
@@ -349,7 +380,7 @@ def main():
             TODAY_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2))
             print("📌 today.json 업데이트")
 
-        update_index(date_str, ep, f"{date_str}.mp3")
+        update_index(date_str, ep)
         print(f"\n✅ 완료: {out_path}")
         print(f"   자막: {len(subtitles)}개 | 광고 제거: {len(ad_blocks)}블록")
 
