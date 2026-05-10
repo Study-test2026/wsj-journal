@@ -14,6 +14,13 @@
     "file": "episodes/2026-05-06.json"
   },
   {
+    "date": "2026-05-04",
+    "title": "R.I.P. Spirit Airlines",
+    "published": "Mon, 04 May 2026 20:45:00 -0000",
+    "duration": "1162",
+    "file": "episodes/2026-05-04.json"
+  },
+  {
     "date": "2026-05-03",
     "title": "The College Student Who Defeated the World’s Biggest Cyberweapon",
     "published": "Fri, 01 May 2026 20:00:00 -0000",
@@ -26,12 +33,5 @@
     "published": "Fri, 01 May 2026 20:00:00 -0000",
     "duration": "2244",
     "file": "episodes/2026-05-02.json"
-  },
-  {
-    "date": "2026-05-01",
-    "title": "How IKEA Is Keeping Its Furniture Affordable",
-    "published": "Thu, 30 Apr 2026 20:00:00 -0000",
-    "duration": "1368",
-    "file": "episodes/2026-05-01.json"
   }
 ]
