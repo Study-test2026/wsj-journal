@@ -2,12 +2,14 @@ name: WSJ Daily Data Generator
 
 on:
   schedule:
-    # 뉴욕 섬머타임(EDT) 06:20 = UTC 10:20
-    - cron: "20 10 * * 1-5"
+    # WSJ 에피소드는 ET 오후 4시 발행
+    # ET 오후 5시 (= 한국 시간 다음날 오전 6시 EDT) 에 실행
+    # ET 17:00 EDT = UTC 21:00
+    - cron: "0 21 * * 1-5"  # 월~금 (ET 기준)
   workflow_dispatch:
     inputs:
       target_date:
-        description: '처리할 날짜 (YYYY-MM-DD). 비워두면 오늘'
+        description: '처리할 날짜 (YYYY-MM-DD, ET 기준). 비워두면 ET 오늘'
         required: false
         default: ''
         type: string
@@ -37,6 +39,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TARGET_DATE: ${{ github.event.inputs.target_date }}
+          TZ: America/New_York
         run: python generate.py ${{ github.event.inputs.target_date }}
 
       - name: GitHub Pages 배포
