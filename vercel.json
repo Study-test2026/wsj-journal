@@ -3,9 +3,5 @@
     "api/*.py": {
       "maxDuration": 60
     }
-  },
-  "rewrites": [
-    { "source": "/api/analyze", "destination": "/api/analyze.py" },
-    { "source": "/(.*)", "destination": "/public/$1" }
-  ]
+  }
 }
