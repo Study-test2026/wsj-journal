@@ -1,0 +1,3008 @@
+{
+  "title": "The College Student Who Defeated the World’s Biggest Cyberweapon",
+  "description": "Last year, a massive cyberweapon terrorized the internet. It launched thousands of DDoS attacks, threatening tens of millions of people around the world. The weapon came to be known as Kimwolf. WSJ’s Robert McMillan reports that cybersecurity experts were stumped. Kimwolf’s attacks seemed to be launched from millions of internet-connected devices like TV boxes, cameras and picture frames. Eventually, the experts got help from an unlikely ally: a 22-year-old college senior named Benjamin Brundage. Jessica Mendoza talks to Ben about how he might have saved the internet.\n\nTo check if your network is secretly connected to a residential proxy network, here are a few tips.  \n\nFurther Listening:\n\n\n\n- Cybersecurity Braces for AI ‘Bugmaggedon’ \n\n- ‘Hack Me If You Can’ from The Journal\n\nSign up for WSJ’s free What’s News newsletter.\n\nLearn more about your ad choices. Visit megaphone.fm/adchoices",
+  "published": "Fri, 01 May 2026 20:00:00 -0000",
+  "audio_url": "https://pdst.fm/e/traffic.megaphone.fm/WSJ7384969883.mp3?updated=1777905795",
+  "duration": "2244",
+  "link": "",
+  "date": "2026-05-02",
+  "subtitles": [
+    {
+      "en": "When a big cybersecurity threat emerges, the people in charge of taking it down are the",
+      "ko": "큰 사이버 보안 위협이 발생하면, 이를 해결하는 책임을 맡은 사람들은 바로",
+      "start": 0.0,
+      "end": 10.6
+    },
+    {
+      "en": "engineers and network operators who keep the internet running.",
+      "ko": "인터넷을 운영하는 엔지니어와 네트워크 운영자들입니다.",
+      "start": 10.6,
+      "end": 14.76
+    },
+    {
+      "en": "I think of them as wizards, the wizards of the internet.",
+      "ko": "저는 그들을 마법사, 인터넷의 마법사라고 생각합니다.",
+      "start": 14.76,
+      "end": 19.28
+    },
+    {
+      "en": "That's our colleague Bob McMillan, who covers cybersecurity.",
+      "ko": "사이버 보안을 담당하는 우리 동료 밥 맥밀런의 말입니다.",
+      "start": 19.28,
+      "end": 22.8
+    },
+    {
+      "en": "And he says that over the last year, the wizards of the internet faced something at a scale",
+      "ko": "그는 지난 1년 동안 인터넷의 마법사들이",
+      "start": 22.8,
+      "end": 27.68
+    },
+    {
+      "en": "they had never encountered before.",
+      "ko": "이전에 한 번도 경험하지 못한 규모의 문제에 직면했다고 말합니다.",
+      "start": 27.68,
+      "end": 30.08
+    },
+    {
+      "en": "It was called KimWolf.",
+      "ko": "그것은 킴울프라고 불렸습니다.",
+      "start": 30.08,
+      "end": 32.52
+    },
+    {
+      "en": "KimWolf.",
+      "ko": "킴울프.",
+      "start": 32.52,
+      "end": 33.52
+    },
+    {
+      "en": "KimWolf.",
+      "ko": "킴울프.",
+      "start": 33.52,
+      "end": 34.52
+    },
+    {
+      "en": "A fast-growing botnet called KimWolf.",
+      "ko": "킴울프라는 빠르게 성장하는 봇넷입니다.",
+      "start": 34.52,
+      "end": 39.16
+    },
+    {
+      "en": "One of the most extreme botnet operations ever observed.",
+      "ko": "지금까지 관찰된 가장 극단적인 봇넷 작전 중 하나입니다.",
+      "start": 39.16,
+      "end": 43.68
+    },
+    {
+      "en": "What makes KimWolf different is how it spreads.",
+      "ko": "킴울프를 다르게 만드는 것은 그것이 확산되는 방식입니다.",
+      "start": 43.68,
+      "end": 46.8
+    },
+    {
+      "en": "Quietly hijacking nearly 2 million Android devices across the globe.",
+      "ko": "전 세계적으로 약 200만 대의 안드로이드 기기를 조용히 장악했습니다.",
+      "start": 46.8,
+      "end": 51.92
+    },
+    {
+      "en": "The scale alone is staggering.",
+      "ko": "그 규모만으로도 엄청납니다.",
+      "start": 51.92,
+      "end": 55.52
+    },
+    {
+      "en": "The internet wizard saw was a somewhat familiar threat.",
+      "ko": "인터넷 마법사들이 본 것은 다소 익숙한 위협이었습니다.",
+      "start": 55.52,
+      "end": 59.24
+    },
+    {
+      "en": "A network of bots engaging in distributed denial of service attacks.",
+      "ko": "분산 서비스 거부 공격을 수행하는 봇 네트워크였습니다.",
+      "start": 59.24,
+      "end": 64.4
+    },
+    {
+      "en": "So DDoS attacks are basically when you get a bunch of computers and they flood another",
+      "ko": "DDoS 공격은 기본적으로 수많은 컴퓨터들이 다른",
+      "start": 64.4,
+      "end": 68.84
+    },
+    {
+      "en": "computer with just like junk data like, hey, could you send me this web page?",
+      "ko": "컴퓨터에 '이 웹페이지 좀 보내줄래?'와 같은 쓰레기 데이터로 폭격하는 것입니다.",
+      "start": 68.84,
+      "end": 73.44
+    },
+    {
+      "en": "And that junk data eventually slows down the computer to the point where it doesn't work.",
+      "ko": "그리고 그 쓰레기 데이터가 결국 컴퓨터를 작동하지 않을 정도로 느리게 만듭니다.",
+      "start": 73.44,
+      "end": 78.44
+    },
+    {
+      "en": "They sort of flood the zone with internet traffic and then the target doesn't work anymore.",
+      "ko": "그들은 인터넷 트래픽으로 해당 영역을 범람시키고, 그러면 목표물이 더 이상 작동하지 않게 됩니다.",
+      "start": 78.44,
+      "end": 85.28
+    },
+    {
+      "en": "KimWolf's attacks were strange because they were coming from millions of devices, products",
+      "ko": "킴울프의 공격이 이상했던 이유는 수백만 대의 기기, 즉",
+      "start": 85.4,
+      "end": 90.96
+    },
+    {
+      "en": "connected to the internet like phones, cameras and TV boxes.",
+      "ko": "전화기, 카메라, TV 박스와 같이 인터넷에 연결된 제품들에서 나왔기 때문입니다.",
+      "start": 90.96,
+      "end": 96.64
+    },
+    {
+      "en": "In effect, KimWolf seemed to be turning those everyday devices into a massive cyber weapon.",
+      "ko": "사실상 킴울프는 이러한 일상 기기들을 거대한 사이버 무기로 바꾸는 것처럼 보였습니다.",
+      "start": 96.64,
+      "end": 103.16
+    },
+    {
+      "en": "The biggest one ever seen.",
+      "ko": "지금까지 본 것 중 가장 큰 규모였습니다.",
+      "start": 103.16,
+      "end": 106.96
+    },
+    {
+      "en": "The concern here was that they could knock out the internet.",
+      "ko": "여기서 우려된 것은 그들이 인터넷을 마비시킬 수 있다는 것이었습니다.",
+      "start": 106.96,
+      "end": 111.5
+    },
+    {
+      "en": "That was the concern.",
+      "ko": "그것이 우려 사항이었습니다.",
+      "start": 111.5,
+      "end": 112.56
+    },
+    {
+      "en": "The internet could get wiped out with this phenomenon.",
+      "ko": "인터넷이 이 현상으로 완전히 마비될 수 있었습니다.",
+      "start": 112.56,
+      "end": 117.0
+    },
+    {
+      "en": "The message was be afraid.",
+      "ko": "메시지는 두려워하라는 것이었습니다.",
+      "start": 117.0,
+      "end": 119.72
+    },
+    {
+      "en": "Be very afraid.",
+      "ko": "매우 두려워하라.",
+      "start": 119.72,
+      "end": 121.72
+    },
+    {
+      "en": "The wizards of the internet faced a lot of unknowns about who was behind KimWolf and",
+      "ko": "인터넷 마법사들은 킴울프 배후에 누가 있는지, 그리고",
+      "start": 124.4,
+      "end": 129.28
+    },
+    {
+      "en": "how they were able to infiltrate so many devices around the world.",
+      "ko": "어떻게 전 세계의 그렇게 많은 기기에 침투할 수 있었는지에 대해 많은 미지수에 직면했습니다.",
+      "start": 129.28,
+      "end": 133.48
+    },
+    {
+      "en": "But in order to actually take KimWolf down, the wizards needed help from an unlikely ally.",
+      "ko": "하지만 실제로 킴울프를 무너뜨리기 위해, 마법사들은 예상치 못한 협력자의 도움이 필요했습니다.",
+      "start": 133.48,
+      "end": 140.4
+    },
+    {
+      "en": "So my name is Ben.",
+      "ko": "제 이름은 벤입니다.",
+      "start": 140.4,
+      "end": 142.12
+    },
+    {
+      "en": "I'm currently studying computer science over in Upstate New York at Rochester Institute",
+      "ko": "저는 현재 뉴욕 북부의 로체스터 공과대학에서 컴퓨터 과학을",
+      "start": 142.12,
+      "end": 146.88
+    },
+    {
+      "en": "of Technology.",
+      "ko": "공부하고 있습니다.",
+      "start": 146.88,
+      "end": 148.88
+    },
+    {
+      "en": "Benjamin Brundage is a 22-year-old college senior.",
+      "ko": "벤자민 브런디지는 22세의 대학교 4학년생입니다.",
+      "start": 148.88,
+      "end": 152.76
+    },
+    {
+      "en": "Over the course of a few months, Ben would come to play a critical role in figuring out",
+      "ko": "몇 달에 걸쳐 벤은 알아내는 데 있어 중요한 역할을 하게 됩니다.",
+      "start": 152.76,
+      "end": 157.16
+    },
+    {
+      "en": "how to stop KimWolf.",
+      "ko": "킴울프를 막는 방법을.",
+      "start": 157.16,
+      "end": 159.08
+    },
+    {
+      "en": "And he did it all from his dorm room.",
+      "ko": "그리고 그는 모든 것을 기숙사 방에서 해냈습니다.",
+      "start": 159.08,
+      "end": 164.28
+    },
+    {
+      "en": "Welcome to the Journal, our show about money, business and power.",
+      "ko": "저널에 오신 것을 환영합니다. 돈, 비즈니스, 그리고 권력에 관한 우리의 쇼입니다.",
+      "start": 164.28,
+      "end": 168.52
+    },
+    {
+      "en": "I'm Jessica Mendoza.",
+      "ko": "저는 제시카 멘도자입니다.",
+      "start": 168.52,
+      "end": 170.04
+    },
+    {
+      "en": "It's Friday, May 1.",
+      "ko": "5월 1일 금요일입니다.",
+      "start": 170.04,
+      "end": 177.84
+    },
+    {
+      "en": "Coming up on the show, the college student who took on the world's biggest cyberweapon.",
+      "ko": "이번 방송에서는 세계 최대 사이버 무기에 맞선 대학생의 이야기를 다룹니다.",
+      "start": 177.84,
+      "end": 191.32
+    },
+    {
+      "en": "Amazon Health AI presents painful thoughts.",
+      "ko": "아마존 헬스 AI가 고통스러운 생각들을 소개합니다.",
+      "start": 191.32,
+      "end": 195.16
+    },
+    {
+      "en": "Why did I search the internet for answers to my cold sore problem?",
+      "ko": "왜 나는 구순포진 문제의 해답을 찾기 위해 인터넷을 검색했을까?",
+      "start": 196.16,
+      "end": 200.08
+    },
+    {
+      "en": "Now I'm stuck down a rabbit hole filled with images of alarmingly graphic sores in various",
+      "ko": "이제 나는 다양한 단계의 충격적으로 적나라한 염증 이미지들로 가득 찬 토끼굴에 빠져버렸습니다.",
+      "start": 200.08,
+      "end": 205.88
+    },
+    {
+      "en": "stages of ooze.",
+      "ko": "진물이 나오는 단계들로 말이죠.",
+      "start": 205.88,
+      "end": 207.88
+    },
+    {
+      "en": "I can clear my search history, but I can never unsee that.",
+      "ko": "검색 기록은 지울 수 있지만, 본 것은 절대 지울 수 없습니다.",
+      "start": 207.88,
+      "end": 214.04
+    },
+    {
+      "en": "Don't go down the rabbit hole.",
+      "ko": "토끼굴로 빠지지 마세요.",
+      "start": 214.04,
+      "end": 215.76
+    },
+    {
+      "en": "Amazon Health AI gets you the right care fast.",
+      "ko": "아마존 헬스 AI는 신속하게 올바른 치료를 받을 수 있게 해줍니다.",
+      "start": 215.76,
+      "end": 219.12
+    },
+    {
+      "en": "Health care just got less painful.",
+      "ko": "의료 서비스가 이제 덜 고통스러워졌습니다.",
+      "start": 219.12,
+      "end": 221.4
+    },
+    {
+      "en": "If you've been diagnosed with moderate to severe plexoriasis, this is what it sounds",
+      "ko": "중등도에서 중증의 건선 진단을 받으셨다면, 백만 마일 떨어진 곳에 있는 것이 이런 느낌입니다.",
+      "start": 221.4,
+      "end": 228.28
+    },
+    {
+      "en": "like to be a million miles away.",
+      "ko": "백만 마일 떨어진 곳에 있는 것처럼 말이죠.",
+      "start": 228.28,
+      "end": 232.44
+    },
+    {
+      "en": "Imagine being a million miles away.",
+      "ko": "백만 마일 떨어진 곳에 있다고 상상해 보세요.",
+      "start": 232.44,
+      "end": 238.28
+    },
+    {
+      "en": "Tramphia, Cusalcomad, taken by injection is a prescription medicine for adults with moderate",
+      "ko": "트렘피아, 쿠살코맙은 주사로 투여되는 전문의약품으로 중등도에서 중증 건선이 있는 성인 환자를 위한 약입니다.",
+      "start": 238.28,
+      "end": 243.2
+    },
+    {
+      "en": "to severe plexoriasis who may benefit from taking injections or pills or phototherapy.",
+      "ko": "주사, 알약 또는 광선치료로 효과를 볼 수 있는 분들에게 적합합니다.",
+      "start": 243.2,
+      "end": 248.64
+    },
+    {
+      "en": "With tramphia, clearer skin is possible.",
+      "ko": "트렘피아를 사용하면 더 깨끗한 피부가 가능합니다.",
+      "start": 248.64,
+      "end": 251.6
+    },
+    {
+      "en": "In clinical trials, at least 70% of patients saw at least 90% clearer skin at 16 weeks.",
+      "ko": "임상시험에서 최소 70%의 환자가 16주 후 최소 90% 깨끗한 피부를 보였습니다.",
+      "start": 251.6,
+      "end": 258.04
+    },
+    {
+      "en": "Results may vary.",
+      "ko": "결과는 개인에 따라 다를 수 있습니다.",
+      "start": 258.04,
+      "end": 259.04
+    },
+    {
+      "en": "Tramphia is also indicated for adults with active psoriatic arthritis.",
+      "ko": "트렘피아는 또한 활동성 건선성 관절염이 있는 성인에게도 사용됩니다.",
+      "start": 259.04,
+      "end": 262.88
+    },
+    {
+      "en": "Serious allergic reactions and increased risk of infections and liver problems may occur.",
+      "ko": "심각한 알레르기 반응과 감염 및 간 문제의 위험 증가가 발생할 수 있습니다.",
+      "start": 262.88,
+      "end": 267.28
+    },
+    {
+      "en": "Before treatment, your doctor should check you for infections and tuberculosis.",
+      "ko": "치료 전에 의사는 감염과 결핵 여부를 확인해야 합니다.",
+      "start": 267.28,
+      "end": 270.88
+    },
+    {
+      "en": "Tell your doctor if you have an infection, flu-like symptoms, or if you need a vaccine.",
+      "ko": "감염이 있거나 독감 유사 증상이 있거나 백신이 필요한 경우 의사에게 알리세요.",
+      "start": 270.88,
+      "end": 274.88
+    },
+    {
+      "en": "Tap this ad to learn more about tramphia, including important safety information.",
+      "ko": "이 광고를 탭하여 중요한 안전 정보를 포함한 트렘피아에 대해 자세히 알아보세요.",
+      "start": 274.88,
+      "end": 288.08
+    },
+    {
+      "en": "Years before Kimmulf was discovered, Benjamin Brundage lived the typical life of a high",
+      "ko": "킴멀프가 발견되기 몇 년 전, 벤자민 브런디지는 평범한 고등학생의 삶을 살았습니다.",
+      "start": 288.08,
+      "end": 292.52
+    },
+    {
+      "en": "school student.",
+      "ko": "그는 평범한 고등학생이었습니다.",
+      "start": 292.52,
+      "end": 294.32
+    },
+    {
+      "en": "How would your friends describe you?",
+      "ko": "친구들이 당신을 어떻게 묘사할까요?",
+      "start": 294.32,
+      "end": 296.4
+    },
+    {
+      "en": "I think it probably ranges, but I think maybe hard working, passionate.",
+      "ko": "아마도 다양하겠지만, 아마 열심히 일하고 열정적이라고 할 것 같아요.",
+      "start": 296.4,
+      "end": 302.6
+    },
+    {
+      "en": "Sometimes lazy too, I guess.",
+      "ko": "때로는 게으르기도 하죠, 아마도.",
+      "start": 302.72,
+      "end": 305.68
+    },
+    {
+      "en": "A mix of things for sure.",
+      "ko": "확실히 여러 가지가 섞여 있죠.",
+      "start": 305.68,
+      "end": 306.76
+    },
+    {
+      "en": "Who is it?",
+      "ko": "누구세요?",
+      "start": 306.76,
+      "end": 308.56
+    },
+    {
+      "en": "When we spoke, Ben was in a white t-shirt, which set off his bright red hair.",
+      "ko": "우리가 대화할 때 벤은 흰색 티셔츠를 입고 있었는데, 그의 밝은 빨간 머리가 돋보였습니다.",
+      "start": 308.56,
+      "end": 313.84
+    },
+    {
+      "en": "He grew up in Washington state.",
+      "ko": "그는 워싱턴 주에서 자랐습니다.",
+      "start": 313.84,
+      "end": 315.8
+    },
+    {
+      "en": "His parents work in tech, but as a kid, he never caught the bug for computers.",
+      "ko": "그의 부모님은 기술 분야에서 일하지만, 어렸을 때 그는 컴퓨터에 빠지지 않았습니다.",
+      "start": 315.8,
+      "end": 320.32
+    },
+    {
+      "en": "Instead, Ben preferred hiking and skiing rather than staring at screens.",
+      "ko": "대신 벤은 화면을 바라보는 것보다 하이킹과 스키를 더 좋아했습니다.",
+      "start": 320.32,
+      "end": 325.92
+    },
+    {
+      "en": "But that changed when Ben was 16 years old, in 2020.",
+      "ko": "하지만 2020년, 벤이 16살이었을 때 그것이 바뀌었습니다.",
+      "start": 325.92,
+      "end": 329.6
+    },
+    {
+      "en": "I was playing a lot of online video games for way too long, especially during COVID.",
+      "ko": "저는 특히 코로나 기간 동안 너무 오랫동안 온라인 비디오 게임을 많이 했어요.",
+      "start": 329.6,
+      "end": 336.6
+    },
+    {
+      "en": "And I started to find Minecraft super interesting.",
+      "ko": "그리고 마인크래프트가 정말 흥미롭다는 것을 알게 되었습니다.",
+      "start": 336.6,
+      "end": 341.8
+    },
+    {
+      "en": "Minecraft.",
+      "ko": "마인크래프트.",
+      "start": 341.8,
+      "end": 343.24
+    },
+    {
+      "en": "The open world game where players use pixelated blocks to build whatever they want, mine and",
+      "ko": "플레이어가 픽셀 블록을 사용하여 원하는 것을 짓고, 채굴하고 탐험하는 오픈 월드 게임입니다.",
+      "start": 343.24,
+      "end": 348.12
+    },
+    {
+      "en": "caves.",
+      "ko": "동굴.",
+      "start": 348.12,
+      "end": 349.12
+    },
+    {
+      "en": "And yes, fight exploding enemies called creepers.",
+      "ko": "그리고 물론, 크리퍼라고 불리는 폭발하는 적들과 싸운다.",
+      "start": 349.12,
+      "end": 356.12
+    },
+    {
+      "en": "But what Ben found most interesting was the code behind the game.",
+      "ko": "하지만 벤이 가장 흥미롭게 느낀 것은 게임 뒤에 있는 코드였다.",
+      "start": 356.12,
+      "end": 362.0
+    },
+    {
+      "en": "You can build stuff in Minecraft with this programming language and add on functionality",
+      "ko": "이 프로그래밍 언어로 마인크래프트에서 무언가를 만들고 기능을 추가할 수 있다",
+      "start": 362.0,
+      "end": 366.56
+    },
+    {
+      "en": "that you normally wouldn't get.",
+      "ko": "보통은 얻을 수 없는 것들 말이다.",
+      "start": 366.56,
+      "end": 368.48
+    },
+    {
+      "en": "And so to me, that was super cool and kind of drove, I think, a lot of that initial interest,",
+      "ko": "그래서 나에게는 그게 정말 멋졌고, 그 초기 관심의 많은 부분을 이끌었다고 생각한다.",
+      "start": 368.48,
+      "end": 373.72
+    },
+    {
+      "en": "where I'd stay up super late, watching Java tutorials, how do you build a Minecraft mod.",
+      "ko": "밤늦게까지 깨어서 자바 튜토리얼을 보고, 마인크래프트 모드를 어떻게 만드는지 배웠다.",
+      "start": 373.72,
+      "end": 382.72
+    },
+    {
+      "en": "Ben discovered godlike powers in Minecraft.",
+      "ko": "벤은 마인크래프트에서 신과 같은 능력을 발견했다.",
+      "start": 382.72,
+      "end": 385.8
+    },
+    {
+      "en": "And he was able to create a new code to create entirely new plants and creatures.",
+      "ko": "그리고 그는 완전히 새로운 식물과 생물을 만드는 새로운 코드를 작성할 수 있었다.",
+      "start": 385.8,
+      "end": 389.64
+    },
+    {
+      "en": "And so it was kind of like, I think to me, like largely like, wow, like, you know, there's",
+      "ko": "그래서 그것은 나에게 마치, 대체로 이런 느낌이었다, 와우, 있잖아",
+      "start": 389.64,
+      "end": 393.28
+    },
+    {
+      "en": "so much imagination that I can kind of just put it into this real world.",
+      "ko": "내가 이 실제 세계에 구현할 수 있는 상상력이 정말 많다는 것.",
+      "start": 393.28,
+      "end": 396.8
+    },
+    {
+      "en": "It's a really, I don't know how to describe the feeling, but really rewarding feeling",
+      "ko": "정말로, 그 느낌을 어떻게 표현해야 할지 모르겠지만, 정말 보람찬 느낌이다",
+      "start": 396.8,
+      "end": 402.72
+    },
+    {
+      "en": "where you can take your ideas and you can, you know, see them in fruition.",
+      "ko": "자신의 아이디어를 가지고 그것이 실현되는 것을 볼 수 있다는 것.",
+      "start": 402.72,
+      "end": 408.56
+    },
+    {
+      "en": "To me, that was super cool.",
+      "ko": "나에게 그것은 정말 멋진 일이었다.",
+      "start": 408.56,
+      "end": 411.88
+    },
+    {
+      "en": "Ben didn't just find creative ways to modify the game.",
+      "ko": "벤은 단지 게임을 수정하는 창의적인 방법을 찾은 것만이 아니었다.",
+      "start": 411.88,
+      "end": 415.68
+    },
+    {
+      "en": "He also found ways to cheat.",
+      "ko": "그는 또한 치트를 하는 방법도 찾아냈다.",
+      "start": 415.68,
+      "end": 421.6
+    },
+    {
+      "en": "There's like a degree of like, how do you get an advantage in these games, right?",
+      "ko": "이런 게임들에서 어떻게 우위를 점하느냐 하는 것이 있잖아, 그렇지?",
+      "start": 421.6,
+      "end": 425.36
+    },
+    {
+      "en": "I think when you're 16 years old, it's very appealing because suddenly you have an advantage",
+      "ko": "16살 때는 그게 매우 매력적이라고 생각한다. 왜냐하면 갑자기 우위를 갖게 되니까",
+      "start": 425.36,
+      "end": 431.88
+    },
+    {
+      "en": "over most other people.",
+      "ko": "대부분의 다른 사람들보다.",
+      "start": 431.88,
+      "end": 434.56
+    },
+    {
+      "en": "Ben made cheats that allowed him to see through walls and automatically aim at enemies.",
+      "ko": "벤은 벽을 투시하고 적을 자동으로 조준할 수 있는 치트를 만들었다.",
+      "start": 434.56,
+      "end": 439.84
+    },
+    {
+      "en": "His Minecraft account was actually banned from some servers.",
+      "ko": "그의 마인크래프트 계정은 실제로 일부 서버에서 차단당했다.",
+      "start": 439.84,
+      "end": 443.32
+    },
+    {
+      "en": "Ben started talking about cheats with other players on Discord, a messaging app popular",
+      "ko": "벤은 디스코드에서 다른 플레이어들과 치트에 대해 이야기하기 시작했다. 디스코드는 인기 있는 메시징 앱으로",
+      "start": 443.32,
+      "end": 447.68
+    },
+    {
+      "en": "with gamers.",
+      "ko": "게이머들 사이에서 널리 쓰인다.",
+      "start": 447.68,
+      "end": 449.12
+    },
+    {
+      "en": "And it's through those communities that Ben was introduced to another side of programming.",
+      "ko": "그리고 그러한 커뮤니티를 통해 벤은 프로그래밍의 또 다른 면을 접하게 되었다.",
+      "start": 449.12,
+      "end": 454.4
+    },
+    {
+      "en": "Ben was entering the world of hacking.",
+      "ko": "벤은 해킹의 세계로 들어가고 있었다.",
+      "start": 454.4,
+      "end": 459.48
+    },
+    {
+      "en": "On Discord, Ben met people who were openly talking about cybercrime.",
+      "ko": "디스코드에서 벤은 사이버 범죄에 대해 공개적으로 이야기하는 사람들을 만났다.",
+      "start": 459.48,
+      "end": 463.96
+    },
+    {
+      "en": "I started out with Minecraft, but, you know, maybe a few servers over, you're entering",
+      "ko": "나는 마인크래프트로 시작했지만, 있잖아, 몇 개의 서버를 넘어가면",
+      "start": 463.96,
+      "end": 470.28
+    },
+    {
+      "en": "reverse engineering, you're maybe finding a server related to malware.",
+      "ko": "리버스 엔지니어링에 들어서게 되고, 악성코드와 관련된 서버를 발견하게 될 수도 있다.",
+      "start": 470.28,
+      "end": 475.08
+    },
+    {
+      "en": "It's all like very interconnected and it's very easy to kind of be exposed to it because,",
+      "ko": "모든 것이 매우 상호 연결되어 있고, 그것에 노출되기가 매우 쉽다. 왜냐하면",
+      "start": 475.08,
+      "end": 479.84
+    },
+    {
+      "en": "you know, you meet friends with people, they're like, oh, join here, or they want to show",
+      "ko": "있잖아, 사람들과 친구가 되면, 그들이 여기 들어와, 또는 뭔가 보여주고 싶어하면서",
+      "start": 479.84,
+      "end": 484.64
+    },
+    {
+      "en": "you something and as a result, kind of spirals.",
+      "ko": "그 결과로 계속 나선형으로 빠져들게 된다.",
+      "start": 484.64,
+      "end": 489.64
+    },
+    {
+      "en": "You know, looking at all this stuff, you know, I'm imagining you as a 16-year-old, you're",
+      "ko": "있잖아, 이 모든 것을 보면서, 16살의 당신을 상상해보면, 당신은",
+      "start": 489.64,
+      "end": 493.28
+    },
+    {
+      "en": "clearly a curious guy.",
+      "ko": "분명히 호기심 많은 사람이었을 텐데.",
+      "start": 493.28,
+      "end": 496.2
+    },
+    {
+      "en": "Did you ever think of going along with the crowd and becoming a hacker too?",
+      "ko": "무리를 따라가서 당신도 해커가 되는 것을 생각해 본 적이 있나요?",
+      "start": 496.2,
+      "end": 502.52
+    },
+    {
+      "en": "I think it's one of those things where people don't really think about it.",
+      "ko": "그것은 사람들이 실제로 깊이 생각하지 않는 그런 것들 중 하나라고 생각한다.",
+      "start": 502.52,
+      "end": 506.32
+    },
+    {
+      "en": "Like, I definitely push boundaries I should not have in hindsight, but I think the issue",
+      "ko": "돌이켜보면 내가 밀어붙이지 말았어야 할 경계를 분명히 넘었지만, 문제는",
+      "start": 506.32,
+      "end": 511.0
+    },
+    {
+      "en": "is this normalization where if you spend all your time around these communities, things",
+      "ko": "이런 정상화라고 생각한다. 이런 커뮤니티에서 모든 시간을 보내면",
+      "start": 511.0,
+      "end": 517.0
+    },
+    {
+      "en": "stop becoming, the things that you would view as immoral or wrong start to become normalized.",
+      "ko": "당신이 부도덕하거나 잘못되었다고 여길 것들이 정상화되기 시작한다.",
+      "start": 517.0,
+      "end": 524.04
+    },
+    {
+      "en": "You know, spending a year or maybe in that community, it's like, oh, you know, who cares,",
+      "ko": "있잖아, 그 커뮤니티에서 1년이나 보내다 보면, 오, 뭐 누가 신경 쓰겠어,",
+      "start": 525.04,
+      "end": 529.64
+    },
+    {
+      "en": "right?",
+      "ko": "그렇지?",
+      "start": 529.64,
+      "end": 530.64
+    },
+    {
+      "en": "Like, it's just...",
+      "ko": "그러니까, 그냥...",
+      "start": 530.64,
+      "end": 531.64
+    },
+    {
+      "en": "It's just what people do.",
+      "ko": "사람들이 그냥 하는 일이잖아요.",
+      "start": 531.64,
+      "end": 532.64
+    },
+    {
+      "en": "Exactly, right?",
+      "ko": "정확히, 그렇죠?",
+      "start": 532.64,
+      "end": 534.44
+    },
+    {
+      "en": "Were you ever shocked by anything you saw that other people were doing on these servers?",
+      "ko": "이 서버들에서 다른 사람들이 하는 걸 보고 충격받은 적 있나요?",
+      "start": 534.44,
+      "end": 542.56
+    },
+    {
+      "en": "There was one thing that really stood out to me, I think, when I was like 16 years old,",
+      "ko": "제 기억에, 제가 16살쯤 됐을 때 정말 눈에 띄었던 일이 하나 있었어요.",
+      "start": 542.56,
+      "end": 545.56
+    },
+    {
+      "en": "but somebody had shared like this list of credentials for Spotify Premium where it was",
+      "ko": "누군가가 Spotify Premium 계정 정보 목록 같은 걸 공유했었는데",
+      "start": 545.56,
+      "end": 550.4
+    },
+    {
+      "en": "a bunch of people stole an account, so it was like 100 email and passwords.",
+      "ko": "여러 사람들이 훔친 계정이었어요. 그러니까 이메일과 비밀번호가 100개 정도 됐죠.",
+      "start": 550.4,
+      "end": 555.24
+    },
+    {
+      "en": "A Spotify spokesperson encourages users to use strong, unique passwords to help keep",
+      "ko": "Spotify 대변인은 사용자들에게 계정 보안을 위해",
+      "start": 555.24,
+      "end": 560.0
+    },
+    {
+      "en": "accounts secure.",
+      "ko": "강력하고 고유한 비밀번호를 사용할 것을 권장합니다.",
+      "start": 560.0,
+      "end": 561.84
+    },
+    {
+      "en": "By the way, this podcast is a co-production with Spotify, so please don't steal Spotify",
+      "ko": "참고로, 이 팟캐스트는 Spotify와 공동 제작한 거니까, 제발 Spotify",
+      "start": 561.84,
+      "end": 566.48
+    },
+    {
+      "en": "Premium.",
+      "ko": "Premium을 훔치지 마세요.",
+      "start": 566.48,
+      "end": 567.48
+    },
+    {
+      "en": "I remember seeing this and thinking to myself, oh my God, I mean, this is pretty egregious.",
+      "ko": "이걸 보고 혼잣말로 '맙소사, 이건 정말 심각한데'라고 생각했던 기억이 나요.",
+      "start": 567.48,
+      "end": 573.32
+    },
+    {
+      "en": "And so I think I had emailed like all 100 people or 60 people on that list, like notifying",
+      "ko": "그래서 제 생각엔 그 목록에 있는 100명이나 60명 전부에게 이메일을 보냈던 것 같아요.",
+      "start": 573.32,
+      "end": 578.64
+    },
+    {
+      "en": "them, hey, you know, your account was compromised, was shared.",
+      "ko": "'당신 계정이 해킹당했고 공유됐어요'라고 알려주면서요.",
+      "start": 578.64,
+      "end": 583.12
+    },
+    {
+      "en": "Ben saw that he was at a fork in the road.",
+      "ko": "벤은 자신이 갈림길에 서 있다는 걸 깨달았습니다.",
+      "start": 583.12,
+      "end": 585.6
+    },
+    {
+      "en": "He could stay on the right side of the law or he could follow in the footsteps of hackers.",
+      "ko": "그는 법의 테두리 안에 머물 수도 있었고, 해커들의 발자취를 따라갈 수도 있었죠.",
+      "start": 585.6,
+      "end": 591.48
+    },
+    {
+      "en": "This wasn't going to lead down any good roads, right?",
+      "ko": "이건 좋은 길로 이어지지 않을 게 분명했잖아요, 그렇죠?",
+      "start": 591.48,
+      "end": 593.92
+    },
+    {
+      "en": "Like the people that are committing these crimes, maybe they get arrested, maybe you",
+      "ko": "이런 범죄를 저지르는 사람들은, 어쩌면 체포당할 수도 있고, 어쩌면",
+      "start": 593.92,
+      "end": 597.2
+    },
+    {
+      "en": "see it, right?",
+      "ko": "보게 되잖아요, 그렇죠?",
+      "start": 597.2,
+      "end": 598.72
+    },
+    {
+      "en": "It's something where I was like, okay, something has to change here.",
+      "ko": "그래서 저는 '좋아, 여기서 뭔가 바꿔야 해'라고 생각했어요.",
+      "start": 598.72,
+      "end": 604.32
+    },
+    {
+      "en": "Instead of cybercrime, Ben turned to cybersecurity.",
+      "ko": "사이버 범죄 대신, 벤은 사이버 보안 쪽으로 방향을 틀었습니다.",
+      "start": 604.32,
+      "end": 607.92
+    },
+    {
+      "en": "An early opportunity to use his skills for good came in his senior year of high school.",
+      "ko": "그의 기술을 선한 일에 사용할 초기 기회가 고등학교 졸업반 때 찾아왔습니다.",
+      "start": 607.92,
+      "end": 613.4
+    },
+    {
+      "en": "The Dutch government was inviting hackers from all over the world to look for vulnerabilities",
+      "ko": "네덜란드 정부가 전 세계 해커들을 초대해 자국 웹사이트의",
+      "start": 613.4,
+      "end": 617.96
+    },
+    {
+      "en": "on its websites.",
+      "ko": "취약점을 찾아달라고 했어요.",
+      "start": 617.96,
+      "end": 619.96
+    },
+    {
+      "en": "And the reward for finding a bug was a t-shirt.",
+      "ko": "그리고 버그를 찾은 보상은 티셔츠였습니다.",
+      "start": 619.96,
+      "end": 623.8
+    },
+    {
+      "en": "Ben decided to give it a go, and he found not one, but two major bugs.",
+      "ko": "벤은 한번 해보기로 했고, 하나가 아니라 두 개의 주요 버그를 찾아냈어요.",
+      "start": 623.8,
+      "end": 628.84
+    },
+    {
+      "en": "And so like I had reached out over email.",
+      "ko": "그래서 이메일로 연락을 했죠.",
+      "start": 628.84,
+      "end": 631.56
+    },
+    {
+      "en": "I was like, hey, I found both of these vulnerabilities.",
+      "ko": "'안녕하세요, 이 취약점 두 개를 다 찾았어요'라고요.",
+      "start": 631.56,
+      "end": 634.4
+    },
+    {
+      "en": "And I think it was a couple of months before I even heard back, but they were like, oh,",
+      "ko": "그리고 답장을 받기까지 몇 달이 걸렸던 것 같은데, 그들이 '오,",
+      "start": 634.4,
+      "end": 638.88
+    },
+    {
+      "en": "you know, what size t-shirt do you want?",
+      "ko": "티셔츠 사이즈 뭐로 드릴까요?'라고 하더라고요.",
+      "start": 638.88,
+      "end": 640.44
+    },
+    {
+      "en": "Do you want?",
+      "ko": "원하세요?",
+      "start": 640.44,
+      "end": 641.44
+    },
+    {
+      "en": "What does it say?",
+      "ko": "뭐라고 써있는데요?",
+      "start": 641.44,
+      "end": 642.44
+    },
+    {
+      "en": "Oh, it's fully black and it has white text.",
+      "ko": "아, 완전히 검은색에 흰색 글자예요.",
+      "start": 642.44,
+      "end": 644.84
+    },
+    {
+      "en": "And then, you know, the text says, hack the Dutch government and all I got was this lousy",
+      "ko": "그리고 글자에는 '네덜란드 정부를 해킹했는데 받은 건 이 형편없는",
+      "start": 644.84,
+      "end": 648.32
+    },
+    {
+      "en": "t-shirt.",
+      "ko": "티셔츠뿐'이라고 써있어요.",
+      "start": 648.32,
+      "end": 650.2
+    },
+    {
+      "en": "It may have been a lousy t-shirt, but Ben says it was a dopamine rush.",
+      "ko": "형편없는 티셔츠였을지 몰라도, 벤은 그게 도파민 폭발이었다고 말합니다.",
+      "start": 650.2,
+      "end": 655.44
+    },
+    {
+      "en": "Over the next few years, he kept on learning.",
+      "ko": "그 후 몇 년 동안, 그는 계속 배워나갔습니다.",
+      "start": 655.44,
+      "end": 658.0
+    },
+    {
+      "en": "He moved to upstate New York to study computer science, and he learned all sorts of things,",
+      "ko": "그는 컴퓨터 과학을 공부하기 위해 뉴욕 북부로 이사했고, 온갖 것들을 배웠어요.",
+      "start": 658.0,
+      "end": 662.52
+    },
+    {
+      "en": "like how to automate tasks and build bots.",
+      "ko": "작업을 자동화하는 방법이나 봇을 만드는 것 같은 거요.",
+      "start": 662.52,
+      "end": 666.16
+    },
+    {
+      "en": "And while Ben didn't know it, that path was leading him straight to a massive cyber weapon.",
+      "ko": "그리고 벤은 몰랐지만, 그 길은 그를 거대한 사이버 무기로 곧장 이끌고 있었습니다.",
+      "start": 666.16,
+      "end": 673.36
+    },
+    {
+      "en": "Because Ben was about to encounter the obscure piece of internet tech that powered Kim Wolf.",
+      "ko": "왜냐하면 벤은 킴 울프를 작동시키는 잘 알려지지 않은 인터넷 기술을 곧 마주하게 될 것이기 때문이다.",
+      "start": 673.36,
+      "end": 679.04
+    },
+    {
+      "en": "They're called residential proxy networks.",
+      "ko": "그것은 주거용 프록시 네트워크라고 불린다.",
+      "start": 679.04,
+      "end": 683.16
+    },
+    {
+      "en": "Here's our colleague Bob again.",
+      "ko": "여기 우리 동료 밥이 다시 나왔다.",
+      "start": 683.16,
+      "end": 685.72
+    },
+    {
+      "en": "Residential proxy is really a way of just masquerading as somebody else.",
+      "ko": "주거용 프록시는 사실상 다른 사람으로 위장하는 방법이다.",
+      "start": 685.72,
+      "end": 689.68
+    },
+    {
+      "en": "Okay.",
+      "ko": "알겠습니다.",
+      "start": 689.68,
+      "end": 691.64
+    },
+    {
+      "en": "On the internet, we all have something that's like the equivalent of our phone number.",
+      "ko": "인터넷에서 우리 모두는 전화번호와 같은 것을 가지고 있다.",
+      "start": 691.64,
+      "end": 696.0
+    },
+    {
+      "en": "It's called an IP address.",
+      "ko": "그것을 IP 주소라고 한다.",
+      "start": 696.0,
+      "end": 698.64
+    },
+    {
+      "en": "And these IP addresses basically are good indicators of who's visiting your websites.",
+      "ko": "그리고 이러한 IP 주소는 기본적으로 누가 당신의 웹사이트를 방문하는지를 나타내는 좋은 지표이다.",
+      "start": 698.64,
+      "end": 704.72
+    },
+    {
+      "en": "What residential proxy does is it basically lets you Airbnb that IP address.",
+      "ko": "주거용 프록시가 하는 일은 기본적으로 그 IP 주소를 에어비앤비처럼 빌려주는 것이다.",
+      "start": 704.72,
+      "end": 711.92
+    },
+    {
+      "en": "Once your IP address is rented out, internet traffic is then routed through your network",
+      "ko": "일단 당신의 IP 주소가 임대되면, 인터넷 트래픽이 당신의 네트워크를 통해 전달된다",
+      "start": 711.92,
+      "end": 716.64
+    },
+    {
+      "en": "for a small fee.",
+      "ko": "소액의 수수료를 받고.",
+      "start": 716.64,
+      "end": 718.48
+    },
+    {
+      "en": "So you might actually get paid to allow somebody to go from your IP address to anywhere on",
+      "ko": "그래서 당신은 실제로 누군가가 당신의 IP 주소에서 인터넷 어디든지",
+      "start": 718.48,
+      "end": 725.48
+    },
+    {
+      "en": "the internet.",
+      "ko": "갈 수 있도록 허용하는 대가로 돈을 받을 수 있다.",
+      "start": 725.48,
+      "end": 728.92
+    },
+    {
+      "en": "Residential proxies, or res proxies as they're sometimes known, are really useful.",
+      "ko": "주거용 프록시, 또는 때때로 알려진 res 프록시는 정말 유용하다.",
+      "start": 728.92,
+      "end": 734.32
+    },
+    {
+      "en": "And not just for users who want to be anonymous online, but also for programmers who build",
+      "ko": "온라인에서 익명을 원하는 사용자뿐만 아니라 프로그래머들에게도 유용한데,",
+      "start": 734.32,
+      "end": 738.96
+    },
+    {
+      "en": "bots that, for example, scrape web data.",
+      "ko": "예를 들어 웹 데이터를 수집하는 봇을 만드는 프로그래머들에게 말이다.",
+      "start": 738.96,
+      "end": 742.4
+    },
+    {
+      "en": "But they also occupy a somewhat shady side of the internet.",
+      "ko": "하지만 그것들은 또한 인터넷의 다소 음지에 속한다.",
+      "start": 742.4,
+      "end": 746.56
+    },
+    {
+      "en": "For one, res proxies can be used to hide crimes.",
+      "ko": "우선, res 프록시는 범죄를 숨기는 데 사용될 수 있다.",
+      "start": 746.56,
+      "end": 750.52
+    },
+    {
+      "en": "Any kind of online criminal activity.",
+      "ko": "모든 종류의 온라인 범죄 활동에 말이다.",
+      "start": 750.52,
+      "end": 752.36
+    },
+    {
+      "en": "This could be like nation states hacking into corporations.",
+      "ko": "이것은 국가가 기업을 해킹하는 것과 같을 수 있다.",
+      "start": 752.36,
+      "end": 756.28
+    },
+    {
+      "en": "This could be ticket scalpers trying to buy a bunch of tickets, identity fraud.",
+      "ko": "암표상들이 티켓을 대량으로 구매하려고 하거나, 신분 사기일 수도 있다.",
+      "start": 756.28,
+      "end": 763.64
+    },
+    {
+      "en": "So it's basically any kind of crime you can think about that happens on the internet,",
+      "ko": "그러니까 기본적으로 인터넷에서 일어나는 생각할 수 있는 모든 종류의 범죄가",
+      "start": 763.64,
+      "end": 769.84
+    },
+    {
+      "en": "happens with residential proxy networks.",
+      "ko": "주거용 프록시 네트워크를 통해 일어난다.",
+      "start": 769.84,
+      "end": 772.52
+    },
+    {
+      "en": "The companies behind res proxies can also be shady, because they don't always source",
+      "ko": "res 프록시 뒤에 있는 회사들도 음지에 있을 수 있는데, 왜냐하면 그들이 항상",
+      "start": 772.52,
+      "end": 777.44
+    },
+    {
+      "en": "IP addresses ethically.",
+      "ko": "IP 주소를 윤리적으로 확보하지는 않기 때문이다.",
+      "start": 777.44,
+      "end": 780.24
+    },
+    {
+      "en": "Some res proxy companies get IPs by sneaking malicious software onto your devices.",
+      "ko": "일부 res 프록시 회사는 당신의 기기에 악성 소프트웨어를 몰래 설치하여 IP를 얻는다.",
+      "start": 780.24,
+      "end": 787.84
+    },
+    {
+      "en": "There's software you can download that will put you on a residential proxy network without",
+      "ko": "당신이 다운로드할 수 있는 소프트웨어가 있는데, 그것은 당신을",
+      "start": 787.84,
+      "end": 793.28
+    },
+    {
+      "en": "your knowledge or consent.",
+      "ko": "당신의 지식이나 동의 없이 주거용 프록시 네트워크에 포함시킨다.",
+      "start": 793.32,
+      "end": 795.24
+    },
+    {
+      "en": "There's a lot of, and there are devices you can buy that will also do that.",
+      "ko": "많이 있고, 또한 그렇게 하는 구매할 수 있는 기기들도 있다.",
+      "start": 795.24,
+      "end": 799.48
+    },
+    {
+      "en": "What do you mean?",
+      "ko": "무슨 말씀이신가요?",
+      "start": 799.48,
+      "end": 800.48
+    },
+    {
+      "en": "What kinds of apps or devices?",
+      "ko": "어떤 종류의 앱이나 기기인가요?",
+      "start": 800.48,
+      "end": 802.24
+    },
+    {
+      "en": "One place you need to be wary in is if you're downloading an app or buying a device that's",
+      "ko": "주의해야 할 한 가지는 앱을 다운로드하거나 기기를 구매할 때인데,",
+      "start": 802.24,
+      "end": 806.56
+    },
+    {
+      "en": "going to let you watch content for free that you're supposed to be paying for, there's",
+      "ko": "유료로 봐야 하는 콘텐츠를 무료로 볼 수 있게 해준다면,",
+      "start": 806.56,
+      "end": 811.96
+    },
+    {
+      "en": "a decent chance that's going to put you on a residential proxy network.",
+      "ko": "상당한 확률로 그것이 당신을 주거용 프록시 네트워크에 포함시킬 것이다.",
+      "start": 811.96,
+      "end": 815.0
+    },
+    {
+      "en": "Nothing is free.",
+      "ko": "공짜는 없다.",
+      "start": 815.0,
+      "end": 816.0
+    },
+    {
+      "en": "That's a very common way.",
+      "ko": "그것은 매우 흔한 방법이다.",
+      "start": 816.0,
+      "end": 817.0
+    },
+    {
+      "en": "It's nothing is truly free.",
+      "ko": "진정으로 무료인 것은 없다.",
+      "start": 817.0,
+      "end": 818.0
+    },
+    {
+      "en": "Someone's getting some out of you.",
+      "ko": "누군가는 당신에게서 무언가를 얻고 있는 것이다.",
+      "start": 818.0,
+      "end": 819.0
+    },
+    {
+      "en": "Yeah, yeah.",
+      "ko": "네, 맞습니다.",
+      "start": 819.0,
+      "end": 820.0
+    },
+    {
+      "en": "There's a reason why you're getting something that seems too good to be true.",
+      "ko": "너무 좋아서 믿기 어려운 것을 얻게 되는 데에는 이유가 있다.",
+      "start": 820.0,
+      "end": 826.4
+    },
+    {
+      "en": "Other devices, like internet connected appliances, can come with res proxy malware pre-installed.",
+      "ko": "인터넷 연결 가전제품과 같은 다른 기기들은 레지덴셜 프록시 악성코드가 사전 설치된 채로 출시될 수 있습니다.",
+      "start": 826.4,
+      "end": 832.88
+    },
+    {
+      "en": "It was like a crazy thing to start to realize that a lot of these IP addresses are in fact",
+      "ko": "이 IP 주소들 중 많은 수가 사실은",
+      "start": 832.88,
+      "end": 841.64
+    },
+    {
+      "en": "unethically obtained.",
+      "ko": "비윤리적으로 획득되었다는 것을 깨닫기 시작한 것은 미친 일 같았습니다.",
+      "start": 841.64,
+      "end": 843.76
+    },
+    {
+      "en": "Between classes, Ben Brundage used his free time to learn everything he could about residential",
+      "ko": "수업 사이 여가 시간에 벤 브런디지는 레지덴셜",
+      "start": 843.76,
+      "end": 848.92
+    },
+    {
+      "en": "proxies.",
+      "ko": "프록시에 대해 배울 수 있는 모든 것을 배우는 데 시간을 사용했습니다.",
+      "start": 848.92,
+      "end": 849.92
+    },
+    {
+      "en": "To me, it was just like, oh, I feel like there's something more here.",
+      "ko": "제게는 그냥, 아, 여기에 뭔가 더 있는 것 같다는 느낌이었습니다.",
+      "start": 849.92,
+      "end": 853.04
+    },
+    {
+      "en": "It was just, I feel like people should talk about it more.",
+      "ko": "그냥, 사람들이 이것에 대해 더 많이 이야기해야 할 것 같다는 생각이었습니다.",
+      "start": 853.04,
+      "end": 856.2
+    },
+    {
+      "en": "It seems interesting.",
+      "ko": "흥미로워 보였습니다.",
+      "start": 856.2,
+      "end": 857.2
+    },
+    {
+      "en": "There's a whole world here that people really touch on.",
+      "ko": "사람들이 거의 다루지 않는 완전한 세계가 여기에 있었습니다.",
+      "start": 857.2,
+      "end": 862.88
+    },
+    {
+      "en": "So from his dorm room, Ben started exploring that shady world.",
+      "ko": "그래서 벤은 기숙사 방에서 그 음침한 세계를 탐험하기 시작했습니다.",
+      "start": 862.88,
+      "end": 867.72
+    },
+    {
+      "en": "But what Ben didn't realize was that underneath that world, there lived a monster.",
+      "ko": "하지만 벤이 깨닫지 못한 것은 그 세계 밑에 괴물이 살고 있다는 것이었습니다.",
+      "start": 867.72,
+      "end": 874.92
+    },
+    {
+      "en": "That's after the break.",
+      "ko": "그것은 광고 후에 계속됩니다.",
+      "start": 874.92,
+      "end": 886.0
+    },
+    {
+      "en": "For adults with Crohn's disease or ulcerative colitis symptoms, every choice matters.",
+      "ko": "크론병이나 궤양성 대장염 증상이 있는 성인에게는 모든 선택이 중요합니다.",
+      "start": 886.0,
+      "end": 892.44
+    },
+    {
+      "en": "Tramphia offers self-injection or intravenous infusion from the start.",
+      "ko": "트램피아는 처음부터 자가 주사 또는 정맥 주입을 제공합니다.",
+      "start": 892.44,
+      "end": 898.12
+    },
+    {
+      "en": "Tramphia is administered as injections under the skin or infusions through a vein every",
+      "ko": "트램피아는 피부 아래 주사 또는 정맥 주입으로",
+      "start": 898.12,
+      "end": 902.24
+    },
+    {
+      "en": "four weeks, followed by injections under the skin every four or eight weeks.",
+      "ko": "4주마다 투여되며, 이후 4주 또는 8주마다 피부 아래 주사로 투여됩니다.",
+      "start": 902.24,
+      "end": 906.52
+    },
+    {
+      "en": "If your doctor decides that you can self-inject tramphia, proper training is required.",
+      "ko": "의사가 트램피아 자가 주사가 가능하다고 판단하면 적절한 교육이 필요합니다.",
+      "start": 906.52,
+      "end": 911.16
+    },
+    {
+      "en": "Tramphia is a prescription medicine used to treat adults with moderately to severely",
+      "ko": "트램피아는 중등도에서 중증의",
+      "start": 911.16,
+      "end": 915.2
+    },
+    {
+      "en": "active Crohn's disease and adults with moderately to severely active ulcerative colitis.",
+      "ko": "활동성 크론병 성인 환자와 중등도에서 중증의 활동성 궤양성 대장염 성인 환자를 치료하는 데 사용되는 처방약입니다.",
+      "start": 915.2,
+      "end": 920.16
+    },
+    {
+      "en": "Serious allergic reactions, increased risk of infections or lower ability to fight them",
+      "ko": "심각한 알레르기 반응, 감염 위험 증가 또는 감염에 대한 저항력 감소",
+      "start": 920.16,
+      "end": 924.56
+    },
+    {
+      "en": "and liver problems may occur.",
+      "ko": "그리고 간 문제가 발생할 수 있습니다.",
+      "start": 924.56,
+      "end": 926.48
+    },
+    {
+      "en": "Before treatment, get checked for infections and tuberculosis.",
+      "ko": "치료 전에 감염과 결핵 검사를 받으십시오.",
+      "start": 926.48,
+      "end": 929.68
+    },
+    {
+      "en": "Call your doctor if you have an infection, flu-like symptoms or need a vaccine.",
+      "ko": "감염, 독감 유사 증상이 있거나 백신이 필요한 경우 의사에게 연락하십시오.",
+      "start": 929.68,
+      "end": 934.36
+    },
+    {
+      "en": "Explore what's possible.",
+      "ko": "가능한 것을 탐색해 보십시오.",
+      "start": 934.36,
+      "end": 935.84
+    },
+    {
+      "en": "Ask your doctor about tramphia today.",
+      "ko": "오늘 의사에게 트램피아에 대해 문의하십시오.",
+      "start": 935.84,
+      "end": 938.2
+    },
+    {
+      "en": "Call 1-800-526-7736 to learn more or visit tramphieradio.com.",
+      "ko": "자세한 내용은 1-800-526-7736으로 전화하거나 tramphieradio.com을 방문하십시오.",
+      "start": 938.2,
+      "end": 951.88
+    },
+    {
+      "en": "After he got interested in residential proxies, Ben decided to analyze the IP addresses that",
+      "ko": "레지덴셜 프록시에 관심을 갖게 된 후, 벤은",
+      "start": 951.88,
+      "end": 956.92
+    },
+    {
+      "en": "made up their networks.",
+      "ko": "그들의 네트워크를 구성하는 IP 주소들을 분석하기로 결정했습니다.",
+      "start": 956.92,
+      "end": 958.8
+    },
+    {
+      "en": "He started keeping track of the suspicious IP addresses in a list, information he thought",
+      "ko": "그는 의심스러운 IP 주소들을 목록으로 추적하기 시작했는데, 그가 생각하기에",
+      "start": 958.8,
+      "end": 963.88
+    },
+    {
+      "en": "could be valuable.",
+      "ko": "가치 있을 수 있는 정보였습니다.",
+      "start": 963.88,
+      "end": 965.64
+    },
+    {
+      "en": "By August of last year, Ben had created his own one-man company called Synthiant.",
+      "ko": "작년 8월까지 벤은 신시언트라는 자신만의 1인 회사를 만들었습니다.",
+      "start": 965.64,
+      "end": 970.28
+    },
+    {
+      "en": "But as he cataloged IP addresses, Ben noticed something stranger still.",
+      "ko": "하지만 IP 주소를 목록화하면서 벤은 더욱 이상한 것을 발견했습니다.",
+      "start": 970.28,
+      "end": 975.96
+    },
+    {
+      "en": "The websites for a lot of the res proxy providers were eerily similar.",
+      "ko": "많은 레지덴셜 프록시 제공업체들의 웹사이트가 섬뜩할 정도로 유사했습니다.",
+      "start": 975.96,
+      "end": 981.0
+    },
+    {
+      "en": "I was like, okay, these are exactly the same, right?",
+      "ko": "저는 이렇게 생각했습니다, 좋아, 이것들은 정확히 똑같잖아, 그렇지?",
+      "start": 981.0,
+      "end": 983.0
+    },
+    {
+      "en": "They have a cookie cutter website where checkout flow is the same.",
+      "ko": "그들은 결제 프로세스가 동일한 판박이 웹사이트를 가지고 있었습니다.",
+      "start": 983.0,
+      "end": 987.08
+    },
+    {
+      "en": "The website user interface is the same.",
+      "ko": "웹사이트 사용자 인터페이스도 똑같았습니다.",
+      "start": 987.08,
+      "end": 989.72
+    },
+    {
+      "en": "The only thing that's different is the brand name and the color palette, maybe.",
+      "ko": "다른 것은 브랜드 이름과 색상 팔레트 정도뿐이었습니다.",
+      "start": 989.72,
+      "end": 996.12
+    },
+    {
+      "en": "As it turns out, behind those nearly identical websites was just one res proxy company called",
+      "ko": "알고 보니, 그 거의 동일한 웹사이트들 뒤에는",
+      "start": 996.12,
+      "end": 1002.52
+    },
+    {
+      "en": "IP Idea.",
+      "ko": "IP 아이디어라는 단 하나의 레지덴셜 프록시 회사가 있었습니다.",
+      "start": 1002.52,
+      "end": 1006.64
+    },
+    {
+      "en": "Ben couldn't find much about IP Idea.",
+      "ko": "벤은 IP 아이디어에 대해 많은 것을 찾을 수 없었습니다.",
+      "start": 1006.64,
+      "end": 1009.32
+    },
+    {
+      "en": "The company didn't list a chief executive or a founder on its website.",
+      "ko": "그 회사는 웹사이트에 최고경영자나 창업자를 명시하지 않았다.",
+      "start": 1009.32,
+      "end": 1013.72
+    },
+    {
+      "en": "It didn't post an address.",
+      "ko": "주소도 게시하지 않았다.",
+      "start": 1013.72,
+      "end": 1015.48
+    },
+    {
+      "en": "And actually, it appeared to operate under more than a dozen names.",
+      "ko": "그리고 실제로 12개가 넘는 이름으로 운영되는 것처럼 보였다.",
+      "start": 1015.48,
+      "end": 1019.08
+    },
+    {
+      "en": "But what especially piqued Ben's curiosity was that IP Idea didn't have much in terms",
+      "ko": "하지만 특히 벤의 호기심을 자극한 것은 IP Idea가 보안 측면에서",
+      "start": 1019.08,
+      "end": 1024.36
+    },
+    {
+      "en": "of security.",
+      "ko": "별다른 조치가 없다는 점이었다.",
+      "start": 1024.36,
+      "end": 1025.36
+    },
+    {
+      "en": "IP Idea had no regulations.",
+      "ko": "IP Idea에는 규제가 없었다.",
+      "start": 1025.36,
+      "end": 1028.36
+    },
+    {
+      "en": "And so it's just like, oh, that's really interesting, right?",
+      "ko": "그래서 '오, 이거 정말 흥미롭네'라는 생각이 들었다.",
+      "start": 1028.36,
+      "end": 1031.04
+    },
+    {
+      "en": "Like most of these proxy providers, they have stuff in place that are like guardrails to",
+      "ko": "대부분의 프록시 제공업체들은 사용자가 사기를 저지르는 것을",
+      "start": 1031.04,
+      "end": 1035.28
+    },
+    {
+      "en": "prevent their users from committing fraud, let's say, right?",
+      "ko": "방지하기 위한 가드레일 같은 장치를 마련해두고 있다.",
+      "start": 1035.28,
+      "end": 1039.0
+    },
+    {
+      "en": "And the fact that they didn't stood out.",
+      "ko": "그런데 그들은 그런 게 없다는 사실이 눈에 띄었다.",
+      "start": 1039.0,
+      "end": 1042.16
+    },
+    {
+      "en": "IP Idea didn't respond to requests for comment.",
+      "ko": "IP Idea는 논평 요청에 응답하지 않았다.",
+      "start": 1042.16,
+      "end": 1044.6
+    },
+    {
+      "en": "But a spokeswoman said earlier this year that the company always explicitly opposed illegal",
+      "ko": "하지만 대변인은 올해 초 회사는 항상 자사 네트워크상의 불법적이거나",
+      "start": 1044.6,
+      "end": 1049.52
+    },
+    {
+      "en": "or abusive conduct on its network.",
+      "ko": "악의적인 행위를 명시적으로 반대해왔다고 말했다.",
+      "start": 1049.52,
+      "end": 1055.12
+    },
+    {
+      "en": "Ben decided to focus his research on IP Idea.",
+      "ko": "벤은 IP Idea에 연구를 집중하기로 결정했다.",
+      "start": 1055.12,
+      "end": 1058.64
+    },
+    {
+      "en": "By the start of his senior year in college, he had mapped out a huge chunk of the company's",
+      "ko": "대학교 4학년이 시작될 무렵, 그는 회사의 IP 주소 네트워크 중",
+      "start": 1058.64,
+      "end": 1062.8
+    },
+    {
+      "en": "network of IP addresses.",
+      "ko": "상당 부분을 매핑해냈다.",
+      "start": 1062.8,
+      "end": 1065.04
+    },
+    {
+      "en": "Then, Ben showed off his work online.",
+      "ko": "그러고 나서 벤은 자신의 작업을 온라인에 공개했다.",
+      "start": 1065.04,
+      "end": 1068.12
+    },
+    {
+      "en": "He built an online tool that would let someone see if their IP address was on his list.",
+      "ko": "그는 누군가가 자신의 IP 주소가 그의 목록에 있는지 확인할 수 있는 온라인 도구를 만들었다.",
+      "start": 1068.12,
+      "end": 1072.84
+    },
+    {
+      "en": "And he shared it on Discord.",
+      "ko": "그리고 그것을 디스코드에 공유했다.",
+      "start": 1072.84,
+      "end": 1074.96
+    },
+    {
+      "en": "A week later, Ben got a message from a mysterious user.",
+      "ko": "일주일 후, 벤은 정체불명의 사용자로부터 메시지를 받았다.",
+      "start": 1074.96,
+      "end": 1081.16
+    },
+    {
+      "en": "The user told Ben that he hadn't caught everything.",
+      "ko": "그 사용자는 벤에게 모든 것을 잡아내지 못했다고 말했다.",
+      "start": 1081.16,
+      "end": 1083.76
+    },
+    {
+      "en": "They were like, OK, you're missing some IP addresses.",
+      "ko": "그들은 '좋아, 너는 일부 IP 주소를 놓쳤어'라고 했다.",
+      "start": 1083.76,
+      "end": 1087.6
+    },
+    {
+      "en": "And they sent some screenshots of essentially their residential proxies not being detected",
+      "ko": "그리고 그들은 기본적으로 자신들의 주거용 프록시가",
+      "start": 1087.6,
+      "end": 1093.92
+    },
+    {
+      "en": "by the service.",
+      "ko": "그 서비스에 탐지되지 않는 스크린샷을 보내왔다.",
+      "start": 1093.92,
+      "end": 1094.92
+    },
+    {
+      "en": "So they're like, oh, you got a couple of them, but you didn't get all of them, essentially.",
+      "ko": "그래서 그들은 '오, 너는 몇 개는 잡았지만, 본질적으로 전부는 아니야'라고 했다.",
+      "start": 1094.92,
+      "end": 1103.92
+    },
+    {
+      "en": "The mysterious user appeared to be a hacker, someone who was part of an operation that",
+      "ko": "그 정체불명의 사용자는 해커로 보였고, IP Idea의 장치를 악용해",
+      "start": 1103.92,
+      "end": 1108.16
+    },
+    {
+      "en": "exploited devices on IP Idea to build a network of bots.",
+      "ko": "봇 네트워크를 구축하는 작전의 일원인 것 같았다.",
+      "start": 1108.16,
+      "end": 1113.12
+    },
+    {
+      "en": "They were definitely gloating.",
+      "ko": "그들은 분명히 우쭐대고 있었다.",
+      "start": 1113.12,
+      "end": 1115.68
+    },
+    {
+      "en": "They also appeared to be selling access to their botnet.",
+      "ko": "그들은 또한 자신들의 봇넷에 대한 접근 권한을 판매하는 것처럼 보였다.",
+      "start": 1115.68,
+      "end": 1119.6
+    },
+    {
+      "en": "For a fee, other hackers could use the botnet for attacks.",
+      "ko": "수수료를 받고, 다른 해커들이 공격을 위해 그 봇넷을 사용할 수 있게 하는 것이었다.",
+      "start": 1119.6,
+      "end": 1124.68
+    },
+    {
+      "en": "Ben said he could tell this person was young.",
+      "ko": "벤은 이 사람이 젊다는 것을 알 수 있었다고 말했다.",
+      "start": 1125.44,
+      "end": 1129.44
+    },
+    {
+      "en": "I think there's a certain way of typing that people my age tend to type in.",
+      "ko": "내 또래 사람들이 타이핑하는 특정한 방식이 있다고 생각한다.",
+      "start": 1129.44,
+      "end": 1134.88
+    },
+    {
+      "en": "Let's say on Discord, any social media where they know you use emojis more often or GIFs",
+      "ko": "예를 들어 디스코드나 다른 소셜 미디어에서 이모지나 GIF를 더 자주 사용하거나",
+      "start": 1134.88,
+      "end": 1140.6
+    },
+    {
+      "en": "or even the language they use.",
+      "ko": "심지어 그들이 사용하는 언어까지.",
+      "start": 1140.6,
+      "end": 1142.4
+    },
+    {
+      "en": "So I think that was kind of the indicator that it's not going to be somebody that's",
+      "ko": "그래서 그것이 40대나 30대의",
+      "start": 1142.4,
+      "end": 1146.44
+    },
+    {
+      "en": "in their 40s or 30s.",
+      "ko": "누군가는 아닐 거라는 지표였다고 생각한다.",
+      "start": 1146.44,
+      "end": 1148.04
+    },
+    {
+      "en": "I mean, it's somebody probably around my age or younger.",
+      "ko": "내 말은, 아마도 내 또래나 더 어린 사람일 거라는 것이다.",
+      "start": 1148.04,
+      "end": 1151.2
+    },
+    {
+      "en": "Ben kept talking to the hacker.",
+      "ko": "벤은 그 해커와 계속 대화했다.",
+      "start": 1151.24,
+      "end": 1153.36
+    },
+    {
+      "en": "He wanted to learn more, but he didn't want to come off too strongly, so he made jokes",
+      "ko": "그는 더 많이 알고 싶었지만, 너무 강하게 나가고 싶지 않았기 때문에 농담을 했고",
+      "start": 1153.36,
+      "end": 1158.2
+    },
+    {
+      "en": "to keep things chill.",
+      "ko": "분위기를 편안하게 유지했다.",
+      "start": 1158.2,
+      "end": 1159.2
+    },
+    {
+      "en": "And so I was like, OK, I'll just be on serious here and see where it goes.",
+      "ko": "그래서 나는 '좋아, 여기서 진지하게 임해보고 어떻게 되는지 보자'라고 생각했어요.",
+      "start": 1159.2,
+      "end": 1163.2
+    },
+    {
+      "en": "And so I sent this cat GIF, which was this cat essentially with a tuxedo on, looking",
+      "ko": "그래서 나는 고양이 GIF를 보냈는데, 턱시도를 입고 있는 고양이가",
+      "start": 1163.2,
+      "end": 1169.6
+    },
+    {
+      "en": "super professional.",
+      "ko": "엄청 프로페셔널해 보이는 거였어요.",
+      "start": 1169.6,
+      "end": 1170.6
+    },
+    {
+      "en": "And that was my way of saying that I'm not really that professional, right?",
+      "ko": "그건 내가 사실 그렇게 프로페셔널하지 않다는 걸 말하는 방식이었죠, 그렇죠?",
+      "start": 1170.6,
+      "end": 1176.2
+    },
+    {
+      "en": "The cat meme worked.",
+      "ko": "고양이 밈이 효과가 있었어요.",
+      "start": 1176.2,
+      "end": 1178.2
+    },
+    {
+      "en": "It lightened the mood, and the hacker started sharing more details with Ben.",
+      "ko": "분위기가 가벼워졌고, 해커는 벤에게 더 많은 세부 사항을 공유하기 시작했어요.",
+      "start": 1178.2,
+      "end": 1182.2
+    },
+    {
+      "en": "He was able to obtain all these compromised devices using an unknown method, right?",
+      "ko": "그는 알 수 없는 방법을 사용해서 이 모든 감염된 장치들을 확보할 수 있었던 거죠?",
+      "start": 1182.2,
+      "end": 1188.2
+    },
+    {
+      "en": "And like these things stood out to me at the time because I was like, huh, I wonder what's",
+      "ko": "그리고 이런 것들이 당시 내 눈에 띄었던 이유는 '음, 여기서 실제로",
+      "start": 1188.2,
+      "end": 1192.2
+    },
+    {
+      "en": "actually going on here.",
+      "ko": "무슨 일이 벌어지고 있는 걸까'라는 생각이 들었기 때문이에요.",
+      "start": 1192.2,
+      "end": 1194.2
+    },
+    {
+      "en": "The hacker also told Ben that the operation was huge.",
+      "ko": "해커는 또한 벤에게 이 작전이 엄청나게 크다고 말했어요.",
+      "start": 1194.2,
+      "end": 1198.2
+    },
+    {
+      "en": "He told me that they were spending like 30,000 a month on infrastructure like, you know,",
+      "ko": "그는 인프라에 매달 3만 달러 정도를 쓰고 있다고 말했는데,",
+      "start": 1198.2,
+      "end": 1205.2
+    },
+    {
+      "en": "that was an insane amount of money.",
+      "ko": "그건 미친 듯이 큰 금액이었어요.",
+      "start": 1205.2,
+      "end": 1207.2
+    },
+    {
+      "en": "He also told me he's like, this isn't some rinky-dink operation, right?",
+      "ko": "그는 또 이건 어설픈 작전이 아니라고 말했어요, 그렇죠?",
+      "start": 1207.2,
+      "end": 1213.2
+    },
+    {
+      "en": "And there was another comment which was like, don't investigate us essentially, right?",
+      "ko": "그리고 또 다른 코멘트가 있었는데, 기본적으로 우리를 조사하지 말라는 거였어요, 그렇죠?",
+      "start": 1213.2,
+      "end": 1217.2
+    },
+    {
+      "en": "And I think all three of those comments were like, OK, that's kind of suspicious.",
+      "ko": "그리고 이 세 가지 코멘트 모두 '좋아, 이건 좀 수상한데'라는 느낌이었어요.",
+      "start": 1217.2,
+      "end": 1221.2
+    },
+    {
+      "en": "Something way bigger is going on here.",
+      "ko": "여기서 훨씬 더 큰 무언가가 진행되고 있는 거예요.",
+      "start": 1221.2,
+      "end": 1224.2
+    },
+    {
+      "en": "The something way bigger was Kim Wolf.",
+      "ko": "그 훨씬 더 큰 무언가는 킴 울프였어요.",
+      "start": 1224.2,
+      "end": 1227.2
+    },
+    {
+      "en": "Ben had stumbled onto a dangerous botnet that's been used to help people.",
+      "ko": "벤은 사람들을 돕는 데 사용되어 온 위험한 봇넷을 우연히 발견했어요.",
+      "start": 1229.2,
+      "end": 1234.2
+    },
+    {
+      "en": "He had a dangerous botnet that had been launching massive DDoS attacks designed to knock websites",
+      "ko": "그는 웹사이트를 다운시키기 위해 고안된 대규모 DDoS 공격을 감행해온 위험한 봇넷을 가지고 있었어요",
+      "start": 1234.2,
+      "end": 1239.2
+    },
+    {
+      "en": "offline with floods of junk data.",
+      "ko": "대량의 쓰레기 데이터로 오프라인으로 만드는 거죠.",
+      "start": 1239.2,
+      "end": 1242.2
+    },
+    {
+      "en": "One attack was so large that it was as if everyone in Germany, Spain, and the United Kingdom",
+      "ko": "한 공격은 너무 커서 마치 독일, 스페인, 영국의 모든 사람들이",
+      "start": 1242.2,
+      "end": 1248.2
+    },
+    {
+      "en": "had gone to the same website at the exact same second.",
+      "ko": "정확히 같은 순간에 같은 웹사이트에 접속한 것과 같았어요.",
+      "start": 1248.2,
+      "end": 1252.2
+    },
+    {
+      "en": "Cybersecurity experts had been studying this botnet for months.",
+      "ko": "사이버 보안 전문가들은 몇 달 동안 이 봇넷을 연구해왔어요.",
+      "start": 1252.2,
+      "end": 1256.2
+    },
+    {
+      "en": "One of those experts was an engineer at a networking company called Lumen.",
+      "ko": "그 전문가들 중 한 명은 루멘이라는 네트워킹 회사의 엔지니어였어요.",
+      "start": 1256.2,
+      "end": 1262.2
+    },
+    {
+      "en": "So not to be confused with the company from the show Severance, right?",
+      "ko": "그러니까 드라마 '세버런스'에 나오는 회사와 혼동하지 마세요, 알죠?",
+      "start": 1262.2,
+      "end": 1266.2
+    },
+    {
+      "en": "Not to be confused with that, yes.",
+      "ko": "그것과 혼동하지 말아야 해요, 네.",
+      "start": 1266.2,
+      "end": 1268.2
+    },
+    {
+      "en": "Although it did increase our popularity.",
+      "ko": "비록 그게 우리의 인지도를 높이긴 했지만요.",
+      "start": 1268.2,
+      "end": 1271.2
+    },
+    {
+      "en": "At Lumen, Chris Formosa had been researching the threat that residential proxy networks",
+      "ko": "루멘에서 크리스 포르모사는 주거용 프록시 네트워크가",
+      "start": 1271.2,
+      "end": 1276.2
+    },
+    {
+      "en": "could pose to internet infrastructure.",
+      "ko": "인터넷 인프라에 가할 수 있는 위협을 연구하고 있었어요.",
+      "start": 1276.2,
+      "end": 1279.2
+    },
+    {
+      "en": "And a lot of his work focused on one res proxy company in particular, IP Idea.",
+      "ko": "그리고 그의 작업 중 상당 부분이 특히 한 주거용 프록시 회사인 IP 아이디어에 집중되어 있었어요.",
+      "start": 1279.2,
+      "end": 1284.2
+    },
+    {
+      "en": "That's where the botnet attacks seem to be coming from.",
+      "ko": "봇넷 공격이 바로 거기서 나오는 것 같았어요.",
+      "start": 1284.2,
+      "end": 1288.2
+    },
+    {
+      "en": "The main thing we're interested in, how do we deal with this giant botnet?",
+      "ko": "우리가 관심 있는 주된 것은, 이 거대한 봇넷을 어떻게 다루느냐는 거예요.",
+      "start": 1288.2,
+      "end": 1292.2
+    },
+    {
+      "en": "We were seeing it was growing at kind of an unchecked pace.",
+      "ko": "우리는 그것이 통제되지 않는 속도로 성장하고 있는 것을 보고 있었어요.",
+      "start": 1292.2,
+      "end": 1295.2
+    },
+    {
+      "en": "And a botnet of that scale can do a lot of extreme damage.",
+      "ko": "그리고 그 규모의 봇넷은 엄청난 피해를 줄 수 있어요.",
+      "start": 1295.2,
+      "end": 1298.2
+    },
+    {
+      "en": "So one of the challenges we were facing is we didn't know how they were gathering these victims.",
+      "ko": "그래서 우리가 직면한 과제 중 하나는 그들이 어떻게 이 피해자들을 모으고 있는지 몰랐다는 거예요.",
+      "start": 1298.2,
+      "end": 1304.2
+    },
+    {
+      "en": "But something didn't add up.",
+      "ko": "하지만 뭔가 앞뒤가 맞지 않았어요.",
+      "start": 1308.2,
+      "end": 1310.2
+    },
+    {
+      "en": "While residential proxies enable plenty of crimes, companies like IP Idea generally discouraged DDoS attacks,",
+      "ko": "주거용 프록시가 많은 범죄를 가능하게 하는 반면, IP 아이디어 같은 회사들은 일반적으로 DDoS 공격을 권장하지 않았어요,",
+      "start": 1310.2,
+      "end": 1317.2
+    },
+    {
+      "en": "like the one Kim Wolf was engaging in.",
+      "ko": "킴 울프가 하고 있던 것처럼요.",
+      "start": 1317.2,
+      "end": 1320.2
+    },
+    {
+      "en": "That's because when devices participate in DDoS attacks, their IP addresses generally get blacklisted",
+      "ko": "왜냐하면 장치들이 DDoS 공격에 참여하면, 그들의 IP 주소는 일반적으로 블랙리스트에 올라가",
+      "start": 1320.2,
+      "end": 1326.2
+    },
+    {
+      "en": "by websites across the internet, making them useless.",
+      "ko": "인터넷 전체의 웹사이트들에 의해 쓸모없게 되기 때문이에요.",
+      "start": 1326.2,
+      "end": 1329.2
+    },
+    {
+      "en": "That's bad business if you're trying to rent out IP addresses.",
+      "ko": "IP 주소를 임대하려는 사업을 한다면 그건 나쁜 장사입니다.",
+      "start": 1329.2,
+      "end": 1333.2
+    },
+    {
+      "en": "Kim Wolf seemed to be using IP Idea's network, but it wasn't clear how.",
+      "ko": "Kim Wolf는 IP Idea의 네트워크를 사용하는 것처럼 보였지만, 어떻게 하는지는 명확하지 않았습니다.",
+      "start": 1333.2,
+      "end": 1339.2
+    },
+    {
+      "en": "The worry is that these networks have millions and millions of IPs,",
+      "ko": "우려되는 점은 이러한 네트워크에 수백만 개의 IP가 있다는 것입니다.",
+      "start": 1339.2,
+      "end": 1344.2
+    },
+    {
+      "en": "and they don't often have security teams or kind of anybody checking what activity is happening.",
+      "ko": "그리고 그들은 보안 팀이나 어떤 활동이 일어나고 있는지 확인하는 사람이 거의 없습니다.",
+      "start": 1344.2,
+      "end": 1350.2
+    },
+    {
+      "en": "So if somebody finds a way to harness these millions of devices,",
+      "ko": "따라서 누군가 이 수백만 개의 장치를 활용하는 방법을 찾는다면,",
+      "start": 1350.2,
+      "end": 1354.2
+    },
+    {
+      "en": "they can use them to do really malicious activity like a large-scale DDoS attacks.",
+      "ko": "대규모 DDoS 공격과 같은 정말 악의적인 활동에 사용할 수 있습니다.",
+      "start": 1354.2,
+      "end": 1359.2
+    },
+    {
+      "en": "To find out what was going on, Chris needed to learn more about IP Idea.",
+      "ko": "무슨 일이 일어나고 있는지 알아내기 위해 Chris는 IP Idea에 대해 더 알아야 했습니다.",
+      "start": 1359.2,
+      "end": 1364.2
+    },
+    {
+      "en": "The problem was that only a handful of people on the planet knew much about the company.",
+      "ko": "문제는 지구상에서 이 회사에 대해 잘 아는 사람이 소수에 불과했다는 것입니다.",
+      "start": 1364.2,
+      "end": 1368.2
+    },
+    {
+      "en": "But then, a fellow cybersecurity researcher told Chris there was someone he should meet.",
+      "ko": "하지만 그때 동료 사이버 보안 연구원이 Chris에게 만나야 할 사람이 있다고 말했습니다.",
+      "start": 1368.2,
+      "end": 1374.2
+    },
+    {
+      "en": "You connected with Ben Brundage. What was your first impression of him?",
+      "ko": "Ben Brundage와 연결되셨죠. 그에 대한 첫인상은 어땠나요?",
+      "start": 1377.2,
+      "end": 1382.2
+    },
+    {
+      "en": "Yeah, I can't say enough about Ben.",
+      "ko": "네, Ben에 대해서는 아무리 칭찬해도 부족합니다.",
+      "start": 1382.2,
+      "end": 1384.2
+    },
+    {
+      "en": "Ben kind of figured almost all of it out just by himself, which is nothing short of amazing.",
+      "ko": "Ben은 거의 모든 것을 혼자서 알아냈는데, 이는 정말 놀라운 일입니다.",
+      "start": 1384.2,
+      "end": 1390.2
+    },
+    {
+      "en": "The first day we chatted for probably like eight hours straight, just passing notes back and forth.",
+      "ko": "첫날 우리는 아마 8시간 정도 쉬지 않고 이야기하면서 서로 정보를 주고받았습니다.",
+      "start": 1390.2,
+      "end": 1394.2
+    },
+    {
+      "en": "Eight hours?",
+      "ko": "8시간이요?",
+      "start": 1394.2,
+      "end": 1395.2
+    },
+    {
+      "en": "Yeah, it was just back and forth just throwing notes to each other, and we couldn't stop. It was just so much fun.",
+      "ko": "네, 그냥 계속 서로에게 정보를 주고받았는데 멈출 수가 없었어요. 정말 재미있었습니다.",
+      "start": 1395.2,
+      "end": 1401.2
+    },
+    {
+      "en": "For the next month, Ben and Chris worked together, sharing notes about IP Idea.",
+      "ko": "다음 달 동안 Ben과 Chris는 함께 일하며 IP Idea에 관한 정보를 공유했습니다.",
+      "start": 1403.2,
+      "end": 1408.2
+    },
+    {
+      "en": "Some of what Ben shared came from the conversations he'd had on Discord with that mysterious hacker.",
+      "ko": "Ben이 공유한 것 중 일부는 그 신비로운 해커와 Discord에서 나눈 대화에서 나온 것이었습니다.",
+      "start": 1408.2,
+      "end": 1413.2
+    },
+    {
+      "en": "And after analyzing the IP addresses Ben had catalogued,",
+      "ko": "그리고 Ben이 목록화한 IP 주소를 분석한 후,",
+      "start": 1413.2,
+      "end": 1417.2
+    },
+    {
+      "en": "Chris realized that the hacker was likely connected to Kim Wolf.",
+      "ko": "Chris는 그 해커가 Kim Wolf와 연결되어 있을 가능성이 높다는 것을 깨달았습니다.",
+      "start": 1417.2,
+      "end": 1421.2
+    },
+    {
+      "en": "Soon after they met, Chris introduced Ben to a group that was working on the Kim Wolf mystery, a group called Big Pipes.",
+      "ko": "그들이 만난 직후, Chris는 Ben을 Kim Wolf 미스터리를 연구하는 그룹인 Big Pipes에 소개했습니다.",
+      "start": 1422.2,
+      "end": 1429.2
+    },
+    {
+      "en": "Big Pipes is an incredible group of people who really just want to make the world a lot better.",
+      "ko": "Big Pipes는 정말로 세상을 훨씬 더 좋게 만들고 싶어 하는 놀라운 사람들의 그룹입니다.",
+      "start": 1430.2,
+      "end": 1435.2
+    },
+    {
+      "en": "Big Pipes is a cybersecurity working group made up of internet wizards from major internet companies.",
+      "ko": "Big Pipes는 주요 인터넷 회사의 인터넷 전문가들로 구성된 사이버 보안 작업 그룹입니다.",
+      "start": 1436.2,
+      "end": 1442.2
+    },
+    {
+      "en": "Soon, Ben was joining Big Pipes' weekly conference call, sharing what he knew.",
+      "ko": "곧 Ben은 Big Pipes의 주간 회의 통화에 참여하여 자신이 알고 있는 것을 공유했습니다.",
+      "start": 1442.2,
+      "end": 1447.2
+    },
+    {
+      "en": "You know, to me it was like this crazy feeling because, you know, I'm just some college kid that like had found this by accident.",
+      "ko": "저에게는 정말 이상한 느낌이었습니다. 왜냐하면 저는 그냥 우연히 이걸 발견한 대학생일 뿐이었거든요.",
+      "start": 1448.2,
+      "end": 1454.2
+    },
+    {
+      "en": "But then it's like, oh, you know, it's actually contributing to something bigger was like this really rewarding feeling.",
+      "ko": "하지만 실제로 더 큰 일에 기여하고 있다는 것은 정말 보람 있는 느낌이었습니다.",
+      "start": 1454.2,
+      "end": 1459.2
+    },
+    {
+      "en": "It wasn't long after Ben started working with Big Pipes that the group would run into a breakthrough moment",
+      "ko": "Ben이 Big Pipes와 함께 일하기 시작한 지 얼마 되지 않아 그룹은 돌파구를 맞이하게 됩니다.",
+      "start": 1463.2,
+      "end": 1468.2
+    },
+    {
+      "en": "when one of their own was hit by a Kim Wolf attack. Here's our colleague Bob again.",
+      "ko": "그들 중 한 명이 Kim Wolf 공격을 받았을 때 말이죠. 다시 동료 Bob의 이야기입니다.",
+      "start": 1468.2,
+      "end": 1473.2
+    },
+    {
+      "en": "One of the companies in Big Pipes was looking at the traffic that was hitting their network",
+      "ko": "Big Pipes의 한 회사가 자신들의 네트워크를 공격하는 트래픽을 살펴보고 있었는데",
+      "start": 1473.2,
+      "end": 1478.2
+    },
+    {
+      "en": "and they realized that one of their own employees, like the IP address of one of their own employees was was launching the attack.",
+      "ko": "자신들의 직원 중 한 명의 IP 주소가 공격을 시작하고 있다는 것을 깨달았습니다.",
+      "start": 1478.2,
+      "end": 1486.2
+    },
+    {
+      "en": "So they reached out to that employee and they said, could you do some technical stuff on the network and see what is going on?",
+      "ko": "그래서 그들은 그 직원에게 연락하여 네트워크에서 기술적인 작업을 해서 무슨 일이 일어나고 있는지 확인해 달라고 요청했습니다.",
+      "start": 1486.2,
+      "end": 1492.2
+    },
+    {
+      "en": "That employee looked through their home network trying to find the culprit.",
+      "ko": "그 직원은 범인을 찾기 위해 자신의 홈 네트워크를 살펴보았습니다.",
+      "start": 1493.2,
+      "end": 1496.2
+    },
+    {
+      "en": "And what they found was surprising. One of the devices firing off junk data was a $50 digital picture frame,",
+      "ko": "그리고 그들이 발견한 것은 놀라웠습니다. 쓰레기 데이터를 전송하는 장치 중 하나는 50달러짜리 디지털 액자였습니다.",
+      "start": 1497.2,
+      "end": 1505.2
+    },
+    {
+      "en": "the kind you can update with photos from your phone. I actually got my grandma one of those.",
+      "ko": "휴대폰에서 사진으로 업데이트할 수 있는 그런 종류요. 저도 실제로 할머니께 그런 걸 선물한 적이 있어요.",
+      "start": 1505.2,
+      "end": 1510.2
+    },
+    {
+      "en": "And so that gave them something to look at, right? So they look at this device and they start trying to figure out why it's doing it.",
+      "ko": "그래서 그것이 그들에게 조사할 단서를 준 거죠? 그래서 그들은 이 장치를 보고 왜 이런 일을 하는지 알아내려고 시도했습니다.",
+      "start": 1513.2,
+      "end": 1519.2
+    },
+    {
+      "en": "And they realized that something in this device was also allowing it to be part of Kim Wolf.",
+      "ko": "그리고 그들은 이 장치의 무언가가 Kim Wolf의 일부가 되도록 허용하고 있다는 것을 깨달았습니다.",
+      "start": 1519.2,
+      "end": 1526.2
+    },
+    {
+      "en": "Then it sort of pointed to like, are these devices somehow being hacked?",
+      "ko": "그러자 이런 의문이 생겼습니다. 이 장치들이 어떻게든 해킹당하고 있는 걸까?",
+      "start": 1529.2,
+      "end": 1533.2
+    },
+    {
+      "en": "That was like the question to get onto the Kim Wolf network.",
+      "ko": "그것이 Kim Wolf 네트워크에 접속하는 방법에 대한 질문이었습니다.",
+      "start": 1535.2,
+      "end": 1540.2
+    },
+    {
+      "en": "How Ben figured that out is next.",
+      "ko": "Ben이 그것을 어떻게 알아냈는지는 다음에 나옵니다.",
+      "start": 1543.2,
+      "end": 1545.2
+    },
+    {
+      "en": "This episode is brought to you by Indeed. The right hire can make or break your company,",
+      "ko": "이 에피소드는 Indeed가 제공합니다. 올바른 채용은 회사의 성패를 좌우할 수 있습니다.",
+      "start": 1550.2,
+      "end": 1559.2
+    },
+    {
+      "en": "especially if you're a small business and relying on luck to find that person isn't really the best strategy.",
+      "ko": "특히 소규모 사업체라면 운에 의존해서 그런 사람을 찾는 것은 최선의 전략이 아닙니다.",
+      "start": 1559.2,
+      "end": 1564.2
+    },
+    {
+      "en": "But you know what is using Indeed's sponsor jobs. You can use it to boost your job post to make sure it reaches more people with the right talents,",
+      "ko": "하지만 Indeed의 스폰서 채용 공고를 이용하는 것이 어떤지 아시나요? 이를 통해 채용 공고를 활성화하여 적합한 인재를 가진 더 많은 사람들에게 도달할 수 있습니다.",
+      "start": 1564.2,
+      "end": 1572.2
+    },
+    {
+      "en": "certification, location and more. Sponsored jobs posted directly on Indeed are 95% more likely to report a hire than non-sponsored jobs.",
+      "ko": "자격증, 지역 등을 고려할 수 있습니다. Indeed에 직접 게시된 스폰서 채용 공고는 일반 공고보다 채용 성공률이 95% 더 높습니다.",
+      "start": 1573.2,
+      "end": 1580.2
+    },
+    {
+      "en": "Spend less time searching and more time actually interviewing candidates who check all your boxes.",
+      "ko": "검색에 소요되는 시간을 줄이고 모든 조건을 충족하는 후보자들을 실제로 인터뷰하는 데 더 많은 시간을 투자하세요.",
+      "start": 1580.2,
+      "end": 1585.2
+    },
+    {
+      "en": "Less stress, less time, more results. When you need the right person to cut through the chaos, this is a job for Indeed's sponsored jobs.",
+      "ko": "스트레스는 줄이고, 시간은 절약하며, 결과는 향상됩니다. 혼란을 뚫고 적임자가 필요할 때, 바로 Indeed의 스폰서 채용 공고가 해결책입니다.",
+      "start": 1585.2,
+      "end": 1592.2
+    },
+    {
+      "en": "And listeners of this show will get a $75 sponsored job credit to help get your job the premium status it deserves at indeed.com.",
+      "ko": "그리고 이 프로그램의 청취자들은 indeed.com에서 채용 공고에 마땅한 프리미엄 지위를 부여하는 데 도움이 되는 75달러의 스폰서 채용 크레딧을 받을 수 있습니다.",
+      "start": 1592.2,
+      "end": 1600.2
+    },
+    {
+      "en": "To support the show by saying you heard about Indeed here,",
+      "ko": "여기서 Indeed에 대해 들었다고 말씀하시면 프로그램을 지원하실 수 있습니다.",
+      "start": 1600.2,
+      "end": 1606.2
+    },
+    {
+      "en": "indeed.com.",
+      "ko": "indeed.com입니다.",
+      "start": 1606.2,
+      "end": 1607.2
+    },
+    {
+      "en": "Terms and conditions apply. Hiring now? Then this is a job for Indeed's sponsored jobs.",
+      "ko": "이용 약관이 적용됩니다. 지금 채용 중이신가요? 그렇다면 Indeed의 스폰서 채용 공고가 답입니다.",
+      "start": 1607.2,
+      "end": 1613.2
+    },
+    {
+      "en": "A digital picture frame belonging to a big pipes employee had become part of Kim Wolf.",
+      "ko": "빅파이프스 직원이 소유한 디지털 액자가 킴울프의 일부가 되었습니다.",
+      "start": 1619.2,
+      "end": 1624.2
+    },
+    {
+      "en": "But it still wasn't clear how hackers were manipulating the device.",
+      "ko": "하지만 해커들이 어떻게 그 기기를 조작하고 있는지는 여전히 불분명했습니다.",
+      "start": 1624.2,
+      "end": 1628.2
+    },
+    {
+      "en": "Ben and Chris scoured the internet for clues. And Ben kept thinking about what that mysterious hacker had told him.",
+      "ko": "벤과 크리스는 단서를 찾기 위해 인터넷을 샅샅이 뒤졌습니다. 그리고 벤은 그 미스터리한 해커가 자신에게 한 말을 계속 생각했습니다.",
+      "start": 1628.2,
+      "end": 1635.2
+    },
+    {
+      "en": "I was definitely trying to figure out how everything was being done, right? Like they claim they had this novel exploit.",
+      "ko": "저는 분명히 모든 것이 어떻게 이루어지고 있는지 알아내려고 노력했습니다, 그렇죠? 그들은 새로운 취약점 공격을 가지고 있다고 주장했거든요.",
+      "start": 1635.2,
+      "end": 1642.2
+    },
+    {
+      "en": "How were they actually achieving it, right? And so I was trying to like figure out these kind of loose strands and, you know, unravel the mystery, I guess.",
+      "ko": "그들이 실제로 어떻게 그것을 달성하고 있었는지 말이죠. 그래서 저는 이런 종류의 느슨한 실마리들을 파악하고, 뭐랄까, 미스터리를 풀려고 노력했습니다.",
+      "start": 1642.2,
+      "end": 1651.2
+    },
+    {
+      "en": "Ben wanted to see exactly how Kim Wolf could break into devices on IPID's network to build its cyber weapon.",
+      "ko": "벤은 킴울프가 사이버 무기를 구축하기 위해 IPID 네트워크의 기기들에 어떻게 침입할 수 있는지 정확히 보고 싶었습니다.",
+      "start": 1652.2,
+      "end": 1659.2
+    },
+    {
+      "en": "So he decided to set a trap, a honeypot that would lure in Kim Wolf. Here's Chris from OSA again.",
+      "ko": "그래서 그는 킴울프를 유인할 함정, 즉 허니팟을 설치하기로 결정했습니다. 다시 OSA의 크리스입니다.",
+      "start": 1659.2,
+      "end": 1666.2
+    },
+    {
+      "en": "I'd say Ben's honeypot is the gold mine. That was the key.",
+      "ko": "벤의 허니팟이 금광이었다고 말하고 싶네요. 그것이 핵심이었습니다.",
+      "start": 1666.2,
+      "end": 1671.2
+    },
+    {
+      "en": "So the idea was there's got to be, we think they're exploiting residential proxy devices.",
+      "ko": "그래서 아이디어는 이런 것이었습니다. 우리는 그들이 가정용 프록시 기기들을 악용하고 있다고 생각했습니다.",
+      "start": 1671.2,
+      "end": 1677.2
+    },
+    {
+      "en": "So the best way to figure out if that's true is make yourself a honeypot and become one.",
+      "ko": "그래서 그것이 사실인지 알아내는 가장 좋은 방법은 스스로 허니팟을 만들어서 하나가 되는 것입니다.",
+      "start": 1677.2,
+      "end": 1682.2
+    },
+    {
+      "en": "Here's how Ben set up the trap.",
+      "ko": "벤이 함정을 설치한 방법은 다음과 같습니다.",
+      "start": 1684.2,
+      "end": 1686.2
+    },
+    {
+      "en": "I had this Android phone that I'd used for reverse engineering.",
+      "ko": "저는 역공학에 사용했던 안드로이드 폰이 하나 있었습니다.",
+      "start": 1686.2,
+      "end": 1689.2
+    },
+    {
+      "en": "As one does.",
+      "ko": "누구나 그러듯이요.",
+      "start": 1689.2,
+      "end": 1690.2
+    },
+    {
+      "en": "Yeah, exactly. As one does.",
+      "ko": "네, 정확히. 누구나 그러듯이요.",
+      "start": 1690.2,
+      "end": 1692.2
+    },
+    {
+      "en": "Ben installed IPID as software onto that Android phone, downloading it from a website that offered pirated streaming apps.",
+      "ko": "벤은 해적판 스트리밍 앱을 제공하는 웹사이트에서 IPID 소프트웨어를 다운로드하여 그 안드로이드 폰에 설치했습니다.",
+      "start": 1694.2,
+      "end": 1701.2
+    },
+    {
+      "en": "Then he built a setup that allowed him to monitor the internet traffic coming to and from that Android.",
+      "ko": "그런 다음 그는 그 안드로이드로 들어오고 나가는 인터넷 트래픽을 모니터링할 수 있는 설정을 구축했습니다.",
+      "start": 1702.2,
+      "end": 1708.2
+    },
+    {
+      "en": "Then he waited.",
+      "ko": "그리고 그는 기다렸습니다.",
+      "start": 1708.2,
+      "end": 1710.2
+    },
+    {
+      "en": "In the meantime, Ben studied for his midterm exams.",
+      "ko": "그동안 벤은 중간고사 공부를 했습니다.",
+      "start": 1712.2,
+      "end": 1715.2
+    },
+    {
+      "en": "I was so stressed during this time, but I think I had like set this tracking.",
+      "ko": "이 기간 동안 저는 정말 스트레스를 받았지만, 이 추적을 설정해 놓았던 것 같습니다.",
+      "start": 1716.2,
+      "end": 1721.2
+    },
+    {
+      "en": "I had this running for a week and I saw this domain keep popping up called xd.rezzi.to.",
+      "ko": "일주일 동안 이것을 실행했고 xd.rezzi.to라는 도메인이 계속 나타나는 것을 보았습니다.",
+      "start": 1721.2,
+      "end": 1727.2
+    },
+    {
+      "en": "xd.rezzi.to.",
+      "ko": "xd.rezzi.to입니다.",
+      "start": 1728.2,
+      "end": 1730.2
+    },
+    {
+      "en": "A strange web address that didn't seem to belong to IPID.",
+      "ko": "IPID에 속한 것으로 보이지 않는 이상한 웹 주소였습니다.",
+      "start": 1730.2,
+      "end": 1734.2
+    },
+    {
+      "en": "And to me that really stood out.",
+      "ko": "그리고 그것이 제게는 정말 눈에 띄었습니다.",
+      "start": 1735.2,
+      "end": 1737.2
+    },
+    {
+      "en": "I was like, oh, it's really interesting. I wonder what's going on here.",
+      "ko": "저는 '오, 정말 흥미롭네. 여기서 무슨 일이 벌어지고 있는 걸까' 하고 생각했습니다.",
+      "start": 1737.2,
+      "end": 1739.2
+    },
+    {
+      "en": "And it turns out that this was what they were using for their initial access or compromising the devices.",
+      "ko": "그리고 알고 보니 이것이 그들이 초기 접근이나 기기 침해에 사용하고 있던 것이었습니다.",
+      "start": 1739.2,
+      "end": 1746.2
+    },
+    {
+      "en": "Kim Wolf Hackers had set up that domain to gain access to devices on IPID as network.",
+      "ko": "킴울프 해커들은 IPID 네트워크의 기기들에 접근하기 위해 그 도메인을 설정해 놓았던 것입니다.",
+      "start": 1746.2,
+      "end": 1751.2
+    },
+    {
+      "en": "It was a direct link between the Hackers and Ben's Android.",
+      "ko": "그것은 해커들과 벤의 안드로이드 사이의 직접적인 연결고리였습니다.",
+      "start": 1752.2,
+      "end": 1756.2
+    },
+    {
+      "en": "And once they were in, Ben saw that Kim Wolf started doing something really unusual.",
+      "ko": "그리고 일단 그들이 들어오자, 벤은 킴울프가 정말 특이한 무언가를 시작하는 것을 보았습니다.",
+      "start": 1756.2,
+      "end": 1762.2
+    },
+    {
+      "en": "Normally, residential proxies act like a tunnel between a user and whatever place on the internet they're trying to connect to.",
+      "ko": "일반적으로 가정용 프록시는 사용자와 그들이 연결하려는 인터넷상의 장소 사이의 터널처럼 작동합니다.",
+      "start": 1765.2,
+      "end": 1772.2
+    },
+    {
+      "en": "There are no stops or pauses.",
+      "ko": "정지나 일시 중지가 없습니다.",
+      "start": 1772.2,
+      "end": 1774.2
+    },
+    {
+      "en": "But Ben noticed that the traffic from that weird domain was somehow sticking around.",
+      "ko": "하지만 벤은 그 이상한 도메인에서 오는 트래픽이 어떻게든 계속 남아있는 것을 발견했습니다.",
+      "start": 1775.2,
+      "end": 1780.2
+    },
+    {
+      "en": "Here's Bob.",
+      "ko": "밥입니다.",
+      "start": 1780.2,
+      "end": 1782.2
+    },
+    {
+      "en": "Instead of going to another place on the internet, the Hackers were saying, take us to someplace on your local network.",
+      "ko": "해커들은 인터넷의 다른 곳으로 가는 대신, 당신의 로컬 네트워크 어딘가로 우리를 데려가라고 요구하고 있었습니다.",
+      "start": 1782.2,
+      "end": 1789.2
+    },
+    {
+      "en": "Take us to this part of your phone where we can get control of your whole phone or your whole picture frame or your whole streaming device.",
+      "ko": "우리가 당신의 전체 휴대폰이나 전체 디지털 액자, 또는 전체 스트리밍 장치를 제어할 수 있는 휴대폰의 이 부분으로 우리를 데려가라는 것이었습니다.",
+      "start": 1789.2,
+      "end": 1800.2
+    },
+    {
+      "en": "They were only supposed to be using the residential proxy to visit the internet, not to visit local networks.",
+      "ko": "그들은 주거용 프록시를 인터넷 방문용으로만 사용해야 했지, 로컬 네트워크 방문용으로 사용해서는 안 되었습니다.",
+      "start": 1801.2,
+      "end": 1808.2
+    },
+    {
+      "en": "It's like if an Airbnb guest decided to squat in their rental and rummage through all the locked closets and drawers looking for stuff to steal.",
+      "ko": "마치 에어비앤비 손님이 임대한 집에 눌러앉아 잠긴 옷장과 서랍을 모두 뒤지며 훔칠 물건을 찾는 것과 같습니다.",
+      "start": 1808.2,
+      "end": 1817.2
+    },
+    {
+      "en": "Ben took his findings back to the rest of Big Pipes.",
+      "ko": "벤은 자신의 발견을 빅 파이프스의 다른 팀원들에게 가져갔습니다.",
+      "start": 1817.2,
+      "end": 1821.2
+    },
+    {
+      "en": "And together, they discovered a bug in IPID as code.",
+      "ko": "그리고 함께 그들은 IPID 코드의 버그를 발견했습니다.",
+      "start": 1821.2,
+      "end": 1825.2
+    },
+    {
+      "en": "A bug that Kim Wolf hackers exploited to break into home networks and look for vulnerable devices.",
+      "ko": "킴 울프 해커들이 가정 네트워크에 침입하고 취약한 장치를 찾기 위해 악용한 버그였습니다.",
+      "start": 1825.2,
+      "end": 1832.2
+    },
+    {
+      "en": "The hackers would then install software onto those devices that allowed them to engage in DDoS attacks.",
+      "ko": "해커들은 그런 다음 이러한 장치에 소프트웨어를 설치하여 DDoS 공격을 수행할 수 있도록 했습니다.",
+      "start": 1832.2,
+      "end": 1838.2
+    },
+    {
+      "en": "What Ben's Honeypot also revealed is that IPID and Kim Wolf weren't working together.",
+      "ko": "벤의 허니팟이 또한 밝혀낸 것은 IPID와 킴 울프가 함께 작업하고 있지 않다는 것이었습니다.",
+      "start": 1838.2,
+      "end": 1844.2
+    },
+    {
+      "en": "Kim Wolf was paying for access to IPID as network and abusing it to hack into consumer devices.",
+      "ko": "킴 울프는 IPID 네트워크에 접근하기 위해 비용을 지불하고, 이를 악용하여 소비자 장치를 해킹하고 있었습니다.",
+      "start": 1844.2,
+      "end": 1851.2
+    },
+    {
+      "en": "So I was like, oh, I kind of understand how they're doing it now. I understand how easy it is.",
+      "ko": "그래서 저는 '아, 이제 그들이 어떻게 하는지 어느 정도 이해했어. 얼마나 쉬운지 알겠어'라고 생각했습니다.",
+      "start": 1851.2,
+      "end": 1856.2
+    },
+    {
+      "en": "And then I think it was also a bit scary, right? You can see all these domains and what people are sending requests to.",
+      "ko": "그리고 또한 약간 무섭기도 했죠, 그렇죠? 이 모든 도메인과 사람들이 무엇에 요청을 보내는지 볼 수 있었으니까요.",
+      "start": 1856.2,
+      "end": 1863.2
+    },
+    {
+      "en": "And you see this one domain that's just the very top here, and it just means that they're compromising devices at an unseen scale before.",
+      "ko": "그리고 여기 맨 위에 있는 이 하나의 도메인을 보면, 그것은 그들이 이전에 볼 수 없었던 규모로 장치를 해킹하고 있다는 것을 의미합니다.",
+      "start": 1863.2,
+      "end": 1871.2
+    },
+    {
+      "en": "Ben had solved the mystery.",
+      "ko": "벤은 미스터리를 해결했습니다.",
+      "start": 1871.2,
+      "end": 1874.2
+    },
+    {
+      "en": "Eventually, Ben identified around two million devices, things like TV boxes, phones, cameras, picture frames, all hacked by Kim Wolf.",
+      "ko": "결국 벤은 약 200만 대의 장치를 식별했는데, TV 박스, 휴대폰, 카메라, 디지털 액자 같은 것들로, 모두 킴 울프에 의해 해킹당한 것들이었습니다.",
+      "start": 1874.2,
+      "end": 1887.2
+    },
+    {
+      "en": "Ben also found that IPID wasn't the only residential proxy company that was vulnerable to the bug.",
+      "ko": "벤은 또한 IPID가 이 버그에 취약한 유일한 주거용 프록시 회사가 아니라는 것을 발견했습니다.",
+      "start": 1887.2,
+      "end": 1894.2
+    },
+    {
+      "en": "Ten other companies were too.",
+      "ko": "다른 10개 회사도 마찬가지였습니다.",
+      "start": 1894.2,
+      "end": 1897.2
+    },
+    {
+      "en": "The next step was to warn the world.",
+      "ko": "다음 단계는 세상에 경고하는 것이었습니다.",
+      "start": 1897.2,
+      "end": 1901.2
+    },
+    {
+      "en": "Ben started writing notices to res proxy companies, including IPID, to tell them about the bug and how to fix it.",
+      "ko": "벤은 IPID를 포함한 주거용 프록시 회사들에게 버그와 그것을 수정하는 방법에 대해 알리는 공지를 작성하기 시작했습니다.",
+      "start": 1901.2,
+      "end": 1910.2
+    },
+    {
+      "en": "And at this point, where are we at in the school year? What's happening to your college work?",
+      "ko": "그리고 이 시점에서, 학년 중 어디쯤인가요? 대학 공부는 어떻게 되고 있나요?",
+      "start": 1910.2,
+      "end": 1917.2
+    },
+    {
+      "en": "I think this was towards the end of finals. Even though I'm not the best student, there's definitely a degree of like, you know, I have parents.",
+      "ko": "이건 기말고사가 끝나갈 무렵이었던 것 같아요. 제가 최고의 학생은 아니지만, 확실히 어느 정도는, 있잖아요, 저한테 부모님이 계시잖아요.",
+      "start": 1917.2,
+      "end": 1926.2
+    },
+    {
+      "en": "Exactly. I have parents that love me. And so like, I have to do these things because otherwise, you know, they give me a bit of grief for it.",
+      "ko": "정확히요. 저를 사랑하는 부모님이 계세요. 그래서 이런 일들을 해야 해요. 그렇지 않으면, 있잖아요, 부모님이 저한테 좀 잔소리를 하시거든요.",
+      "start": 1926.2,
+      "end": 1934.2
+    },
+    {
+      "en": "You're also so close to graduating, so, you know, might as well keep going.",
+      "ko": "또한 졸업도 거의 다 됐으니까, 있잖아요, 계속 가는 게 낫죠.",
+      "start": 1934.2,
+      "end": 1939.2
+    },
+    {
+      "en": "Exactly, right? So I was just trying to wrap everything up.",
+      "ko": "정확히, 그렇죠? 그래서 저는 그냥 모든 것을 마무리하려고 애쓰고 있었어요.",
+      "start": 1939.2,
+      "end": 1942.2
+    },
+    {
+      "en": "One internet wizard told Bob that if Ben spent too much time studying for his finals, the internet might actually break.",
+      "ko": "한 인터넷 전문가가 밥에게 만약 벤이 기말고사 공부에 너무 많은 시간을 쓴다면 인터넷이 실제로 망가질 수도 있다고 말했습니다.",
+      "start": 1942.2,
+      "end": 1954.2
+    },
+    {
+      "en": "On December 17, the day after his last test, Ben sent out the notices.",
+      "ko": "12월 17일, 그의 마지막 시험 다음 날, 벤은 공지를 발송했습니다.",
+      "start": 1954.2,
+      "end": 1960.2
+    },
+    {
+      "en": "Nine days later, IPID finally replied apologizing.",
+      "ko": "9일 후, IPID가 마침내 사과하며 답장했습니다.",
+      "start": 1960.2,
+      "end": 1965.2
+    },
+    {
+      "en": "They told Ben that his email had gone to spam, but they said they were fixing the problem.",
+      "ko": "그들은 벤에게 그의 이메일이 스팸함으로 갔다고 말했지만, 문제를 수정하고 있다고 말했습니다.",
+      "start": 1965.2,
+      "end": 1970.2
+    },
+    {
+      "en": "But IPID's fix came too little too late.",
+      "ko": "하지만 IPID의 수정은 너무 적고 너무 늦었습니다.",
+      "start": 1970.2,
+      "end": 1973.2
+    },
+    {
+      "en": "In January, Google used a U.S. court order to strike at IPID, taking down 13 of the company's business domains and shutting down dozens of IPID's servers.",
+      "ko": "1월에 구글은 미국 법원 명령을 사용하여 IPID를 공격했고, 회사의 비즈니스 도메인 13개를 차단하고 IPID의 수십 개 서버를 폐쇄했습니다.",
+      "start": 1973.2,
+      "end": 1984.2
+    },
+    {
+      "en": "Google had identified more than 10 million devices that came with IPID as software secretly preinstalled.",
+      "ko": "구글은 IPID 소프트웨어가 은밀히 사전 설치된 1,000만 대 이상의 장치를 식별했습니다.",
+      "start": 1984.2,
+      "end": 1992.2
+    },
+    {
+      "en": "Two months later in March, the Department of Justice took action against four of the world's largest DDoS botnets, including Kim Wolf, by seizing internet domains, virtual servers, and other network infrastructure.",
+      "ko": "2개월 후인 3월, 법무부는 킴 울프를 포함한 세계 최대 DDoS 봇넷 4개에 대해 인터넷 도메인, 가상 서버 및 기타 네트워크 인프라를 압수하여 조치를 취했습니다.",
+      "start": 1992.2,
+      "end": 2005.2
+    },
+    {
+      "en": "According to court filings, Kim Wolf had launched more than 26,000 DDoS attacks, targeting over 8,000 victims.",
+      "ko": "법원 제출 문서에 따르면, 킴 울프는 8,000명 이상의 피해자를 대상으로 26,000건 이상의 DDoS 공격을 시작했습니다.",
+      "start": 2005.2,
+      "end": 2013.2
+    },
+    {
+      "en": "At the end of its press release, the DOJ thanked several companies for their help in the Kim Wolf operation.",
+      "ko": "보도 자료 끝에서 법무부는 킴 울프 작전에 도움을 준 여러 회사에 감사를 표했습니다.",
+      "start": 2013.2,
+      "end": 2019.2
+    },
+    {
+      "en": "They included Google, Lumen, and Synthient, Ben's company.",
+      "ko": "여기에는 구글, 루멘, 그리고 벤의 회사인 신티언트가 포함되었습니다.",
+      "start": 2019.2,
+      "end": 2024.2
+    },
+    {
+      "en": "It's a really cool feeling. I'm being 100% honest.",
+      "ko": "정말 멋진 기분이에요. 100% 솔직하게 말하는 거예요.",
+      "start": 2028.2,
+      "end": 2031.2
+    },
+    {
+      "en": "This all was by accident, but it's also rewarding in the sense that I spent all this time on here,",
+      "ko": "이 모든 것이 우연이었지만, 제가 여기에 모든 시간을 쏟았다는 점에서 보람도 있어요.",
+      "start": 2031.2,
+      "end": 2038.2
+    },
+    {
+      "en": "maybe even sacrificed time from other things I should be giving it to, whether that's school or friends.",
+      "ko": "학교든 친구든, 제가 시간을 써야 할 다른 것들로부터 시간을 희생했을 수도 있고요.",
+      "start": 2038.2,
+      "end": 2044.2
+    },
+    {
+      "en": "It's just cool to see that there's an actual impact or real world value to what I'm doing, I guess.",
+      "ko": "제가 하고 있는 일에 실제적인 영향이나 현실 세계의 가치가 있다는 것을 보는 게 그냥 멋진 것 같아요.",
+      "start": 2044.2,
+      "end": 2051.2
+    },
+    {
+      "en": "In the case of Kim Wolf, how important was Ben for that investigation?",
+      "ko": "킴 울프 사건에서 벤은 그 조사에 얼마나 중요했나요?",
+      "start": 2054.2,
+      "end": 2058.2
+    },
+    {
+      "en": "Ben was the most important critical MVP, whatever you want to call it.",
+      "ko": "벤은 가장 중요한 핵심 MVP였습니다. 뭐라고 부르든 간에요.",
+      "start": 2058.2,
+      "end": 2064.2
+    },
+    {
+      "en": "That's Chris Formosa again, the Lumen engineer.",
+      "ko": "루멘의 엔지니어 크리스 포모사의 말입니다.",
+      "start": 2064.2,
+      "end": 2068.2
+    },
+    {
+      "en": "Ben really figured out who the main actors were, who was running it, how they were doing it, how the exploitation worked.",
+      "ko": "벤은 주요 행위자가 누구인지, 누가 운영하는지, 어떻게 하는지, 착취가 어떻게 작동하는지를 정말로 파악했습니다.",
+      "start": 2068.2,
+      "end": 2077.2
+    },
+    {
+      "en": "Ben was the key information piece around everything.",
+      "ko": "벤은 모든 것의 핵심 정보원이었습니다.",
+      "start": 2077.2,
+      "end": 2081.2
+    },
+    {
+      "en": "The people in Big Pipes, they would have eventually figured this out, but they sure got a lot of help from Ben.",
+      "ko": "빅 파이프스의 사람들도 결국엔 알아냈겠지만, 벤으로부터 많은 도움을 받은 건 확실합니다.",
+      "start": 2082.2,
+      "end": 2088.2
+    },
+    {
+      "en": "Bob McMillan again.",
+      "ko": "다시 밥 맥밀런의 말입니다.",
+      "start": 2088.2,
+      "end": 2090.2
+    },
+    {
+      "en": "Like the Big Pipes people, they were the wizards who see the flows of data on the internet,",
+      "ko": "빅 파이프스 사람들은 인터넷의 데이터 흐름을 보는 마법사 같은 존재였습니다.",
+      "start": 2090.2,
+      "end": 2096.2
+    },
+    {
+      "en": "and they could pick up the software that's being downloaded, and they can see the IP addresses of everything.",
+      "ko": "그들은 다운로드되는 소프트웨어를 감지할 수 있었고, 모든 것의 IP 주소를 볼 수 있었습니다.",
+      "start": 2096.2,
+      "end": 2104.2
+    },
+    {
+      "en": "But they weren't on Discord discussion groups sharing cat memes, right?",
+      "ko": "하지만 그들은 디스코드 토론 그룹에서 고양이 밈을 공유하는 사람들은 아니었죠, 그렇죠?",
+      "start": 2104.2,
+      "end": 2109.2
+    },
+    {
+      "en": "That's not how they worked.",
+      "ko": "그게 그들의 방식이 아니었습니다.",
+      "start": 2109.2,
+      "end": 2111.2
+    },
+    {
+      "en": "These days, Kim Wolf is a shadow of its former self.",
+      "ko": "요즘 킴 울프는 예전의 그림자에 불과합니다.",
+      "start": 2115.2,
+      "end": 2118.2
+    },
+    {
+      "en": "But cybersecurity experts say it is still around, lurking in thousands of vulnerable devices.",
+      "ko": "하지만 사이버 보안 전문가들은 여전히 수천 개의 취약한 기기에 잠복해 있다고 말합니다.",
+      "start": 2118.2,
+      "end": 2124.2
+    },
+    {
+      "en": "And Bob says there are a lot of those out there.",
+      "ko": "그리고 밥은 그런 기기들이 많이 있다고 말합니다.",
+      "start": 2124.2,
+      "end": 2127.2
+    },
+    {
+      "en": "The real takeaway here is that we have an internet filled with junk.",
+      "ko": "여기서 진짜 교훈은 우리 인터넷이 쓰레기로 가득 차 있다는 것입니다.",
+      "start": 2127.2,
+      "end": 2132.2
+    },
+    {
+      "en": "We have garbage devices, garbage apps that are doing a lot of bad stuff, and they've become part of the criminal infrastructure.",
+      "ko": "우리에겐 많은 나쁜 일을 하는 쓰레기 기기들과 쓰레기 앱들이 있고, 이것들이 범죄 인프라의 일부가 되었습니다.",
+      "start": 2132.2,
+      "end": 2140.2
+    },
+    {
+      "en": "It's like an internet pollution problem.",
+      "ko": "이건 마치 인터넷 오염 문제와 같습니다.",
+      "start": 2140.2,
+      "end": 2143.2
+    },
+    {
+      "en": "And that's what the takeaway is that we have an internet pollution problem, and we're not really sure how to fix it.",
+      "ko": "그게 바로 교훈입니다. 우리에게 인터넷 오염 문제가 있고, 이를 어떻게 해결해야 할지 확실히 모른다는 것입니다.",
+      "start": 2143.2,
+      "end": 2149.2
+    },
+    {
+      "en": "By the way, if you want to see if there's a secret residential proxy device on your network,",
+      "ko": "그건 그렇고, 당신의 네트워크에 비밀 주거용 프록시 장치가 있는지 확인하고 싶다면,",
+      "start": 2149.2,
+      "end": 2154.2
+    },
+    {
+      "en": "Bob wrote a quick guide on how to check.",
+      "ko": "밥이 확인하는 방법에 대한 간단한 가이드를 작성했습니다.",
+      "start": 2154.2,
+      "end": 2157.2
+    },
+    {
+      "en": "The link is in the show notes.",
+      "ko": "링크는 쇼 노트에 있습니다.",
+      "start": 2157.2,
+      "end": 2159.2
+    },
+    {
+      "en": "As for Ben, he says he's now focused on graduating and on building his startup.",
+      "ko": "벤은 지금 졸업과 스타트업 구축에 집중하고 있다고 말합니다.",
+      "start": 2162.2,
+      "end": 2168.2
+    },
+    {
+      "en": "And he also wants to take a break.",
+      "ko": "그리고 그는 휴식도 취하고 싶어 합니다.",
+      "start": 2168.2,
+      "end": 2170.2
+    },
+    {
+      "en": "I kind of want to travel a little bit and see what's out there.",
+      "ko": "조금 여행을 하면서 세상을 보고 싶어요.",
+      "start": 2171.2,
+      "end": 2174.2
+    },
+    {
+      "en": "I kind of want to take a little bit of a vacation too, you know, after all this stuff.",
+      "ko": "이 모든 일 후에 휴가도 좀 갖고 싶어요, 아시죠.",
+      "start": 2174.2,
+      "end": 2179.2
+    },
+    {
+      "en": "Yeah, you deserve that.",
+      "ko": "네, 당연히 그럴 자격이 있죠.",
+      "start": 2179.2,
+      "end": 2181.2
+    },
+    {
+      "en": "You're going to make a t-shirt?",
+      "ko": "티셔츠를 만들 건가요?",
+      "start": 2181.2,
+      "end": 2183.2
+    },
+    {
+      "en": "You didn't get one out of this particular endeavor.",
+      "ko": "이번 일로는 하나도 못 받았잖아요.",
+      "start": 2183.2,
+      "end": 2186.2
+    },
+    {
+      "en": "Maybe you can make one for yourself.",
+      "ko": "직접 하나 만들어도 될 것 같은데요.",
+      "start": 2186.2,
+      "end": 2188.2
+    },
+    {
+      "en": "I've heard there's one on the way, so fingers crossed.",
+      "ko": "하나가 오고 있다고 들었어요, 그래서 기대하고 있습니다.",
+      "start": 2188.2,
+      "end": 2190.2
+    },
+    {
+      "en": "Oh, is that right?",
+      "ko": "오, 그래요?",
+      "start": 2190.2,
+      "end": 2192.2
+    },
+    {
+      "en": "That's what I've heard. We'll see, though.",
+      "ko": "제가 들은 바로는 그래요. 하지만 두고 봐야죠.",
+      "start": 2192.2,
+      "end": 2194.2
+    },
+    {
+      "en": "Do you know what he'll say?",
+      "ko": "뭐라고 쓰여 있을지 아세요?",
+      "start": 2194.2,
+      "end": 2195.2
+    },
+    {
+      "en": "I have no clue.",
+      "ko": "전혀 모르겠어요.",
+      "start": 2195.2,
+      "end": 2196.2
+    },
+    {
+      "en": "He says, I saw Kim Wolf and all I got was this lousy t-shirt.",
+      "ko": "그가 말하길, 킴 울프를 봤는데 받은 건 이 형편없는 티셔츠뿐이라고요.",
+      "start": 2196.2,
+      "end": 2200.2
+    },
+    {
+      "en": "That's all for today, Friday, May 1st.",
+      "ko": "오늘 5월 1일 금요일은 여기까지입니다.",
+      "start": 2206.2,
+      "end": 2209.2
+    },
+    {
+      "en": "The Journal is a co-production of Spotify and The Wall Street Journal.",
+      "ko": "더 저널은 스포티파이와 월스트리트 저널의 공동 제작입니다.",
+      "start": 2209.2,
+      "end": 2213.2
+    },
+    {
+      "en": "This episode was produced by Enrique Perez de la Rosa and edited by Colin McNulty.",
+      "ko": "이번 에피소드는 엔리케 페레스 데 라 로사가 제작하고 콜린 맥널티가 편집했습니다.",
+      "start": 2213.2,
+      "end": 2218.2
+    },
+    {
+      "en": "The show is made by Katherine Brewer, Pia Kid Cari, Sophie Codner, Ryan Knudsen, Matt Quang, Laura Morris,",
+      "ko": "이 쇼는 캐서린 브루어, 피아 키드 카리, 소피 코드너, 라이언 크누센, 맷 쿠앙, 로라 모리스,",
+      "start": 2218.2,
+      "end": 2225.2
+    },
+    {
+      "en": "Sarah Platt, Alan Rodriguez Espinoza, Heather Rogers, Piers Singhi, Jiva Kovirma,",
+      "ko": "사라 플랫, 앨런 로드리게스 에스피노자, 헤더 로저스, 피어스 싱히, 지바 코비르마,",
+      "start": 2225.2,
+      "end": 2230.2
+    },
+    {
+      "en": "Katherine Whelan, Tatiana Zamis and me, Jessica Mendoza.",
+      "ko": "캐서린 휠런, 타티아나 자미스, 그리고 저 제시카 멘도자가 만들었습니다.",
+      "start": 2230.2,
+      "end": 2234.2
+    },
+    {
+      "en": "Our engineers are Griffin Tanner, Nathan Singapok and Peter Leonard.",
+      "ko": "엔지니어는 그리핀 태너, 네이선 싱가폭, 그리고 피터 레너드입니다.",
+      "start": 2234.2,
+      "end": 2238.2
+    },
+    {
+      "en": "Our theme music is by So Wiley.",
+      "ko": "테마 음악은 소 와일리가 맡았습니다.",
+      "start": 2238.2,
+      "end": 2241.2
+    },
+    {
+      "en": "Additional music this week from Katherine Anderson, Peter Leonard, Billy Libby, Nathan Singapok and Griffin Tanner.",
+      "ko": "이번 주 추가 음악은 캐서린 앤더슨, 피터 레너드, 빌리 리비, 네이선 싱가폭, 그리고 그리핀 태너가 제공했습니다.",
+      "start": 2241.2,
+      "end": 2247.2
+    },
+    {
+      "en": "Fact-checking this week by Kate Gallagher and Mary Mathis.",
+      "ko": "이번 주 팩트체크는 케이트 갤러거와 메리 매시스가 담당했습니다.",
+      "start": 2247.2,
+      "end": 2251.2
+    },
+    {
+      "en": "Thanks for listening. See you on Monday.",
+      "ko": "들어주셔서 감사합니다. 월요일에 뵙겠습니다.",
+      "start": 2251.2,
+      "end": 2255.2
+    }
+  ],
+  "analysis": {
+    "summary_ko": "2024년 인터넷을 위협한 사상 최대 규모의 봇넷 사이버무기 'KimWolf'가 등장했습니다. 이 무기는 전 세계 약 200만 대의 안드로이드 기기를 조용히 장악하여 DDoS 공격을 수행했으며, 인터넷 전체를 마비시킬 수 있는 위협이었습니다. 사이버보안 전문가들이 대응에 어려움을 겪던 중, 뉴욕 로체스터공과대학의 22세 컴퓨터공학과 학생 Benjamin Brundage가 기숙사에서 이 문제를 해결하는 데 결정적인 역할을 했습니다. KimWolf는 휴대폰, 카메라, TV 박스 등 일상적인 IoT 기기들을 감염시켜 대규모 사이버 무기로 변환시켰습니다. 이는 현대 인터넷 보안이 직면한 IoT 기기의 취약성과 주거용 프록시 네트워크의 위험성을 보여주는 사례입니다.",
+    "key_points": [
+      "KimWolf는 전 세계 약 200만 대의 안드로이드 및 IoT 기기를 감염시킨 사상 최대 규모의 봇넷으로, DDoS 공격을 통해 인터넷 전체를 마비시킬 수 있는 위협이었음",
+      "휴대폰, 카메라, TV 박스, 디지털 액자 등 일상적인 인터넷 연결 기기들이 사이버 무기로 전환되어 공격에 활용됨",
+      "사이버보안 전문가들이 KimWolf의 공격 출처와 감염 방식을 파악하는 데 어려움을 겪음",
+      "22세 대학생 Benjamin Brundage가 기숙사에서 KimWolf를 중단시키는 데 핵심적인 역할을 수행",
+      "IoT 기기의 보안 취약성과 주거용 프록시 네트워크의 악용 가능성이 주요 이슈로 부각됨"
+    ],
+    "related_stocks": [
+      {
+        "ticker": "CRWD",
+        "name": "CrowdStrike",
+        "reason": "대규모 봇넷 공격과 IoT 보안 위협 증가로 엔드포인트 보안 및 위협 탐지 솔루션 수요 증가 예상",
+        "sentiment": "positive",
+        "type": "stock"
+      },
+      {
+        "ticker": "PANW",
+        "name": "Palo Alto Networks",
+        "reason": "IoT 기기 보안 및 DDoS 방어 솔루션 제공 업체로서 사이버보안 위협 증가 시 수혜 예상",
+        "sentiment": "positive",
+        "type": "stock"
+      },
+      {
+        "ticker": "ZS",
+        "name": "Zscaler",
+        "reason": "클라우드 기반 보안 플랫폼으로 봇넷 및 DDoS 공격 방어 솔루션 수요 증가",
+        "sentiment": "positive",
+        "type": "stock"
+      },
+      {
+        "ticker": "GOOGL",
+        "name": "Alphabet (Google)",
+        "reason": "안드로이드 플랫폼 제공자로서 200만 대 안드로이드 기기 감염 사례 발생 시 보안 강화 필요성 대두",
+        "sentiment": "neutral",
+        "type": "stock"
+      },
+      {
+        "ticker": "HACK",
+        "name": "ETFMG Prime Cyber Security ETF",
+        "reason": "사이버보안 전문 ETF로 대규모 봇넷 공격 사례 증가 시 사이버보안 산업 전반의 성장 수혜",
+        "sentiment": "positive",
+        "type": "etf"
+      },
+      {
+        "ticker": "CIBR",
+        "name": "First Trust NASDAQ Cybersecurity ETF",
+        "reason": "IoT 보안 위협 증가로 사이버보안 기업들의 솔루션 수요 확대 예상",
+        "sentiment": "positive",
+        "type": "etf"
+      },
+      {
+        "ticker": "BUG",
+        "name": "Global X Cybersecurity ETF",
+        "reason": "글로벌 사이버보안 기업 포트폴리오로 봇넷 및 DDoS 공격 방어 기술 수요 증가 수혜",
+        "sentiment": "positive",
+        "type": "etf"
+      }
+    ],
+    "related_etfs": [
+      {
+        "ticker": "HACK",
+        "name": "ETFMG Prime Cyber Security ETF",
+        "reason": "사이버보안 전문 ETF로 대규모 봇넷 공격 사례 증가 시 사이버보안 산업 전반의 성장 수혜",
+        "sentiment": "positive",
+        "type": "etf"
+      },
+      {
+        "ticker": "CIBR",
+        "name": "First Trust NASDAQ Cybersecurity ETF",
+        "reason": "IoT 보안 위협 증가로 사이버보안 기업들의 솔루션 수요 확대 예상",
+        "sentiment": "positive",
+        "type": "etf"
+      },
+      {
+        "ticker": "BUG",
+        "name": "Global X Cybersecurity ETF",
+        "reason": "글로벌 사이버보안 기업 포트폴리오로 봇넷 및 DDoS 공격 방어 기술 수요 증가 수혜",
+        "sentiment": "positive",
+        "type": "etf"
+      }
+    ],
+    "market_outlook": "KimWolf 사례는 IoT 기기의 급속한 확산과 함께 사이버보안 위협이 기하급수적으로 증가하고 있음을 보여줍니다. 특히 스마트홈 기기, 웨어러블, 산업용 IoT 등 연결 기기가 증가하면서 사이버보안 솔루션 시장은 지속적인 성장이 예상됩니다. 안드로이드 생태계의 보안 강화, 엔드포인트 보안, DDoS 방어 솔루션에 대한 기업 및 정부의 투자가 확대될 것으로 전망되며, 사이버보안 관련 주식 및 ETF는 중장기적으로 긍정적인 투자 기회를 제공할 것으로 보입니다."
+  },
+  "ad_blocks_removed": 0,
+  "generated_at": "2026-05-09T22:17:38.124069"
+}
